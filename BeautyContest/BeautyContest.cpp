@@ -2,9 +2,12 @@
 //
 
 #include <iostream>
+#include <windows.h>
+#include <string>
 using namespace std;
 
-void printMainMenu(); // TODO: function for printing menu TEST IT
+void printMainMenu();
+void askForAction(int &choice);
 
 int main() {
     /*
@@ -31,16 +34,49 @@ int main() {
 
     const int MAXCONTESTANTS = 30;
     int leftSpaces = 30;
-    printMainMenu();
+    
 
-    cout << "------------- Beauty contest -------------" << endl;
-    cout << "Type a number to chose your action:";
+    
 
-    int menuChoise;
-    cin >> menuChoise;
-    cout << endl;
-    while (menuChoise != 0) {
-        switch (menuChoise) {
+    int menuChoice;
+    
+
+    do {
+        printMainMenu();
+        cout << "Type a number to chose your action: ";
+        cin >> menuChoice;
+        cout << endl;
+        
+        
+        switch (menuChoice) {
+        case 0: //Exit program TODO: Fix getline being used once; test
+            
+            while (true) {
+                cout << "Do you really want to exit? y/n" << endl;
+                cin.ignore();
+                string answer;
+                answer.clear();
+                cin.clear();
+
+                getline(cin, answer);
+
+                if (answer.compare("y") == 0) {
+                    cout << "Goodbye!";
+                    exit;
+                }
+                else if (answer.compare("n") == 0) {
+                    cout << "Hehehe" << endl;
+                    cout << "I knew you'd not want to exit." << endl;
+
+                    break;
+                }
+                else {
+                    cout << "ERROR: expected y or n got: " << answer<<endl;
+                }
+            }
+            
+
+            break;
         case 1: //Add new contestant
             int contestantsToAdd;
             cout << "Spaces left: " << leftSpaces << endl;
@@ -97,7 +133,7 @@ int main() {
 
 
         }
-    }
+    } while (true);
 
 
 
@@ -105,8 +141,8 @@ int main() {
 
 void printMainMenu() {
 
-    cout <<
-        "\n-------------BASE PROGRAM - BEAUTY CONTEST-------------\n"
+    cout << endl <<
+        "\n-------------BEAUTY CONTEST-------------\n"
         "1. Add new contestant\n"
         "    -Spaces left: spaces left in array\n"
         "    -How many contestants do you want to add (Validation: can't exceed the free spaces left)\n"
@@ -120,6 +156,7 @@ void printMainMenu() {
         "    5.2 Import from .bjt\n"
         << endl;
 }
+
 // void myFunction() {
 //     cout << "I just got executed!";
 // }
