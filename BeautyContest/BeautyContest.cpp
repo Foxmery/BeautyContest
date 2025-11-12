@@ -1,13 +1,28 @@
-// BeautyContest.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <windows.h>
 #include <string>
+#include <cstdlib>// for system("cls"); setting
 using namespace std;
 
+
+
 void printMainMenu();
-void askForAction(int &choice);
+
+struct Contestants {
+    int ID;
+    char name[30]; //LATTER: No mmater the lengh of the name we can write it
+    int age;
+    bool isWoman;
+    double hipCirc;
+    double  shoulderCirc;
+    double calfCirc;
+};
+
+void clearConsole(bool clearConsoleSETTING);
+
+
+//void askForAction(int &choice);
+
 
 int main() {
     /*
@@ -28,13 +43,20 @@ int main() {
 
     */
 
+    // TODO: make the struct infrastructure
 
     // TODO: function for printing contestants array
     // TODO: 
 
+
+
     const int MAXCONTESTANTS = 30;
-    int leftSpaces = 30;
-    
+    int leftSpaces = MAXCONTESTANTS;
+
+    Contestants contestant[MAXCONTESTANTS]; //TODO: find a way to know which of the array slots are used and which are free(maybe with another bool array that  gets 1 if the slot is in use)
+
+
+    bool clearConsoleSETTING = 1;
 
     
 
@@ -49,24 +71,27 @@ int main() {
         
         
         switch (menuChoice) {
-        case 0: //Exit program TODO: Fix getline being used once; test
+
+        case 0: //Exit program 
+            cin.ignore();
             
             while (true) {
+                clearConsole(clearConsoleSETTING);
                 cout << "Do you really want to exit? y/n" << endl;
-                cin.ignore();
+                
                 string answer;
-                answer.clear();
-                cin.clear();
-
+                
                 getline(cin, answer);
+                /*char firstLeeter = answer[0];
+                printf("%d", firstLeeter);*/ //just some debuggin things
 
                 if (answer.compare("y") == 0) {
                     cout << "Goodbye!";
-                    exit;
+                    exit(0);
                 }
                 else if (answer.compare("n") == 0) {
-                    cout << "Hehehe" << endl;
-                    cout << "I knew you'd not want to exit." << endl;
+                    clearConsole(clearConsoleSETTING);
+
 
                     break;
                 }
@@ -94,6 +119,7 @@ int main() {
             for (int i = 0; contestantsToAdd < i; i++) {
 
                 cout << "Enter name: ";
+                
                 cout << endl;
 
                 cout << "Enter age: ";
@@ -115,9 +141,6 @@ int main() {
                 cout << endl;
 
             }
-
-
-
 
             break;
         case 2:
@@ -141,7 +164,7 @@ int main() {
 
 void printMainMenu() {
 
-    cout << endl <<
+    cout <<
         "\n-------------BEAUTY CONTEST-------------\n"
         "1. Add new contestant\n"
         "    -Spaces left: spaces left in array\n"
@@ -156,6 +179,13 @@ void printMainMenu() {
         "    5.2 Import from .bjt\n"
         << endl;
 }
+
+void clearConsole(bool clearConsoleSETTING) {
+    if (clearConsoleSETTING) {
+        system("cls");
+    }
+}
+
 
 // void myFunction() {
 //     cout << "I just got executed!";
