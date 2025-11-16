@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="BeautyContest/BeautyContest.vcxproj" Id="d9e96097-3421-413a-8b5f-ba760a55761e" />
-</Solution>
