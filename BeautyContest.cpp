@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <string>
 #include <cstdlib> // for system("cls"); setting
+#include <vector>
 using namespace std;
 
 //Settings
@@ -13,7 +14,7 @@ void printMainMenu();
 struct Contestants {
     int ID;
     bool isObjectUsed = 0;
-    char name[30]; //LATTER TODO: No mater the lengh of the name we can write it
+    string name; //LATTER TODO: No mater the lengh of the name we can write it
     int age;
     bool isWoman = 1;
     double hipCirc;
@@ -25,6 +26,7 @@ void clearConsole(bool clearConsoleSETTING);
 
 
 //void askForAction(int &choice);
+const int MAXCONTESTANTS = 30;
 
 int findFreeIndex(Contestants contestant[]);
 int main() {
@@ -35,7 +37,6 @@ int main() {
 
 
 
-    const int MAXCONTESTANTS = 30;
     int leftSpaces = MAXCONTESTANTS;
 
     bool freeSpaces[MAXCONTESTANTS];
@@ -113,27 +114,35 @@ int main() {
 
                 int validIndex = findFreeIndex(contestant);
 
+                contestant[validIndex].isObjectUsed = true;
 
                 cout << "Enter name: ";
+                getline(cin,contestant[validIndex].name);
+                cout << endl;
+
+                cout << "Enter age: ";//TODO: validation neded if only numbers
+                cin >> contestant[validIndex].age;
+                cout << endl;
+
+                cout << "Enter gender (M/F): ";//TODO: validation neded if only letters 
+                string input;
+                getline(cin,input);
                 
+                // switch(input){
+
+                // }
                 cout << endl;
 
-                cout << "Enter age: ";
+                cout << "Enter hip circumference (cm): "; //TODO: validation neded if only numbers
                 cout << endl;
 
-                cout << "Enter gender (M/F): ";
+                cout << "Enter shoulder circumference (cm): "; //TODO: validation neded if only numbers
                 cout << endl;
 
-                cout << "Enter hip circumference (cm): ";
+                cout << "Enter neck circumference (cm): "; //TODO: validation neded if only numbers
                 cout << endl;
 
-                cout << "Enter shoulder circumference (cm): ";
-                cout << endl;
-
-                cout << "Enter neck circumference (cm): ";
-                cout << endl;
-
-                cout << "Enter calf circumference (cm): ";
+                cout << "Enter calf circumference (cm): "; //TODO: validation neded if only numbers
                 cout << endl;
 
             }
@@ -182,8 +191,8 @@ void printMainMenu() {
         "    3.2 Name\n"
         "4. Sort contestants by oldest to youngest (No output)\n"
         "5. File\n"
-        "    5.1 Export in .bjt\n"
-        "    5.2 Import from .bjt\n"
+        "    5.1 Export\n"
+        "    5.2 Import\n"
         << endl;
 }
 
@@ -195,15 +204,36 @@ void clearConsole(bool clearConsoleSETTING) {
 int findFreeIndex(Contestants contestant[]) {
     for (int n = 0; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
-        cout << cont << endl;
+        // cout << cont << endl;
         if (cont == 0) {
-            cout << "yep" << endl;
+            // cout << "yep" << endl;
             return n;
         }
 
     }
     cout << "No empty spaces" << endl;
     return -1;
+}
+
+string toLower(string str){
+    vector<char> lettersIn;
+    vector<char> lettersOut;
+    
+    for (int i = 0; i < size(str); i++)
+    {
+        lettersIn[i] = str[i];
+    }
+
+    for(char letter : lettersIn){
+        char newLetter;
+        if (letter >= 'A' && letter <= 'Z'){
+            newLetter = letter + 32;
+        } else {
+            newLetter = letter; //look at changes in test.cpp
+        }
+    }
+
+    
 }
 
 
