@@ -215,8 +215,8 @@ int findFreeIndex(Contestants contestant[]) {
     return -1;
 }
 
-string toLower(string str){
-    vector<char> lettersIn;
+string toLower(string str){//TODO: remoove the vectors
+    vector<char> lettersIn; 
     vector<char> lettersOut;
     
     for (int i = 0; i < size(str); i++)
