@@ -14,7 +14,7 @@ void printMainMenu();
 struct Contestants {
     int ID;
     bool isObjectUsed = 0;
-    string name; //LATTER TODO: No mater the lengh of the name we can write it
+    string name; 
     int age;
     bool isWoman = 1;
     double hipCirc;
