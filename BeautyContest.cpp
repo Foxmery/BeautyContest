@@ -6,10 +6,11 @@
 using namespace std;
 
 //Settings
-bool clearConsoleSETTING = 1;
+bool clearConsoleSETTING = 1;//TODO: remoove global
+const int MAXCONTESTANTS = 30; //TODO: remoove global
 
 
-void printMainMenu();
+
 
 struct Contestants {
     int ID;
@@ -22,15 +23,16 @@ struct Contestants {
     double calfCirc;
 };
 
+
+void printMainMenu();
 void clearConsole(bool clearConsoleSETTING);
-
-
-//void askForAction(int &choice);
-const int MAXCONTESTANTS = 30;
-
 int findFreeIndex(Contestants contestant[]);
+bool checkCin();//TEST: new untested func
+//void askForAction(int &choice);
+
+
+
 int main() {
-    // TODO: make the struct infrastructure
 
     // TODO: function for printing contestants array
     // TODO: 
@@ -40,39 +42,40 @@ int main() {
     int leftSpaces = MAXCONTESTANTS;
 
     bool freeSpaces[MAXCONTESTANTS];
-    
+
 
     /*for (int i = sizeof(freeSpaces); sizeof(freeSpaces) > i; i++) {
         cout << freeSpaces[i];
     }*/ // LATER TODO: implement the list so we can remove people and use the empty sapces
     /*cout<< freeSpaces;*/
     Contestants contestant[MAXCONTESTANTS];
-    
-    
 
-    
+
+
+
 
     int menuChoice;
-    
+
 
     do {
+    //LATER: Ability to move around the menu with arrows
         printMainMenu();
         cout << "Type a number to chose your action: ";
         cin >> menuChoice;
         cout << endl;
-        
-        
+
+
         switch (menuChoice) {
 
         case 0: //Exit program 
             cin.ignore();
-            
+
             while (true) {
                 clearConsole(clearConsoleSETTING);
                 cout << "Do you really want to exit? y/n" << endl;
-                
+
                 string answer;
-                
+
                 getline(cin, answer);
                 /*char firstLeeter = answer[0];
                 printf("%d", firstLeeter);*/ //just some debuggin things
@@ -91,12 +94,14 @@ int main() {
                     cout << "ERROR: expected y or n got: " << answer<<endl;
                 }
             }
-            
+
 
             break;
-        case 1: //Add new contestant
+        case 1: //Add new contestant 
+            //TODO: Make submenu to chose 
+            //LATER: Remoove feature, remooving non exitant outputs error
             clearConsole(clearConsoleSETTING);
-                
+
             int contestantsToAdd;
             cout << "Spaces left: " << leftSpaces << endl;
             cout << "How many contestants do you want to add: ";
@@ -127,7 +132,7 @@ int main() {
                 cout << "Enter gender (M/F): ";//TODO: validation neded if only letters 
                 string input;
                 getline(cin,input);
-                
+
                 // switch(input){
 
                 // }
@@ -150,24 +155,32 @@ int main() {
 
             break;
         case 2:
+                    //TODO: Make submenu to chose 
             clearConsole(clearConsoleSETTING);
 
             break;
         case 3:
+                    //TODO: Make submenu to chose 
             clearConsole(clearConsoleSETTING);
 
             break;
         case 4:
+                    //TODO: Make submenu to chose 
             clearConsole(clearConsoleSETTING);
 
             break;
         case 5:
+                    //TODO: Make submenu to chose 
             clearConsole(clearConsoleSETTING);
 
             break;
         case 6:
+                    //TODO: Make submenu to chose 
             clearConsole(clearConsoleSETTING);
 
+            break;
+        default:
+            cout<<"ERROR: Expectednumber from 0 to 6 got: "<< choise << endl; 
             break;
 
 
@@ -218,7 +231,7 @@ int findFreeIndex(Contestants contestant[]) {
 string toLower(string str){//TODO: remoove the vectors
     vector<char> lettersIn; 
     vector<char> lettersOut;
-    
+
     for (int i = 0; i < size(str); i++)
     {
         lettersIn[i] = str[i];
@@ -233,7 +246,24 @@ string toLower(string str){//TODO: remoove the vectors
         }
     }
 
-    
+
+}
+
+
+
+bool checkCin(){
+    if(cin) 
+    {
+        cin.clear(); 
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+        cout<<"SYSTEM: cin restarted"<<endl;
+        return true;
+    } else {
+        cin.clear(); 
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+        cout<<"ERROR: cin broke. Restared"<<endl;
+        return false;
+    }
 }
 
 
