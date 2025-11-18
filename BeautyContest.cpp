@@ -1,12 +1,15 @@
+#define NOMINMAX
 #include <iostream>
-#include <windows.h>
 #include <string>
 #include <cstdlib> // for system("cls"); setting
-#include <vector>
+#include <limits>
+#include <algorithm>
+#include "MenuManagment.h"
+
 using namespace std;
 
 //Settings
-bool clearConsoleSETTING = 1;//TODO: remoove global
+bool clearConsoleSETTING = 0;//TODO: remoove global
 const int MAXCONTESTANTS = 30; //TODO: remoove global
 
 
@@ -21,14 +24,19 @@ struct Contestants {
     double hipCirc;
     double shoulderCirc;
     double calfCirc;
+    double neckCirc;
 };
 
 
 void printMainMenu();
 void clearConsole(bool clearConsoleSETTING);
 int findFreeIndex(Contestants contestant[]);
-bool checkCin();//TEST: new untested func
-//void askForAction(int &choice);
+string toLowerString(string s);
+
+//CIN vlaidators
+bool checkCin();
+int cinCheckInt(const string& message);
+double cinCheckDouble(const string& message);
 
 
 
@@ -63,6 +71,12 @@ int main() {
         cout << "Type a number to chose your action: ";
         cin >> menuChoice;
         cout << endl;
+
+        if (!checkCin()){
+            cout<<"ERROR: expected number got diffrent"<<endl;
+            cout<<"Please eneter a valid number"<<endl;
+            continue;
+        }
 
 
         switch (menuChoice) {
@@ -100,13 +114,14 @@ int main() {
         case 1: //Add new contestant 
             //TODO: Make submenu to chose 
             //LATER: Remoove feature, remooving non exitant outputs error
+        
             clearConsole(clearConsoleSETTING);
 
             int contestantsToAdd;
             cout << "Spaces left: " << leftSpaces << endl;
-            cout << "How many contestants do you want to add: ";
-            cin >> contestantsToAdd;
+            cinCheckInt("How many contestants do you want to add: ");
             cout << endl;
+            
 
             //Validate input
             if (contestantsToAdd > leftSpaces) {
@@ -121,38 +136,46 @@ int main() {
 
                 contestant[validIndex].isObjectUsed = true;
 
+
                 cout << "Enter name: ";
                 getline(cin,contestant[validIndex].name);
                 cout << endl;
 
-                cout << "Enter age: ";//TODO: validation neded if only numbers
-                cin >> contestant[validIndex].age;
+                contestant[validIndex].age = cinCheckInt("Enter age: ");
                 cout << endl;
 
-                cout << "Enter gender (M/F): ";//TODO: validation neded if only letters 
+                cout << "Enter gender (m/f): ";//Accpets m,male,f,female case-insensitive
                 string input;
-                getline(cin,input);
+                do{
+                    getline(cin,input);
 
-                // switch(input){
-
-                // }
+                    input = toLowerString(input);
+                    if (input == "m" || input == "male"){
+                        contestant[validIndex].isWoman = 0;
+                        break;
+                    } else if ( input == "f" || input == "female"){
+                        contestant[validIndex].isWoman = 1;
+                        break;
+                    } else {
+                        cout<<"Invalid gender. Try again."<<endl;
+                        cout << "Enter gender (M/F): ";
+                    }
+                }   while (true);
                 cout << endl;
 
-                cout << "Enter hip circumference (cm): "; //TODO: validation neded if only numbers
+                contestant[validIndex].hipCirc = cinCheckDouble("Enter hip circumference (cm): ");
                 cout << endl;
 
-                cout << "Enter shoulder circumference (cm): "; //TODO: validation neded if only numbers
+                contestant[validIndex].shoulderCirc = cinCheckDouble("Enter shoulder circumference (cm): ");
                 cout << endl;
 
-                cout << "Enter neck circumference (cm): "; //TODO: validation neded if only numbers
+                contestant[validIndex].neckCirc = cinCheckDouble("Enter neck circumference (cm): ");
                 cout << endl;
 
-                cout << "Enter calf circumference (cm): "; //TODO: validation neded if only numbers
+                contestant[validIndex].calfCirc = cinCheckDouble("Enter calf circumference (cm): ");
                 cout << endl;
 
             }
-
-
             break;
         case 2:
                     //TODO: Make submenu to chose 
@@ -180,7 +203,7 @@ int main() {
 
             break;
         default:
-            cout<<"ERROR: Expectednumber from 0 to 6 got: "<< choise << endl; 
+            cout<<"ERROR: Expectednumber from 0 to 6 got: "<< menuChoice << endl; 
             break;
 
 
@@ -191,23 +214,7 @@ int main() {
 
 }
 
-void printMainMenu() {
 
-    cout <<
-        "\n-------------BEAUTY CONTEST-------------\n"
-        "1. Add new contestant\n"
-        "    -Spaces left: spaces left in array\n"
-        "    -How many contestants do you want to add (Validation: can't exceed the free spaces left)\n"
-        "2. Show all contestants\n"
-        "3. Search and show contestants by\n"
-        "    3.1 The lowest age (input lowest age)\n"
-        "    3.2 Name\n"
-        "4. Sort contestants by oldest to youngest (No output)\n"
-        "5. File\n"
-        "    5.1 Export\n"
-        "    5.2 Import\n"
-        << endl;
-}
 
 void clearConsole(bool clearConsoleSETTING) {
     if (clearConsoleSETTING) {
@@ -228,25 +235,21 @@ int findFreeIndex(Contestants contestant[]) {
     return -1;
 }
 
-string toLower(string str){//TODO: remoove the vectors
-    vector<char> lettersIn; 
-    vector<char> lettersOut;
-
-    for (int i = 0; i < size(str); i++)
-    {
-        lettersIn[i] = str[i];
-    }
-
-    for(char letter : lettersIn){
-        char newLetter;
-        if (letter >= 'A' && letter <= 'Z'){
-            newLetter = letter + 32;
+string toLowerString(string s){
+    string newS = "";
+    int sizeOfString = s.length();
+    
+    for(int i = 0; i < sizeOfString; i++){
+        char letter = s[i];
+        
+        if( letter >= 'A' && letter <= 'Z'){
+            newS.append(1,letter + 32);
+            
         } else {
-            newLetter = letter; //look at changes in test.cpp
+            newS.append(1,letter);
         }
     }
-
-
+    return newS;
 }
 
 
@@ -265,6 +268,46 @@ bool checkCin(){
         return false;
     }
 }
+
+int cinCheckInt(const string& message) {
+    int value;
+    while (true) {
+        cout << message;
+
+        if (cin >> value) {
+            cin.clear(); 
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            cout<<"SYSTEM: cin restarted"<<endl;
+            return value;
+        } else {
+            cin.clear(); // fix the stream
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
+            cout<<"ERROR: cin broke. Restared"<<endl;
+            cout << "Invalid input. Try again." << endl;
+        }
+    }
+}
+
+
+double cinCheckDouble(const string& message) {
+    double value;
+    while (true) {
+        cout << message;
+
+        if (cin >> value) {
+            cin.clear(); 
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            cout<<"SYSTEM: cin restarted"<< endl;
+            return value;
+        } else {
+            cin.clear(); // fix the stream
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
+            cout<<"ERROR: cin broke. Restared"<< endl;
+            cout << "Invalid input. Try again." << endl;
+        }
+    }
+}
+
 
 
 // void myFunction() {
