@@ -28,7 +28,7 @@ struct Contestants {
 };
 
 
-void printMainMenu();
+
 void clearConsole(bool clearConsoleSETTING);
 int findFreeIndex(Contestants contestant[]);
 string toLowerString(string s);
