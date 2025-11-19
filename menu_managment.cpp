@@ -1,12 +1,10 @@
-#include "MenuManagment.h"
+#include "menu_managment.h"
 
-void printMainMenu() {
+void мainMenuText() {
 
     cout <<
         "\n-------------BEAUTY CONTEST-------------\n"
         "1. Add new contestant\n"
-        "    -Spaces left: spaces left in array\n"
-        "    -How many contestants do you want to add (Validation: can't exceed the free spaces left)\n"
         "2. Show all contestants\n"
         "3. Search and show contestants by\n"
         "    3.1 The lowest age (input lowest age)\n"
@@ -17,3 +15,12 @@ void printMainMenu() {
         "    5.2 Import\n"
         << endl;
 }
+
+void searchMenuText(){
+    cout <<
+        "\n-------------SEARCH-------------\n"
+        "    3.1 The lowest age (input lowest age)\n"
+        "    3.2 Name\n"
+        << endl;
+}
+//...
