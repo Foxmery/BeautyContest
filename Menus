@@ -1,0 +1,75 @@
+    contestants properties = ID, Name, Age, gender, hip circumference, shoulder circumference, neck circumference, calf circumference
+    Max contestants = 30
+    
+    menus for diffrent edditions
+     
+    -------------BASE PROGRAM - BEAUTY CONTEST-------------
+    1. Add new contestant
+        -"Spaces left:" spaces left in array
+        -"How many contestants do you want to add:" (Validation: cant exceed the free sapces left)
+    2. Show all contestants
+    3. Search and show contestants by
+        3.1 The lowest age (input lowest age)
+        3.2 Name
+    4. Sort contestants by oldest to youngest (No output)
+    5. File
+        5.1 Export
+        5.2 Import
+
+
+    -------------ADDON - SEARCH AND BEYOND-------------
+    * - additions
+    *everything that has more than one option has submenu
+    *menu 3 and 4 have more options
+
+    1. Add new contestant
+        -"Spaces left:" spaces left in array
+        -"How many contestants do you want to add:" (Validation: cant exceed the free sapces left)
+    2. Show all contestants
+    3*. Search and show contestants
+        3.1 The lowest age
+        3.2 Name
+        3.3* Age
+        3.4* Gender
+    4*. Show contestants
+        4.1* Sorted by Age
+        4.2* Sorted by Name
+        4.3 Sort contestants by oldest to youngest (No output)
+    5. File
+        5.1 Export
+        5.2 Import
+
+    -------------ADDON - BUEATY GOLD-------------
+    * - additions
+
+    1. Add new contestant
+        -"Spaces left:" spaces left in array
+        -"How many contestants do you want to add:" (Validation: cant exceed the free sapces left)
+    2. Show all contestants
+    3. Search and show contestants
+        3.1 The lowest age
+        3.2 Name
+        3.3 Age
+        3.4 Gender
+    4. Show contestants
+        4.1 Sorted by Age
+        4.2 Sorted by Name
+        4.3 Sort contestants by oldest to youngest (No output)
+    5. Split contestants by age in cathegories
+        - Cathegories: I. 14-16  II. 17-19  III. 20-22 IV. 23-25 (in diffrent arrays)
+        - Output all the cathegories (if no contestants output a message for that)
+    6. Decide winners 
+        (Score all contestants: winner=hips(shoulders*neck*calf)) 
+        6.1 Scores between 0.54 ÷ 0.62 
+        6.2 Output Scores > 0.63 in ascending order after that scores < 0.53
+    7. File
+        7.1 Export
+        7.2 Import
+    0. Exit
+
+
+    -------------ADDON - BEAUTY PLATINUM-------------
+    *File that saves info on close and when opening the program everything is as it was
+
+    ** - can be added latter
+    ** - Settings menu`

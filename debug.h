@@ -4,4 +4,7 @@
 
 using namespace std;
 
-void deBugInfo(const string& message, const bool& debugMode = 0);
+template<typename T>
+void deBugInfo(const T& message, const bool& debugMode){
+    if (debugMode) cout << message << endl;
+}

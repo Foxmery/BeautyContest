@@ -28,7 +28,7 @@ struct Contestants {
 
 
 //Useful functions
-int findFreeIndex(Contestants contestant[]);
+int findFreeIndex(Contestants contestant[], int searchingFor = 0, int afterIndex = 0);
 string toLowerString(string s);
 
 
@@ -75,7 +75,8 @@ int main() {
                 break;
 
             case 1: //Add new contestant 
-                //TODO: Make submenu to chose 
+            {
+                 //TODO: Make submenu to chose 
                 //LATER: Remoove feature, remooving non exitant contestant outputs error
             
                 clearConsole(clearConsoleSETTING);
@@ -141,38 +142,82 @@ int main() {
 
                     contestant[validIndex].calfCirc = cinCheckDouble("Enter calf circumference (cm): ");
                     cout << endl;
-
+                    //contestant ..name.. saved!
                 }
+                //(numberOfcontestants) (names) saved successfuly!
                 
                 break;
+            }
+               
             case 2:
-                        //TODO: Make submenu to chose 
+            {
+                //TODO: Make submenu to chose 
                 clearConsole(clearConsoleSETTING);
+                cout << "------All contestants------" << endl;
+                
+                for(int i = 0; i < MAXCONTESTANTS; i++){
 
+                    int validIndex = findFreeIndex(contestant, 1, i);
+                    if (validIndex == -1) {
+                        cout << endl;
+                        break;
+                    }
+                    if (debugMode){
+                        cout << "Valid Index: " << validIndex << "   ";
+                    }
+                    cout << "ID: " << contestant[validIndex].ID << "   ";
+                    cout << "Name: " << contestant[validIndex].name << "   ";
+                    cout << "Gender: " << ((contestant[validIndex].isWoman) ? "Woman" : "Man") << "   ";
+                    cout << "hipCirc: " << contestant[validIndex].hipCirc << "   ";
+                    cout << "shoulderCirc: " << contestant[validIndex].shoulderCirc << "   ";
+                    cout << "calfCirc: " << contestant[validIndex].calfCirc << "   ";
+                    cout << "neckCirc: " << contestant[validIndex].neckCirc << "   ";
+                    cout << endl;
+                }
                 break;
+            }
+               
+
             case 3:
-                        //TODO: Make submenu to chose 
-                clearConsole(clearConsoleSETTING);
+            {
+            //TODO: Make submenu to chose 
+            clearConsole(clearConsoleSETTING);
 
-                break;
+            break;
+            }
+            
+
             case 4:
-                        //TODO: Make submenu to chose 
+            {
+                //TODO: Make submenu to chose 
                 clearConsole(clearConsoleSETTING);
 
                 break;
+            }
+                
+
             case 5:
-                        //TODO: Make submenu to chose 
+            {
+                //TODO: Make submenu to chose 
                 clearConsole(clearConsoleSETTING);
 
                 break;
+            }
+
             case 6:
-                        //TODO: Make submenu to chose 
+            {
+                //TODO: Make submenu to chose 
                 clearConsole(clearConsoleSETTING);
 
                 break;
+            }
+
             default:
+            {
                 cout<<"ERROR: Expectednumber from 0 to 6 got: "<< menuChoice << endl; 
                 break;
+            }
+                
         }
     } while (true);
 
@@ -184,17 +229,19 @@ int main() {
 
 
 
-int findFreeIndex(Contestants contestant[]) {
-    for (int n = 0; n < MAXCONTESTANTS; n++) {
+int findFreeIndex(Contestants contestant[], int searchingFor , int afterIndex) {
+    for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
         // cout << cont << endl;
-        if (cont == 0) {
+        if (cont == searchingFor) {
             // cout << "yep" << endl;
+            deBugInfo("SYSTEM: Found free place at index: ", debugMode);
+
             return n;
         }
 
     }
-    cout << "No empty spaces" << endl;
+    // cout << "No empty spaces" << endl;
     return -1;
 }
 
@@ -255,7 +302,7 @@ int cinCheckInt(const string& message) {
 double cinCheckDouble(const string& message) {
     double value;
     while (true) {
-        cout << message;
+        cout << message;// to be able to put values with , or . and have them intact
 
         if (cin >> value) {
             cin.clear(); 
