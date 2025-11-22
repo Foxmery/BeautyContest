@@ -5,11 +5,9 @@
      
     -------------BASE PROGRAM - BEAUTY CONTEST-------------
     1. Add new contestant
-        -"Spaces left:" spaces left in array
-        -"How many contestants do you want to add:" (Validation: cant exceed the free sapces left)
     2. Show all contestants
     3. Search and show contestants by
-        3.1 The lowest age (input lowest age)
+        3.1 The lowest age
         3.2 Name
     4. Sort contestants by oldest to youngest (No output)
     5. File
@@ -23,8 +21,6 @@
     *menu 3 and 4 have more options
 
     1. Add new contestant
-        -"Spaces left:" spaces left in array
-        -"How many contestants do you want to add:" (Validation: cant exceed the free sapces left)
     2. Show all contestants
     3*. Search and show contestants
         3.1 The lowest age
@@ -43,8 +39,6 @@
     * - additions
 
     1. Add new contestant
-        -"Spaces left:" spaces left in array
-        -"How many contestants do you want to add:" (Validation: cant exceed the free sapces left)
     2. Show all contestants
     3. Search and show contestants
         3.1 The lowest age

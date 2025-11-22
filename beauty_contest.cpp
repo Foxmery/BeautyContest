@@ -30,6 +30,8 @@ struct Contestants {
 //Useful functions
 int findFreeIndex(Contestants contestant[], int searchingFor = 0, int afterIndex = 0);
 string toLowerString(string s);
+void printContestant(Contestants contestant[], int index);
+
 
 
 //CIN vlaidators
@@ -66,7 +68,7 @@ int main() {
 
     do {
     //LATER: Ability to move around the menu with arrows
-        мainMenuText();
+        mainMenuText();
         menuChoice = cinCheckInt("Type a number to chose your action: ");
     
         switch (menuChoice) {
@@ -78,7 +80,7 @@ int main() {
             case 1: //Add new contestant 
             {
                  //TODO: Make submenu to chose 
-                //LATER: Remoove feature, remooving non exitant contestant outputs error
+                //LATER: Remoove feature that moves and packs all of the contestants to the start of the array, remooving non exitant contestant outputs error
             
                 clearConsole(CLEARCONSOLE);
 
@@ -113,9 +115,11 @@ int main() {
                     contestant[validIndex].age = cinCheckInt("Enter age: ");
                     cout << endl;
 
-                    cout << "Enter gender (m/f): ";//Accpets m,male,f,female case-insensitive
+                    cout << "Enter gender (m/f): ";
                     string input;
+                    //Accpets m,male,f,female case-insensitive
                     do{
+                        //LATER: make it with enum and swtich
                         getline(cin,input);
 
                         input = toLowerString(input);
@@ -150,15 +154,16 @@ int main() {
                 break;
             }
                
-            case 2:
-            {
-                //TODO: Make submenu to chose 
+            case 2: //Show all contestants
+            {   
+                //LATER: Make submenu to chose 
                 clearConsole(CLEARCONSOLE);
                 cout << "------All contestants------" << endl;
                 
                 for(int i = 0; i < MAXCONTESTANTS; i++){
 
                     int validIndex = findFreeIndex(contestant, 1, i);
+                    i = validIndex;
 
                     //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
                     if (validIndex == -1) {
@@ -166,49 +171,119 @@ int main() {
                         break;
                     }
                 
-                    deBugInfo("Valid Index: " << validIndex);
-                    cout << "ID: " << contestant[validIndex].ID << "   ";
-                    cout << "Name: " << contestant[validIndex].name << "   ";
-                    cout << "Gender: " << ((contestant[validIndex].isWoman) ? "Woman" : "Man") << "   ";
-                    cout << "HipCirc: " << contestant[validIndex].hipCirc << "   ";
-                    cout << "ShoulderCirc: " << contestant[validIndex].shoulderCirc << "   ";
-                    cout << "CalfCirc: " << contestant[validIndex].calfCirc << "   ";
-                    cout << "NeckCirc: " << contestant[validIndex].neckCirc << "   ";
-                    cout << endl;
+                    printContestant(contestant, validIndex);
                 }
                 break;
             }
                
 
-            case 3:
-            {
-            //TODO: Make submenu to chose     
-            clearConsole(CLEARCONSOLE);
+            case 3://Search and show contestants by:
+            {   
+                //TODO: Make submenu to chose     
+                clearConsole(CLEARCONSOLE);
+                searchMenuText();
+                menuChoice = cinCheckInt("Type a number to chose your action: ");
 
-                int lowestAge = 0;
-                
-                for(int i = 0; i < MAXCONTESTANTS; i++){
+                switch(menuChoice){
+                    case 1: //Print out the lowest age
+                    {
+                        clearConsole(CLEARCONSOLE);
 
-                    int validIndex = findFreeIndex(contestant, 1, i);
+                        int lowestAge = 0;
+                        for(int i = 0; i < MAXCONTESTANTS; i++){
 
-                    //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
-                    if (validIndex == -1) {
-                        cout << endl;
+                            int validIndex = findFreeIndex(contestant, 1, i);
+                            i = validIndex;
+
+                            //When findFreeIndex doesn`t find free spaces outputs -1. This "if" breaks when detects -1;
+                            if (validIndex == -1) {
+                                cout << endl;
+                                break;
+                            }
+
+                            //Is contestant having the lowest age? yes: update with new lowest age 
+                            int contestantAge = contetant[validIndex].age;
+                            if(contestantAge <= lowestAge){
+                                lowestAge = contestantAge;
+                            }
+                            
+                        }
+
+                        for(int i = 0; i < MAXCONTESTANTS; i++){
+
+                            cout << "Contestants with lowest age: " << lowestAge << endl;
+
+                            int validIndex = findFreeIndex(contestant, 1, i);
+                            i = validIndex;
+                            if (contetant[validIndex].age = lowestAge){
+                                printContestant(contestant, validIndex);
+                            }
+                        }
+                        break;
+
                         break;
                     }
-                    for (int n = 0)
-                    
-                }
-                break;
+                    case 2: // Print out by name
+                    {   
+                        
+                        // goes through all the the valid contestant
+                        clearConsole(CLEARCONSOLE);
 
+                        string input;
+                        cout << "Enter name of contestant: ";
+                        getline(cin, input);
+
+                        //In case there is no such person foundPerson will stay 0 outputing a message. if 1 will jsut print the person
+                        bool foundPerson = 0;
+                        //searching for contestants name
+                        for(int i = 0; i < MAXCONTESTANTS; i++ )
+                        {
+                            if(!contestant[i].isObjectUsed || !contestant[i].name.equals(input)){
+                                printContestant(contestant, i);
+                                foundPerson = 1;
+                            }
+                        }
+                        if (foundPerson){
+                            cout << input << " has not been found.\n";
+                            //LATER: do you want to search for someone else? y/n/0/1/yes,YES/no,NO/back,Back,b,B
+                        }
+                        break;
+                    }
+                }
             break;
             }
             
 
-            case 4:
+            case 4: //Sort the contestants
             {
                 //TODO: Make submenu to chose 
                 clearConsole(CLEARCONSOLE);
+
+                int i = 0;
+                int lastIndex = 0;
+
+                do{
+                    
+                    //if next contestant is not in use remoove stop the program
+                    if (contestant[i+1].isObjectUsed == 0){
+                        break;
+                    }
+                    if(contestant[i].age > contestant[i+1].age){
+                        //swap contestant places
+                        Contestants placeHolder = contestant[i];
+                        contestant[i] = contestant[i+1];
+                        contestant[i+1] = placeHolder;
+
+                    } else if (i == 0){
+                        lastIndex++;
+                        i = lastIndex;
+
+                    } else {
+                        i--;
+
+                    }
+
+                }while(i != MAXCONTESTANTS)
 
                 break;
             }
@@ -249,6 +324,8 @@ int main() {
 
 
 int findFreeIndex(Contestants contestant[], int searchingFor , int afterIndex) {
+    //Outputs the first contestant it sees depending on if you want the contestant spot to be free or used
+    //It searches after a curtain index so after putting it in a sycle it doesn`t output the same contestant
     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
         // cout << cont << endl;n
@@ -280,6 +357,20 @@ string toLowerString(string s){
     }
     return newS;
 }
+
+void printContestant(Contestants contestant[], int index){
+
+    deBugInfo("Index: " << index);
+    cout << "ID: " << contestant[index].ID << "   ";
+    cout << "Name: " << contestant[index].name << "   ";
+    cout << "Gender: " << ((contestant[index].isWoman) ? "Woman" : "Man") << "   ";
+    cout << "HipCirc: " << contestant[index].hipCirc << "   ";
+    cout << "ShoulderCirc: " << contestant[index].shoulderCirc << "   ";
+    cout << "CalfCirc: " << contestant[index].calfCirc << "   ";
+    cout << "NeckCirc: " << contestant[index].neckCirc << "   ";
+    cout << endl;
+}
+
 
 
 

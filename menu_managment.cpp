@@ -9,10 +9,11 @@ void мainMenuText() {
         "3. Search and show contestants by\n"
         "    3.1 The lowest age (input lowest age)\n"
         "    3.2 Name\n"
-        "4. Sort contestants by oldest to youngest (No output)\n"
+        "4. Sort contestants by youngest to oldest (No output)\n"
         "5. File\n"
         "    5.1 Export\n"
         "    5.2 Import\n"
+        "0. Exit"
         << endl;
 }
 
