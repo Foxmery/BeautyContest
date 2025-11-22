@@ -1,7 +1,7 @@
 #include "visual_enhancement.h"
 
-void clearConsole(bool clearConsoleSETTING) {
-    if (clearConsoleSETTING) {
+void clearConsole(bool CLEARCONSOLE) {
+    if (CLEARCONSOLE) {
         system("cls");
     }
 }

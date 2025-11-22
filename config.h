@@ -1,6 +1,7 @@
 #pragma once
 using namespace std;
 
-const bool debugMode = 0;
-const bool clearConsoleSETTING = 0;
-const int MAXCONTESTANTS = 30;
+
+
+enum Settings {DEBUGMODE = 0, CLEARCONSOLE = 1, MAXCONTESTANTS = 30};
+//LATER: Full names or short names when printing

@@ -2,7 +2,7 @@
 
 void askUserExit(){
     while (true) {
-        clearConsole(clearConsoleSETTING);
+        clearConsole(CLEARCONSOLE);
         cout << "Do you really want to exit? y/n" << endl;
 
         string answer;
@@ -13,11 +13,11 @@ void askUserExit(){
             exit(0);
         }
         else if (answer.compare("n") == 0) {
-            clearConsole(clearConsoleSETTING);
+            clearConsole(CLEARCONSOLE);
             break;
         }
         else {
-            deBugInfo("ERROR: expected y or n" , debugMode);
+            deBugInfo("ERROR: expected y or n");
         }
     }
 }

@@ -33,6 +33,7 @@ string toLowerString(string s);
 
 
 //CIN vlaidators
+void resetCin ();
 bool checkCin();
 int cinCheckInt(const string& message);
 double cinCheckDouble(const string& message);
@@ -79,7 +80,7 @@ int main() {
                  //TODO: Make submenu to chose 
                 //LATER: Remoove feature, remooving non exitant contestant outputs error
             
-                clearConsole(clearConsoleSETTING);
+                clearConsole(CLEARCONSOLE);
 
                 
                 cout << "Spaces left: " << leftSpaces << endl;
@@ -152,26 +153,27 @@ int main() {
             case 2:
             {
                 //TODO: Make submenu to chose 
-                clearConsole(clearConsoleSETTING);
+                clearConsole(CLEARCONSOLE);
                 cout << "------All contestants------" << endl;
                 
                 for(int i = 0; i < MAXCONTESTANTS; i++){
 
                     int validIndex = findFreeIndex(contestant, 1, i);
+
+                    //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
                     if (validIndex == -1) {
                         cout << endl;
                         break;
                     }
-                    if (debugMode){
-                        cout << "Valid Index: " << validIndex << "   ";
-                    }
+                
+                    deBugInfo("Valid Index: " << validIndex);
                     cout << "ID: " << contestant[validIndex].ID << "   ";
                     cout << "Name: " << contestant[validIndex].name << "   ";
                     cout << "Gender: " << ((contestant[validIndex].isWoman) ? "Woman" : "Man") << "   ";
-                    cout << "hipCirc: " << contestant[validIndex].hipCirc << "   ";
-                    cout << "shoulderCirc: " << contestant[validIndex].shoulderCirc << "   ";
-                    cout << "calfCirc: " << contestant[validIndex].calfCirc << "   ";
-                    cout << "neckCirc: " << contestant[validIndex].neckCirc << "   ";
+                    cout << "HipCirc: " << contestant[validIndex].hipCirc << "   ";
+                    cout << "ShoulderCirc: " << contestant[validIndex].shoulderCirc << "   ";
+                    cout << "CalfCirc: " << contestant[validIndex].calfCirc << "   ";
+                    cout << "NeckCirc: " << contestant[validIndex].neckCirc << "   ";
                     cout << endl;
                 }
                 break;
@@ -180,8 +182,24 @@ int main() {
 
             case 3:
             {
-            //TODO: Make submenu to chose 
-            clearConsole(clearConsoleSETTING);
+            //TODO: Make submenu to chose     
+            clearConsole(CLEARCONSOLE);
+
+                int lowestAge = 0;
+                
+                for(int i = 0; i < MAXCONTESTANTS; i++){
+
+                    int validIndex = findFreeIndex(contestant, 1, i);
+
+                    //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
+                    if (validIndex == -1) {
+                        cout << endl;
+                        break;
+                    }
+                    for (int n = 0)
+                    
+                }
+                break;
 
             break;
             }
@@ -190,7 +208,7 @@ int main() {
             case 4:
             {
                 //TODO: Make submenu to chose 
-                clearConsole(clearConsoleSETTING);
+                clearConsole(CLEARCONSOLE);
 
                 break;
             }
@@ -199,7 +217,7 @@ int main() {
             case 5:
             {
                 //TODO: Make submenu to chose 
-                clearConsole(clearConsoleSETTING);
+                clearConsole(CLEARCONSOLE);
 
                 break;
             }
@@ -207,14 +225,15 @@ int main() {
             case 6:
             {
                 //TODO: Make submenu to chose 
-                clearConsole(clearConsoleSETTING);
+                clearConsole(CLEARCONSOLE);
 
                 break;
             }
 
             default:
-            {
-                cout<<"ERROR: Expectednumber from 0 to 6 got: "<< menuChoice << endl; 
+            {   
+                deBugInfo("ERROR: Expectednumber from 0 to 6 got: "<< menuChoice << endl);
+                cout<< "Please enter a valid option!";
                 break;
             }
                 
@@ -232,10 +251,10 @@ int main() {
 int findFreeIndex(Contestants contestant[], int searchingFor , int afterIndex) {
     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
-        // cout << cont << endl;
+        // cout << cont << endl;n
         if (cont == searchingFor) {
             // cout << "yep" << endl;
-            deBugInfo("SYSTEM: Found free place at index: ", debugMode);
+            deBugInfo("SYSTEM: Found free place at index: "<< n);
 
             return n;
         }
@@ -269,14 +288,19 @@ bool checkCin(){
     {
         cin.clear(); 
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        deBugInfo("SYSTEM: cin restarted", debugMode);
+        deBugInfo("SYSTEM: cin restarted");
         return true;
     } else {
         cin.clear(); 
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        deBugInfo("ERROR: cin broke. Restared", debugMode);
+        deBugInfo("ERROR: cin broke. Restared");
         return false;
     }
+}
+
+void resetCin (){
+    cin.clear(); // fix the stream
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
 }
 
 int cinCheckInt(const string& message) {
@@ -285,14 +309,12 @@ int cinCheckInt(const string& message) {
         cout << message;
 
         if (cin >> value) {
-            cin.clear(); 
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-            deBugInfo("SYSTEM: cin restarted", debugMode);
+            resetCin ();
+            deBugInfo("SYSTEM: cin restarted");
             return value;
         } else {
-            cin.clear(); // fix the stream
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
-            deBugInfo("ERROR: cin broke. Restared", debugMode);
+            resetCin ();
+            deBugInfo("ERROR: cin broke. Restared");
             cout << "Invalid input. Try again." << endl;
         }
     }
@@ -305,14 +327,12 @@ double cinCheckDouble(const string& message) {
         cout << message;// to be able to put values with , or . and have them intact
 
         if (cin >> value) {
-            cin.clear(); 
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-            deBugInfo("SYSTEM: cin restarted", debugMode);
+            resetCin ();
+            deBugInfo("SYSTEM: cin restarted");
             return value;
         } else {
-            cin.clear(); // fix the stream
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
-            deBugInfo("ERROR: cin broke. Restared", debugMode);
+            resetCin ();
+            deBugInfo("ERROR: cin broke. Restared");
             cout << "Invalid input. Try again." << endl;
         }
     }

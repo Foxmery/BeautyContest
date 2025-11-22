@@ -4,4 +4,4 @@
 using namespace std;
 
 
-void clearConsole(bool clearConsoleSETTING = 0);
+void clearConsole(bool CLEARCONSOLE = 0);

@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "config.h"
 
 using namespace std;
 
-template<typename T>
-void deBugInfo(const T& message, const bool& debugMode){
-    if (debugMode) cout << message << endl;
-}
+#define deBugInfo(message) if (DEBUGMODE) { cout << message << endl; } // macro
+
+// 
+// void deBugInfo(const sting& message){
+//     if (DEBUGMODE) cout << message << endl;
+// } // does not work
