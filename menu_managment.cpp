@@ -22,6 +22,15 @@ void searchMenuText(){
         "\n-------------SEARCH-------------\n"
         "    1. The lowest age (input lowest age)\n"
         "    2. Name\n"
+        "    0. Back\n"
+        << endl;
+}
+
+void fileMenuText(){
+        "\n-------------File-------------\n"
+        "    1. Export\n"
+        "    2. Import\n"
+        "    0. Back\n"
         << endl;
 }
 //...
