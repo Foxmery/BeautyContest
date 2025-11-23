@@ -30,6 +30,7 @@ void searchMenuText(){
 }
 
 void fileMenuText(){
+    cout <<
         "\n-------------File-------------\n"
         "    1. Export\n"
         "    2. Import\n"
