@@ -4,5 +4,5 @@
 using namespace std;
 
 
-void мainMenuText();
+void mainMenuText();
 void searchMenuText();

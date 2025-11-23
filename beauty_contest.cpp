@@ -1,4 +1,5 @@
 #define NOMINMAX
+#include <cstdint> //defiens integer types regardless of os
 #include <iostream>
 #include <string>
 #include <cstdlib> // for system("cls"); setting
@@ -183,13 +184,16 @@ int main() {
                 clearConsole(CLEARCONSOLE);
                 searchMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
+                cout << endl;
 
                 switch(menuChoice){
                     case 1: //Print out the lowest age
                     {
                         clearConsole(CLEARCONSOLE);
 
-                        int lowestAge = 0;
+                        int lowestAge = numeric_limits<std::int32_t>::max(); //Here is used #include <cstdint> for int32_t
+                        cout << lowestAge << endl;/*debugin*/
+
                         for(int i = 0; i < MAXCONTESTANTS; i++){
 
                             int validIndex = findFreeIndex(contestant, 1, i);
@@ -202,25 +206,32 @@ int main() {
                             }
 
                             //Is contestant having the lowest age? yes: update with new lowest age 
-                            int contestantAge = contetant[validIndex].age;
+                            int contestantAge = contestant[validIndex].age;
                             if(contestantAge <= lowestAge){
                                 lowestAge = contestantAge;
                             }
                             
                         }
+                        int p = 0;/*debugin*/
 
                         for(int i = 0; i < MAXCONTESTANTS; i++){
+                            cout << "SYSTEM: P = " << p << endl;/*debugin*/
+                            cout << "SYSTEM: i = " << i << endl;/*debugin*/
 
+                            //NOW: TEST WHY PROGRAM IS MAKING AGES THE SAME!!!!!
                             cout << "Contestants with lowest age: " << lowestAge << endl;
 
                             int validIndex = findFreeIndex(contestant, 1, i);
                             i = validIndex;
-                            if (contetant[validIndex].age = lowestAge){
+                            if (contestant[validIndex].age = lowestAge){
                                 printContestant(contestant, validIndex);
                             }
-                        }
-                        break;
 
+                            if(p == 10){/*debugin*/
+                                exit(0); 
+                            }
+                            p++;/*debugin*/
+                        }
                         break;
                     }
                     case 2: // Print out by name
@@ -238,7 +249,7 @@ int main() {
                         //searching for contestants name
                         for(int i = 0; i < MAXCONTESTANTS; i++ )
                         {
-                            if(!contestant[i].isObjectUsed || !contestant[i].name.equals(input)){
+                            if(!contestant[i].isObjectUsed || contestant[i].name != input){
                                 printContestant(contestant, i);
                                 foundPerson = 1;
                             }
@@ -283,7 +294,7 @@ int main() {
 
                     }
 
-                }while(i != MAXCONTESTANTS)
+                } while(i != MAXCONTESTANTS);
 
                 break;
             }
@@ -363,6 +374,7 @@ void printContestant(Contestants contestant[], int index){
     deBugInfo("Index: " << index);
     cout << "ID: " << contestant[index].ID << "   ";
     cout << "Name: " << contestant[index].name << "   ";
+    cout << "Age: " << contestant[index].age << "   ";
     cout << "Gender: " << ((contestant[index].isWoman) ? "Woman" : "Man") << "   ";
     cout << "HipCirc: " << contestant[index].hipCirc << "   ";
     cout << "ShoulderCirc: " << contestant[index].shoulderCirc << "   ";

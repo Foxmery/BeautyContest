@@ -1,6 +1,6 @@
 #include "menu_managment.h"
 
-void мainMenuText() {
+void mainMenuText() {
 
     cout <<
         "\n-------------BEAUTY CONTEST-------------\n"
@@ -20,8 +20,8 @@ void мainMenuText() {
 void searchMenuText(){
     cout <<
         "\n-------------SEARCH-------------\n"
-        "    3.1 The lowest age (input lowest age)\n"
-        "    3.2 Name\n"
+        "    1. The lowest age (input lowest age)\n"
+        "    2. Name\n"
         << endl;
 }
 //...
