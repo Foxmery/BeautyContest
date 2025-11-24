@@ -1,6 +1,6 @@
 //FUCNTION TO ADD
 Contestants easyContInit(int ID = -1, bool isObjectUsed = 0, string name = "NONE", int age = 0, bool isWoman = 0, double hipCirc = 0, double shoulderCirc = 0, double calfCirc = 0, double neckCirc = 0){
-    
+    //EXPLANATION: Adding new contestants is easier. if empty: contestnat id = -1;
     Contestants cont;
     cont.ID = ID;
     cont.isObjectUsed = isObjectUsed;
