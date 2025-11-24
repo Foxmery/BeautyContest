@@ -19,6 +19,7 @@ Contestants easyContInit(int ID = -1, bool isObjectUsed = 0, string name = "NONE
 //TODO: Remove extra spaces in print contestant 3?4 line
 //TODO: Add defalult values in struct Contestants
 //TODO: Remoove while trues
+//TODO: make the id start form 1 and not 0
 /*contestant[0] = easyContInit(0,1,"Mariq",35,1,3.5,5.6,7.8,70);
 contestant[1] = easyContInit();
 contestant[1].isObjectUsed =  1;*/
