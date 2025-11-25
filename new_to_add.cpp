@@ -37,7 +37,7 @@ using namespace std;
 
 
 const int MAXCONTESTANTS = 30;
-const bool DEBUGMODE = 1;
+const bool DEBUGMODE = 0;
 
 struct Contestants {
     int ID;
@@ -102,7 +102,7 @@ Contestants easyContInit(int ID = -1, bool isObjectUsed = 0, string name = "NONE
 
 Contestants randomContestantGenerator (int ID) 
 {
-
+Contestants cont;
 string names[60] = {
     "Arden", "Lyra", "Corvin", "Selene", "Marek", "Isolde",
     "Dorian", "Kara", "Theron", "Vera", "Cassian", "Mira",
@@ -116,30 +116,27 @@ string names[60] = {
     "Cyrus", "Junia", "Therin", "Sabriel"
 };
     //TODO: put srand(time(0)); in the header
-    srand(time(0));
-    bool isObjectUsed = true;
-    string name = names[rand() % 60];
-    int age = rand() % 85 + 15;
-    bool isWoman = rand() % 2;
-    double hipCirc;
-    double shoulderCirc;
-    double calfCirc;
-    double neckCirc;
-    if (isWoman){
-       hipCirc = (rand() % 600)/100.0  + 31;
-       shoulderCirc = (rand() % 1600)/100.0  + 95;
-       calfCirc = (rand() % 2100)/100.0  + 95;
-       neckCirc = (rand() % 700)/100.0  + 33;
+    
+    cont.isObjectUsed = true;
+    cont.name = names[rand() % 60];
+    cont.age = rand() % 85 + 15;
+    cont.isWoman = rand() % 2;
+    if (cont.isWoman){
+       cont.hipCirc = (rand() % 600)/100.0  + 31;
+       cont.shoulderCirc = (rand() % 1600)/100.0  + 95;
+       cont.calfCirc = (rand() % 2100)/100.0  + 95;
+       cont.neckCirc = (rand() % 700)/100.0  + 33;
     }else{
-       hipCirc = (rand() % 800)/100.0  + 36;
-       shoulderCirc = (rand() % 2100)/100.0  + 110;
-       calfCirc = (rand() % 1600)/100.0  + 90;
-       neckCirc = (rand() % 800)/100.0  + 34;
+       cont.hipCirc = (rand() % 800)/100.0  + 36;
+       cont.shoulderCirc = (rand() % 2100)/100.0  + 110;
+       cont.calfCirc = (rand() % 1600)/100.0  + 90;
+       cont.neckCirc = (rand() % 800)/100.0  + 34;
     }
+    return cont;
 }    
 
 int main(){
-
+srand(time(0));
 Contestants contestant[MAXCONTESTANTS];
 
 //TODO: Remove endl in deBugInfo and add endl where needed after change
@@ -155,20 +152,23 @@ contestant[5] = easyContInit(6,1,"Sugondese",16,0,6,4,7,8);
 contestant[6] = easyContInit(7,1,"Nanaia",17,1,4,5,6,7);
 */
 //                clearConsole(CLEARCONSOLE);
-for(int i = 0; 
+
+
+for(int i = 0; i < 5;i++){
+    contestant[i] = randomContestantGenerator(i);
+} 
                 cout << "------All contestants------" << endl;
                 
                 for(int i = 0; i < MAXCONTESTANTS; i++){
 
                     int validIndex = findFreeIndex(contestant, 1, i);
                     i = validIndex;
-
-                    //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
+                                       //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
                     if (validIndex == -1) {
                         cout << endl;
                         break;
                     }
-                
+                    
                     printContestant(contestant, validIndex);
                 }
 //                break;
@@ -201,4 +201,4 @@ for(int i = 0;
                 */
 }
                 
-                
+                 
