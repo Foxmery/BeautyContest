@@ -1,32 +1,4 @@
-#define NOMINMAX
-#include <cstdint> //defiens integer types regardless of os
-#include <iostream>
-#include <string>
-#include <cstdlib> // for system("cls"); setting
-#include <limits>
-#include <algorithm>
-
-#include "menu_managment.h"
-#include "exit_logic.h"
-#include "visual_enhancement.h"
-#include "debug.h"
-#include "config.h"
-
-using namespace std;
-
-
-struct Contestants {
-    int ID;
-    bool isObjectUsed = 0;
-    string name; 
-    int age;
-    bool isWoman = 1;
-    double hipCirc;
-    double shoulderCirc;
-    double calfCirc;
-    double neckCirc;
-};
-
+#include "beauty_contest.h"
 
 //Useful functions
 int findFreeIndex(Contestants contestant[], int searchingFor = 0, int afterIndex = 0);
@@ -35,15 +7,15 @@ void printContestant(Contestants contestant[], int index);
 
 
 
-//CIN vlaidators
-void resetCin ();
+//CIN validators
+void resetCin();
 bool checkCin();
 int cinCheckInt(const string& message);
 double cinCheckDouble(const string& message);
 
 
 int main() {
-
+    srand(time(0)); //"True randomness"
     // TODO: function for printing contestants array
     // TODO: 
 
@@ -80,8 +52,10 @@ int main() {
 
             case 1: //Add new contestant 
             {
+
                  //TODO: Make submenu to chose 
-                //LATER: Remoove feature that moves and packs all of the contestants to the start of the array, remooving non exitant contestant outputs error
+                    //TODO: Way to add as many random contestants as you like
+                //LATER: Remove feature that moves and packs all of the contestants to the start of the array, removing non existant contestant outputs error
             
                 clearConsole(CLEARCONSOLE);
 
@@ -118,9 +92,9 @@ int main() {
 
                     cout << "Enter gender (m/f): ";
                     string input;
-                    //Accpets m,male,f,female case-insensitive
+                    //Accepts m,male,f,female case-insensitive
                     do{
-                        //LATER: make it with enum and swtich
+                        //LATER: make it with enum and switch
                         getline(cin,input);
 
                         input = toLowerString(input);
@@ -150,7 +124,7 @@ int main() {
                     cout << endl;
                     //contestant ..name.. saved!
                 }
-                //(numberOfcontestants) (names) saved successfuly!
+                //(numberOfContestants) (names) saved successfully!
                 
                 break;
             }
@@ -396,7 +370,7 @@ bool checkCin(){
     } else {
         cin.clear(); 
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        deBugInfo("ERROR: cin broke. Restared");
+        deBugInfo("ERROR: cin broke. Restarted");
         return false;
     }
 }
@@ -417,7 +391,7 @@ int cinCheckInt(const string& message) {
             return value;
         } else {
             resetCin ();
-            deBugInfo("ERROR: cin broke. Restared");
+            deBugInfo("ERROR: cin broke. Restarted");
             cout << "Invalid input. Try again." << endl;
         }
     }
@@ -435,7 +409,7 @@ double cinCheckDouble(const string& message) {
             return value;
         } else {
             resetCin ();
-            deBugInfo("ERROR: cin broke. Restared");
+            deBugInfo("ERROR: cin broke. Restarted");
             cout << "Invalid input. Try again." << endl;
         }
     }
@@ -449,7 +423,7 @@ double cinCheckDouble(const string& message) {
 // }
 
 
-//LATER TODO: add way to add ascci pictures for contestants
+//LATER TODO: add way to add ascic pictures for contestants
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 

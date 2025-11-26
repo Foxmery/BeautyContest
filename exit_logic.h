@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "visual_enhancement.h" 
-#include "debug.h"
-#include "config.h"
+
+#include "utils/visual_enhancement.h" 
+#include "utils/debug.h"
+#include "utils/settings.h"
 
 using namespace std;
 
