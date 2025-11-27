@@ -37,9 +37,18 @@ void fileMenuText(){
         "    0. Back\n"
         << endl;
 }
+
+void addingContestantsMenu(){
+    cout <<
+        "\n-------------File-------------\n"
+        "    1. Manual adding\n"
+        "    2. Random values\n"
+        "    0. Back\n"
+        << endl;
+}
+
 void linePrinter(string message, int width, char filler)
 {   
-    //LATER: possible to enter 3.1 to enter straight into a menu(maybe learn regeax again)
     //EXPLANATION: Makes a more vissible line with message in center and filler around it 
     
     int sizeOfMessage = message.size();//Check

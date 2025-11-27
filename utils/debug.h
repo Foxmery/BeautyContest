@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#define deBugInfo(message) if (DEBUGMODE) { cout << message << endl; } // macro
+#define deBugInfo(message) if (DEBUGMODE) { cout << message; } // macro
 
 // 
 // void deBugInfo(const sting& message){

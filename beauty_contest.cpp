@@ -1,131 +1,37 @@
 #include "beauty_contest.h"
 
-//Useful functions
-int findFreeIndex(Contestants contestant[], int searchingFor = 0, int afterIndex = 0);
-string toLowerString(string s);
-void printContestant(Contestants contestant[], int index);
-
-
-
-//CIN validators
-void resetCin();
-bool checkCin();
-int cinCheckInt(const string& message);
-double cinCheckDouble(const string& message);
-
+//LATER: possible to enter 3.1 to enter straight into a menu(maybe learn regex again)
+//LATER: add way to add ascic pictures for contestants
+//LATER: Remove feature that moves and packs all of the contestants to the start of the array, removing non existant contestant outputs error
+//LATER: Ability to move around the menu with arrows
 
 int main() {
     srand(time(0)); //"True randomness"
-    // TODO: function for printing contestants array
-    // TODO: 
-
-
 
     int leftSpaces = MAXCONTESTANTS;
     bool freeSpaces[MAXCONTESTANTS];
-    int IDcounter = 0;
+    int IDcounter = 1;
 
-
-    /*for (int i = sizeof(freeSpaces); sizeof(freeSpaces) > i; i++) {
-        cout << freeSpaces[i];
-    }*/ // LATER TODO: implement the list so we can remove people and use the empty sapces
-    /*cout<< freeSpaces;*/
     Contestants contestant[MAXCONTESTANTS];
-
-
-
-
 
     int menuChoice;
 
-
     do {
-    //LATER: Ability to move around the menu with arrows
         mainMenuText();
         menuChoice = cinCheckInt("Type a number to chose your action: ");
-    
+                
         switch (menuChoice) {
 
             case 0: //Exit program 
                 askUserExit();
                 break;
 
-            case 1: //Add new contestant 
+            case 1: //Adding of contestant 
             {
+                addingContestantsMenu();
+                menuChoice = cinCheckInt("Type a number to chose your action: ");
 
-                 //TODO: Make submenu to chose 
-                    //TODO: Way to add as many random contestants as you like
-                //LATER: Remove feature that moves and packs all of the contestants to the start of the array, removing non existant contestant outputs error
-            
-                clearConsole(CLEARCONSOLE);
-
-                
-                cout << "Spaces left: " << leftSpaces << endl;
-                
-                // int contestantsToAdd;
-                int contestantsToAdd = cinCheckInt("How many contestants do you want to add: ");
-                
-
-                //Validate input
-                if (contestantsToAdd > leftSpaces) {
-                    cout << "Too many contestants!" << endl;
-                    break;
-                }
-
-                // TODO: add way to enter peoples properties in with struct
-                for (int i = 0; contestantsToAdd > i; i++) {
-
-                    int validIndex = findFreeIndex(contestant);
-
-                    contestant[validIndex].isObjectUsed = true;
-
-                    //Update contestant ID and increment one above
-                    contestant[validIndex].ID = IDcounter++;
-                    
-
-                    cout << "Enter name: ";
-                    getline(cin,contestant[validIndex].name);
-                    cout << endl;
-
-                    contestant[validIndex].age = cinCheckInt("Enter age: ");
-                    cout << endl;
-
-                    cout << "Enter gender (m/f): ";
-                    string input;
-                    //Accepts m,male,f,female case-insensitive
-                    do{
-                        //LATER: make it with enum and switch
-                        getline(cin,input);
-
-                        input = toLowerString(input);
-                        if (input == "m" || input == "male"){
-                            contestant[validIndex].isWoman = 0;
-                            break;
-                        } else if ( input == "f" || input == "female"){
-                            contestant[validIndex].isWoman = 1;
-                            break;
-                        } else {
-                            cout<<"Invalid gender. Try again."<<endl;
-                            cout << "Enter gender (M/F): ";
-                        }
-                    }   while (true);
-                    cout << endl;
-
-                    contestant[validIndex].hipCirc = cinCheckDouble("Enter hip circumference (cm): ");
-                    cout << endl;
-
-                    contestant[validIndex].shoulderCirc = cinCheckDouble("Enter shoulder circumference (cm): ");
-                    cout << endl;
-
-                    contestant[validIndex].neckCirc = cinCheckDouble("Enter neck circumference (cm): ");
-                    cout << endl;
-
-                    contestant[validIndex].calfCirc = cinCheckDouble("Enter calf circumference (cm): ");
-                    cout << endl;
-                    //contestant ..name.. saved!
-                }
-                //(numberOfContestants) (names) saved successfully!
-                
+                contestantsManipulationMenu(contestant, leftSpaces, IDcounter, menuChoice);
                 break;
             }
                
@@ -218,7 +124,7 @@ int main() {
                         cout << "Enter name of contestant: ";
                         getline(cin, input);
 
-                        //In case there is no such person foundPerson will stay 0 outputing a message. if 1 will jsut print the person
+                        //In case there is no such person foundPerson will stay 0 outputing a message. if 1 will just print the person
                         bool foundPerson = 0;
                         //searching for contestants name
                         for(int i = 0; i < MAXCONTESTANTS; i++ )
@@ -306,131 +212,3 @@ int main() {
 
 
 
-
-
-int findFreeIndex(Contestants contestant[], int searchingFor , int afterIndex) {
-    //Outputs the first contestant it sees depending on if you want the contestant spot to be free or used
-    //It searches after a curtain index so after putting it in a sycle it doesn`t output the same contestant
-    for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
-        int cont = contestant[n].isObjectUsed;
-        // cout << cont << endl;n
-        if (cont == searchingFor) {
-            // cout << "yep" << endl;
-            deBugInfo("SYSTEM: Found free place at index: "<< n);
-
-            return n;
-        }
-
-    }
-    // cout << "No empty spaces" << endl;
-    return -1;
-}
-
-string toLowerString(string s){
-    string newS = "";
-    int sizeOfString = s.length();
-    
-    for(int i = 0; i < sizeOfString; i++){
-        char letter = s[i];
-        
-        if( letter >= 'A' && letter <= 'Z'){
-            newS.append(1,letter + 32);
-            
-        } else {
-            newS.append(1,letter);
-        }
-    }
-    return newS;
-}
-
-void printContestant(Contestants contestant[], int index){
-
-    deBugInfo("Index: " << index);
-    cout << "ID: " << contestant[index].ID << "   ";
-    cout << "Name: " << contestant[index].name << "   ";
-    cout << "Age: " << contestant[index].age << "   ";
-    cout << "Gender: " << ((contestant[index].isWoman) ? "Woman" : "Man") << "   ";
-    cout << "HipCirc: " << contestant[index].hipCirc << "   ";
-    cout << "ShoulderCirc: " << contestant[index].shoulderCirc << "   ";
-    cout << "CalfCirc: " << contestant[index].calfCirc << "   ";
-    cout << "NeckCirc: " << contestant[index].neckCirc << "   ";
-    cout << endl;
-}
-
-
-
-
-bool checkCin(){
-    if(cin) 
-    {
-        cin.clear(); 
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        deBugInfo("SYSTEM: cin restarted");
-        return true;
-    } else {
-        cin.clear(); 
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        deBugInfo("ERROR: cin broke. Restarted");
-        return false;
-    }
-}
-
-void resetCin (){
-    cin.clear(); // fix the stream
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
-}
-
-int cinCheckInt(const string& message) {
-    int value;
-    while (true) {
-        cout << message;
-
-        if (cin >> value) {
-            resetCin ();
-            deBugInfo("SYSTEM: cin restarted");
-            return value;
-        } else {
-            resetCin ();
-            deBugInfo("ERROR: cin broke. Restarted");
-            cout << "Invalid input. Try again." << endl;
-        }
-    }
-}
-
-
-double cinCheckDouble(const string& message) {
-    double value;
-    while (true) {
-        cout << message;// to be able to put values with , or . and have them intact
-
-        if (cin >> value) {
-            resetCin ();
-            deBugInfo("SYSTEM: cin restarted");
-            return value;
-        } else {
-            resetCin ();
-            deBugInfo("ERROR: cin broke. Restarted");
-            cout << "Invalid input. Try again." << endl;
-        }
-    }
-}
-
-
-
-
-// void myFunction() {
-//     cout << "I just got executed!";
-// }
-
-
-//LATER TODO: add way to add ascic pictures for contestants
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

@@ -8,3 +8,4 @@ using namespace std;
 
 void mainMenuText();
 void searchMenuText();
+void addingContestantsMenu();
