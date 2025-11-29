@@ -69,7 +69,7 @@ Contestants easyContInit(const int& ID,const bool& isObjectUsed,const string& na
 
 void printContestant(Contestants contestant[], int index){
 
-    deBugInfo("Index: " << index);
+    deBugInfo("Index: " << index << "   ");
     cout << "ID: " << contestant[index].ID << "   ";
     cout << "Name: " << contestant[index].name << "   ";
     cout << "Age: " << contestant[index].age << "   ";
@@ -81,9 +81,13 @@ void printContestant(Contestants contestant[], int index){
     cout << endl;
 }
 
+//NOW: make function findCOntestantByAge, findCOntestantByName... maybe one func that can find anything
+//TODO: go back to making search_show_contestant.cpp
 int findFreeIndex(Contestants contestant[], int searchingFor , int afterIndex) {
     //EXPLANATION: Outputs the first contestant it sees depending on if you want the contestant spot to be free or used
     //It searches after a curtain index so after putting it in a cycle it doesn`t output the same contestant
+
+
     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
         if (cont == searchingFor) {
@@ -96,3 +100,18 @@ int findFreeIndex(Contestants contestant[], int searchingFor , int afterIndex) {
     //deBugInfo("SYSTEM: No empty spaces"<< endl);
     return -1;
 }
+
+//TODO: find a way to do this with not sleep deprived brain
+// int findContestantByAge(Contestants contestant[], int searchingFor , int afterIndex){
+//     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
+//         int cont = contestant[n].age;
+
+//         if (cont == searchingFor) {
+//             deBugInfo("SYSTEM: Found age at index: "<< n << endl);
+//             return n;
+//         }
+
+//     }
+//     //deBugInfo("SYSTEM: No empty spaces"<< endl);
+//     return -1;
+// }

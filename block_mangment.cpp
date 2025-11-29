@@ -1,12 +1,13 @@
-#include "menu_managment.h"
+#include "block_mangment.h"
 
-void linePrinter(string message, int width, char filler);
+void linePrinter(string message, int width, char filler = ' ');
 
 //TODO: Implement the function in the menus
 void mainMenuText() {
-
+    
+    linePrinter("BEAUTY CONTEST", SCREENWIDTH, '-');
     cout <<
-        "\n-------------BEAUTY CONTEST-------------\n"
+        //"\n\n-------------BEAUTY CONTEST-------------\n"
         "1. Add new contestant\n"
         "2. Show all contestants\n"
         "3. Search and show contestants by\n"
@@ -21,8 +22,11 @@ void mainMenuText() {
 }
 
 void searchMenuText(){
+    clearConsole(CLEARCONSOLE);
+
+    linePrinter("SEARCH", SCREENWIDTH, '-');
     cout <<
-        "\n-------------SEARCH-------------\n"
+        //"\n\n-------------SEARCH-------------\n"
         "    1. The lowest age (input lowest age)\n"
         "    2. Name\n"
         "    0. Back\n"
@@ -30,26 +34,31 @@ void searchMenuText(){
 }
 
 void fileMenuText(){
+    clearConsole(CLEARCONSOLE);
+
+    linePrinter("FILE", SCREENWIDTH, '-');
     cout <<
-        "\n-------------File-------------\n"
+        //"\n\n-------------FILE-------------\n"
         "    1. Export\n"
         "    2. Import\n"
         "    0. Back\n"
         << endl;
 }
 
-void addingContestantsMenu(){
+void addingContestantsMenu(){        
+    clearConsole(CLEARCONSOLE);
+
+    linePrinter("Add new contestant",SCREENWIDTH, ' ');
     cout <<
-        "\n-------------File-------------\n"
+        //"\n\n-------------Add new contestant-------------\n"
         "    1. Manual adding\n"
         "    2. Random values\n"
         "    0. Back\n"
         << endl;
 }
 
-void linePrinter(string message, int width, char filler)
-{   
-    //EXPLANATION: Makes a more vissible line with message in center and filler around it 
+void linePrinter(string message, int width, char filler = ' '){   
+    //EXPLANATION: Makes a more visible line with message in center and filler around it 
     
     int sizeOfMessage = message.size();//Check
     int fillerAroundMessage = (width - sizeOfMessage) / 2;

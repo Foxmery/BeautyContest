@@ -10,7 +10,7 @@ int main() {
 
     int leftSpaces = MAXCONTESTANTS;
     bool freeSpaces[MAXCONTESTANTS];
-    int IDcounter = 1;
+    int IDcounter = 1; //keep track of what is the last id added
 
     Contestants contestant[MAXCONTESTANTS];
 
@@ -31,116 +31,27 @@ int main() {
                 addingContestantsMenu();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
 
-                contestantsManipulationMenu(contestant, leftSpaces, IDcounter, menuChoice);
+                addition_of_contestantsMenu(contestant, leftSpaces, IDcounter, menuChoice);
                 break;
             }
                
             case 2: //Show all contestants
             {   
-                //LATER: Make submenu to chose 
                 clearConsole(CLEARCONSOLE);
-                cout << "------All contestants------" << endl;
                 
-                for(int i = 0; i < MAXCONTESTANTS; i++){
+                printAllContestants(contestant);
 
-                    int validIndex = findFreeIndex(contestant, 1, i);
-                    i = validIndex;
-
-                    //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
-                    if (validIndex == -1) {
-                        cout << endl;
-                        break;
-                    }
-                
-                    printContestant(contestant, validIndex);
-                }
                 break;
             }
                
 
             case 3://Search and show contestants by:
             {   
-                //TODO: Make submenu to chose     
-                clearConsole(CLEARCONSOLE);
                 searchMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
                 cout << endl;
 
-                switch(menuChoice){
-                    case 1: //Print out the lowest age
-                    {
-                        clearConsole(CLEARCONSOLE);
-
-                        int lowestAge = numeric_limits<std::int32_t>::max(); //Here is used #include <cstdint> for int32_t
-                        cout << lowestAge << endl;/*debugin*/
-
-                        for(int i = 0; i < MAXCONTESTANTS; i++){
-
-                            int validIndex = findFreeIndex(contestant, 1, i);
-                            i = validIndex;
-
-                            //When findFreeIndex doesn`t find free spaces outputs -1. This "if" breaks when detects -1;
-                            if (validIndex == -1) {
-                                cout << endl;
-                                break;
-                            }
-
-                            //Is contestant having the lowest age? yes: update with new lowest age 
-                            int contestantAge = contestant[validIndex].age;
-                            if(contestantAge <= lowestAge){
-                                lowestAge = contestantAge;
-                            }
-                            
-                        }
-                        int p = 0;/*debugin*/
-
-                        for(int i = 0; i < MAXCONTESTANTS; i++){
-                            cout << "SYSTEM: P = " << p << endl;/*debugin*/
-                            cout << "SYSTEM: i = " << i << endl;/*debugin*/
-
-                            //NOW: TEST WHY PROGRAM IS MAKING AGES THE SAME!!!!!
-                            cout << "Contestants with lowest age: " << lowestAge << endl;
-
-                            int validIndex = findFreeIndex(contestant, 1, i);
-                            i = validIndex;
-                            if (contestant[validIndex].age = lowestAge){
-                                printContestant(contestant, validIndex);
-                            }
-
-                            if(p == 10){/*debugin*/
-                                exit(0); 
-                            }
-                            p++;/*debugin*/
-                        }
-                        break;
-                    }
-                    case 2: // Print out by name
-                    {   
-                        
-                        // goes through all the the valid contestant
-                        clearConsole(CLEARCONSOLE);
-
-                        string input;
-                        cout << "Enter name of contestant: ";
-                        getline(cin, input);
-
-                        //In case there is no such person foundPerson will stay 0 outputing a message. if 1 will just print the person
-                        bool foundPerson = 0;
-                        //searching for contestants name
-                        for(int i = 0; i < MAXCONTESTANTS; i++ )
-                        {
-                            if(!contestant[i].isObjectUsed || contestant[i].name != input){
-                                printContestant(contestant, i);
-                                foundPerson = 1;
-                            }
-                        }
-                        if (foundPerson){
-                            cout << input << " has not been found.\n";
-                            //LATER: do you want to search for someone else? y/n/0/1/yes,YES/no,NO/back,Back,b,B
-                        }
-                        break;
-                    }
-                }
+                
             break;
             }
             
@@ -148,7 +59,6 @@ int main() {
             case 4: //Sort the contestants
             {
                 //TODO: Make submenu to chose 
-                clearConsole(CLEARCONSOLE);
 
                 int i = 0;
                 int lastIndex = 0;
@@ -183,7 +93,6 @@ int main() {
             case 5:
             {
                 //TODO: Make submenu to chose 
-                clearConsole(CLEARCONSOLE);
 
                 break;
             }
@@ -191,7 +100,6 @@ int main() {
             case 6:
             {
                 //TODO: Make submenu to chose 
-                clearConsole(CLEARCONSOLE);
 
                 break;
             }

@@ -1,15 +1,15 @@
-#include "contestants_manipulation_menu.h"
+#include "addition_of_contestants_menu.h"
 
-int inputContestantsToAdd(int contestantsToAdd,int& leftSpaces);
+int GetValidContestantCount(int& leftSpaces);
 void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants contestant[], bool random);
 void readSingleContestant(Contestants& contestant,const int& IDcounter);
+void printAddedContestants(string savedNames[]);
 
-void contestantsManipulationMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
-    
+void addition_of_contestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
     //TODO: Make submenu to chose 
     //TODO: Way to add as many random contestants as you like
     clearConsole(CLEARCONSOLE);
-    int contestantsToAdd = inputContestantsToAdd(contestantsToAdd, leftSpaces);
+    int contestantsToAdd = GetValidContestantCount(leftSpaces);
     leftSpaces -= contestantsToAdd;
 
     switch (menuChoice){
@@ -26,21 +26,20 @@ void contestantsManipulationMenu(Contestants contestant[], int& leftSpaces, int&
             deBugInfo("ERROR: expected from 0 - 2 got: " << menuChoice);
             break;
     }
-
-    cout << "Contestants added successfully!" << endl;
 }
 
 
 
-int inputContestantsToAdd(int contestantsToAdd,int& leftSpaces){
+int GetValidContestantCount(int& leftSpaces){
     do{
         cout << "Spaces left: " << leftSpaces << endl;
 
-        contestantsToAdd = cinCheckInt("How many contestants do you want to add: ");
+        int contestantsToAdd = cinCheckInt("How many contestants do you want to add: ");
 
         //Validate input
         if (contestantsToAdd > leftSpaces) {
-            cout << "Too many contestants!" << endl;
+            clearConsole(CLEARCONSOLE);
+            cout << "Too many contestants!" << endl << endl;
             continue;
         } else {
             return contestantsToAdd;
@@ -49,6 +48,7 @@ int inputContestantsToAdd(int contestantsToAdd,int& leftSpaces){
 }
 
 void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants contestant[], bool random){
+    string savedNames[MAXCONTESTANTS];
     //Manually enter contestants information
     for (int i = 0; contestantsToAdd > i; i++) {
 
@@ -60,9 +60,39 @@ void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants
         } else {
             readSingleContestant(contestant[validIndex], IDcounter++);
         }
-
-        
+        savedNames[i] = contestant[validIndex].name;
     }
+    if(savedNames[0] == ""){
+        clearConsole(CLEARCONSOLE);
+        cout << "No contestants added.";
+        deBugInfo("contestantsToAdd: " << contestantsToAdd);
+    } else {
+        printAddedContestants(savedNames);
+    }
+}
+
+void printAddedContestants(string savedNames[]){
+    //EXPLANATION: prints out the added contestants names
+
+    clearConsole(CLEARCONSOLE);
+    cout << "Contestant/s ";
+
+    //Print out the names
+    bool foundEmptyIndex = false;
+    for(int i = 0; !foundEmptyIndex; i++){
+
+        string name = savedNames[i];
+        foundEmptyIndex = (name == "");
+        if(i != 0 && !foundEmptyIndex) cout <<", "; 
+    
+
+        cout << name;
+
+    }
+
+
+    cout << " maybe saved successfully!";
+    
 }
 
 void readSingleContestant(Contestants& contestant,const int& IDcounter){
