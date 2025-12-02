@@ -1,7 +1,7 @@
     contestants properties = ID, Name, Age, gender, hip circumference, shoulder circumference, neck circumference, calf circumference
     Max contestants = 30
     
-    menus for diffrent edditions
+    menus for different editions
      
     -------------BASE PROGRAM - BEAUTY CONTEST-------------
     1. Add new contestant
@@ -35,7 +35,7 @@
         5.1 Export
         5.2 Import
 
-    -------------ADDON - BUEATY GOLD-------------
+    -------------ADDON - BEAUTY GOLD-------------
     * - additions
 
     1. Add new contestant

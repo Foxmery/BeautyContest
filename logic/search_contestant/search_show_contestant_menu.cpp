@@ -1,12 +1,16 @@
 #include "search_show_contestant_menu.h"
 
+void findLowestAge (Contestants contestant[], int& validIndex, int& lowestAge);
+void findContestantsByAge(Contestants contestant[], int& validIndex, int& age);
+
 //NOW: go back to making search_show_contestant.cpp(first look at findFreeIndex)
 void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
     switch(menuChoice){
         case 1: //Print out the lowest age
         {
             clearConsole(CLEARCONSOLE);
-
+            
+            cout << "Contestant/s with lowest age: " << endl;
             int validIndex = findFreeIndex(contestant, 1);
             int lowestAge = contestant[validIndex].age;
 

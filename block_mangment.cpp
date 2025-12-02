@@ -4,14 +4,15 @@ void linePrinter(string message, int width, char filler = ' ');
 
 //TODO: Implement the function in the menus
 void mainMenuText() {
+    cout << endl;
     
     linePrinter("BEAUTY CONTEST", SCREENWIDTH, '-');
     cout <<
         //"\n\n-------------BEAUTY CONTEST-------------\n"
         "1. Add new contestant\n"
         "2. Show all contestants\n"
-        "3. Search and show contestants by\n"
-        "    3.1 The lowest age (input lowest age)\n"
+        "3. Search\n"
+        "    3.1 The lowest age\n"
         "    3.2 Name\n"
         "4. Sort contestants by youngest to oldest (No output)\n"
         "5. File\n"
@@ -23,11 +24,12 @@ void mainMenuText() {
 
 void searchMenuText(){
     clearConsole(CLEARCONSOLE);
+    cout << endl;
 
     linePrinter("SEARCH", SCREENWIDTH, '-');
     cout <<
         //"\n\n-------------SEARCH-------------\n"
-        "    1. The lowest age (input lowest age)\n"
+        "    1. Lowest age \n"
         "    2. Name\n"
         "    0. Back\n"
         << endl;
@@ -35,6 +37,7 @@ void searchMenuText(){
 
 void fileMenuText(){
     clearConsole(CLEARCONSOLE);
+    cout << endl;
 
     linePrinter("FILE", SCREENWIDTH, '-');
     cout <<
@@ -47,8 +50,9 @@ void fileMenuText(){
 
 void addingContestantsMenu(){        
     clearConsole(CLEARCONSOLE);
+    cout << endl;
 
-    linePrinter("Add new contestant",SCREENWIDTH, ' ');
+    linePrinter("Add new contestant",SCREENWIDTH, '-');
     cout <<
         //"\n\n-------------Add new contestant-------------\n"
         "    1. Manual adding\n"
@@ -57,7 +61,7 @@ void addingContestantsMenu(){
         << endl;
 }
 
-void linePrinter(string message, int width, char filler = ' '){   
+void linePrinter(string message, int width, char filler){   
     //EXPLANATION: Makes a more visible line with message in center and filler around it 
     
     int sizeOfMessage = message.size();//Check

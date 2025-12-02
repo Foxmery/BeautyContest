@@ -13,4 +13,4 @@ using namespace std;
 void mainMenuText();
 void searchMenuText();
 void addingContestantsMenu();
-void linePrinter(string message, int width, char filler = ' ');
+void linePrinter(string message, int width, char filler);

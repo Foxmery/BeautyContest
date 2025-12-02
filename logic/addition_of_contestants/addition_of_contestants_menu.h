@@ -12,5 +12,5 @@ using namespace std;
 #include "../../utils/cin_validators.h"
 #include "../../utils/utils.h"
 
-void addition_of_contestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice);
+void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice);
 

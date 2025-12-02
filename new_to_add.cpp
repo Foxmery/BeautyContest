@@ -26,71 +26,37 @@ struct Contestants {
 
 #define deBugInfo(message) if (DEBUGMODE) { cout << message << endl; } // macro
 
-int findFreeIndex(Contestants contestant[],int searchingFor, int value, int afterIndex) {
-    //Outputs the first contestant it sees depending on if you want the contestant spot to be free or used
-    //It searches after a curtain index so after putting it in a sycle it doesn`t output the same int cont = contestant[n].isObjectUsed;
-    int cont;
-    for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
-        
-        switch(searchingFor)
-        {
-            case 0:
-            {
-                cont = contestant[n].ID;         
-                break;
-            }
-            case 1:
-            {
-                cont = contestant[n].isObjectUsed;
-                break;
-            }
-            case 2://is object isObjectUsed
-            {
-                cont = contestant[n].name;//TODO: to lower string         
-                break;
-            }
-            case 3:
-            {
-                cont = contestant[n].age;
-                break;
-            }
-            case 4:
-            {
-                cont = contestant[n].isWoman;
-                break;
-            }
-            case 5:
-            {
-                cont = contestant[n].hipCirc;
-                break;
-            }
-            case 6:
-            {
-                cont = contestnat[n].shoulderCirc;
-                break;
-            }
-            case 7:
-            {
-                cont = contestant[n].calfCirc;
-                break;
-            }
-            case 8:
-            {
-                cont = contestnat[n].neckCirc;
-                break;
-            }
-        
-            // cout << cont << endl;n
-            if (cont == searchingFor) {
-                // cout << "yep" << endl;
-                deBugInfo("SYSTEM: Found value at index: "<< n);
+int searchContestantNumber(Contestants contestant[],const int& searchMode,const double& targetValue,const int& startIdx) {
+    
+    
 
-                return n;
-            }
-        }            
+    for (int i = startIdx; i < MAXCONTESTANTS; i++) {
+        
+        // Skip empty slots unless you are specifically looking for 'isObjectUsed' (case 1)
+        if (searchMode != 1 && !contestant[i].isObjectUsed) continue;
+
+
+        double currentVal = 0; 
+        bool validMode = true;
+
+        switch (searchMode) {
+            case 0: currentVal = contestant[i].ID; break;
+            case 1: currentVal = contestant[i].isObjectUsed; break;
+            // Case 2 (Name) is removed -> Strings cannot be doubles!
+            case 3: currentVal = contestant[i].age; break;
+            case 4: currentVal = contestant[i].isWoman; break;
+            case 5: currentVal = contestant[i].hipCirc; break;
+            case 6: currentVal = contestant[i].shoulderCirc; break;
+            case 7: currentVal = contestant[i].calfCirc; break;
+            case 8: currentVal = contestant[i].neckCirc; break;
+            default: validMode = false; break;
+        }
+
+        if (validMode && currentVal == targetValue) {
+            deBugInfo("SYSTEM: Found match at index: " << i);
+            return i;
+        }
     }
-
-    // 
     return -1;
 }
 void printContestant(Contestants contestant[], int index){

@@ -24,4 +24,5 @@ void printAllContestants(Contestants contestant[]){
     }
     
     linePrinter("", SCREENWIDTH, '-');
+    cout << endl;
 }

@@ -5,11 +5,15 @@ void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants
 void readSingleContestant(Contestants& contestant,const int& IDcounter);
 void printAddedContestants(string savedNames[]);
 
-void addition_of_contestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
+void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
     //TODO: Make submenu to chose 
     //TODO: Way to add as many random contestants as you like
     clearConsole(CLEARCONSOLE);
     int contestantsToAdd = GetValidContestantCount(leftSpaces);
+    if (leftSpaces == 0){
+        
+    }
+
     leftSpaces -= contestantsToAdd;
 
     switch (menuChoice){
@@ -49,6 +53,7 @@ int GetValidContestantCount(int& leftSpaces){
 
 void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants contestant[], bool random){
     string savedNames[MAXCONTESTANTS];
+    deBugInfo("SYSTEM: size savedNames: " << size(savedNames) << endl);
     //Manually enter contestants information
     for (int i = 0; contestantsToAdd > i; i++) {
 
@@ -61,11 +66,14 @@ void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants
             readSingleContestant(contestant[validIndex], IDcounter++);
         }
         savedNames[i] = contestant[validIndex].name;
+
     }
+    // deBugInfo("SYSTEM: exited from adding contestants");
+
     if(savedNames[0] == ""){
         clearConsole(CLEARCONSOLE);
-        cout << "No contestants added.";
-        deBugInfo("contestantsToAdd: " << contestantsToAdd);
+        cout << "No contestants added." << endl;
+        deBugInfo("SYSTEM: contestantsToAdd: " << contestantsToAdd);
     } else {
         printAddedContestants(savedNames);
     }
@@ -75,23 +83,24 @@ void printAddedContestants(string savedNames[]){
     //EXPLANATION: prints out the added contestants names
 
     clearConsole(CLEARCONSOLE);
+    deBugStringArray(savedNames, MAXCONTESTANTS);
     cout << "Contestant/s ";
 
     //Print out the names
     bool foundEmptyIndex = false;
-    for(int i = 0; !foundEmptyIndex; i++){
 
+    for(int i = 0; !foundEmptyIndex && MAXCONTESTANTS - 1 >= i; i++){
+        // deBugInfo("SYSTEM: index: " << i << endl);
         string name = savedNames[i];
         foundEmptyIndex = (name == "");
-        if(i != 0 && !foundEmptyIndex) cout <<", "; 
-    
 
+        if(i != 0 && !foundEmptyIndex) cout <<", "; 
         cout << name;
 
     }
 
 
-    cout << " maybe saved successfully!";
+    cout << " maybe saved successfully!" << endl;
     
 }
 

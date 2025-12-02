@@ -6,6 +6,7 @@
 //LATER: Ability to move around the menu with arrows
 
 int main() {
+    clearConsole(CLEARCONSOLE);
     srand(time(0)); //"True randomness"
 
     int leftSpaces = MAXCONTESTANTS;
@@ -31,7 +32,7 @@ int main() {
                 addingContestantsMenu();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
 
-                addition_of_contestantsMenu(contestant, leftSpaces, IDcounter, menuChoice);
+                additionOfContestantsMenu(contestant, leftSpaces, IDcounter, menuChoice);
                 break;
             }
                
@@ -45,27 +46,27 @@ int main() {
             }
                
 
-            case 3://Search and show contestants by:
+            case 3://Search
             {   
                 searchMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
                 cout << endl;
 
+                searchShowContestantsMenu(contestant, menuChoice);
                 
-            break;
+                break;
             }
             
 
             case 4: //Sort the contestants
             {
-                //TODO: Make submenu to chose 
 
                 int i = 0;
                 int lastIndex = 0;
 
                 do{
                     
-                    //if next contestant is not in use remoove stop the program
+                    //if next contestant is not in use remove stop the program
                     if (contestant[i+1].isObjectUsed == 0){
                         break;
                     }
