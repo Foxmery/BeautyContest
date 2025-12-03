@@ -27,6 +27,7 @@ struct Contestants {
 #define deBugInfo(message) if (DEBUGMODE) { cout << message << endl; } // macro
 
 int searchContestantNumber(Contestants contestant[],const int& searchMode,const double& targetValue,const int& startIdx) {
+        //shouldve implemented this
     
     
 
@@ -34,7 +35,6 @@ int searchContestantNumber(Contestants contestant[],const int& searchMode,const 
         
         // Skip empty slots unless you are specifically looking for 'isObjectUsed' (case 1)
         if (searchMode != 1 && !contestant[i].isObjectUsed) continue;
-
 
         double currentVal = 0; 
         bool validMode = true;
