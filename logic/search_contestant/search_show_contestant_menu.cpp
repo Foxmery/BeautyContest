@@ -39,7 +39,7 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
                     foundPerson = true;
                 }
             }
-            if (foundPerson){
+            if (!foundPerson){
                 cout << input << " has not been found.\n";
                 //LATER: do you want to search for someone else? y/n/0/1/yes,YES/no,NO/back,Back,b,B
             }
