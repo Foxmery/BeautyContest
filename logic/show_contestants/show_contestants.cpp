@@ -3,15 +3,15 @@
 void printAllContestants(Contestants contestant[]){
    // cout << "------All contestants------" << endl;
     
-    linePrinter("All contestants",SCREENWIDTH, '-');
+    titlePrinter("All contestants",SCREENWIDTH, '-');
 
     bool hasContestants = false;
     for(int i = 0; i < MAXCONTESTANTS; i++){
 
-        int validIndex = findFreeIndex(contestant, 1, i);
+        int validIndex = getNextUsedSlot(contestant, i);
         i = validIndex;
 
-        //When findFreeIndex is done it outputs -1. This "if" breaks when detects -1;
+        //When findNextIndexByStatus is done it outputs -1. This "if" breaks when detects -1;
         if (validIndex == -1) {
             cout << endl;
             
@@ -23,6 +23,6 @@ void printAllContestants(Contestants contestant[]){
         printContestant(contestant, validIndex);
     }
     
-    linePrinter("", SCREENWIDTH, '-');
+    titlePrinter("", SCREENWIDTH, '-');
     cout << endl;
 }

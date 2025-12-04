@@ -3,7 +3,6 @@
 void findLowestAge (Contestants contestant[], int& validIndex, int& lowestAge);
 void findContestantsByAge(Contestants contestant[], int& validIndex, int& age);
 
-//NOW: go back to making search_show_contestant.cpp(first look at findFreeIndex)
 void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
     switch(menuChoice){
         case 1: //Print out the lowest age
@@ -11,7 +10,7 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
             clearConsole(CLEARCONSOLE);
             
             cout << "Contestant/s with lowest age: " << endl;
-            int validIndex = findFreeIndex(contestant, 1);
+            int validIndex = getNextUsedSlot(contestant);
             int lowestAge = contestant[validIndex].age;
 
             findLowestAge(contestant, validIndex, lowestAge);
@@ -51,10 +50,10 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
 void findLowestAge (Contestants contestant[], int& validIndex, int& lowestAge){
     for(int i = 0; i < MAXCONTESTANTS; i++){
 
-        validIndex = findFreeIndex(contestant, 1, i);
+        validIndex = getNextUsedSlot(contestant, i);
         i = validIndex;
 
-        //When findFreeIndex doesn`t find free spaces outputs -1. This "if" breaks when detects -1;
+        //When getNextUsedSlot doesn`t find free spaces outputs -1. This "if" breaks when detects -1;
         if (validIndex == -1) {
             cout << endl;
             break;
@@ -75,7 +74,7 @@ void findContestantsByAge(Contestants contestant[], int& validIndex, int& age){
         deBugInfo("SYSTEM: i =  "<< i << endl);
         deBugInfo("SYSTEM: age found: " << age << endl);
 
-        int validIndex = findFreeIndex(contestant, 1, i);
+        int validIndex = getNextUsedSlot(contestant, i);
         if (validIndex == -1)break;
         i = validIndex;
         if (contestant[validIndex].age == age){

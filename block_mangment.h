@@ -5,12 +5,43 @@
 
 #include "utils/settings.h"
 #include "utils/visual_enhancement.h"
-
+#include "utils/debug.h"
 
 using namespace std;
 
 
+//MAIN MENU/S
+
+/// @brief Outputs the main menu.
 void mainMenuText();
+
+
+//SUBMENUS
+
+/// @brief Outputs the search submenu.
 void searchMenuText();
-void addingContestantsMenu();
-void linePrinter(string message, int width, char filler);
+
+/// @brief Outputs the sort submenu.
+void sortMenuText();
+
+/// @brief Outputs the winners submenu.
+void winnersMenuText();
+
+/// @brief Outputs the addition of contestants submenu.
+void addingContestantsMenuText();
+
+/// @brief Outputs the winners submenu.
+void winnersMenuText();
+
+
+//MENUS HELPER/S
+
+/** @brief Helper for printing out beautiful filler around the title in the center.
+ * * Puts the title in the center and fills the empty space with filler.
+ * Accounts when title cant centered and puts one extra filler at end.
+ * If title is too big: debug warning alarms and puts only one filler at both ends.
+ * * @param title   The message you want to be seen.
+ * @param width     What space are working with.
+ * @param filler    The char that will be around the title.
+ */
+void titlePrinter(string title, int width, char filler);

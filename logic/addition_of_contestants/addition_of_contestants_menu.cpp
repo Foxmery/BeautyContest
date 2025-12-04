@@ -25,6 +25,9 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
         case 2:
             inputContestantData(contestantsToAdd,IDcounter,contestant, true);
             break;
+        // case 3:
+            //random with duplicating ages and names.
+        //     break;
         default:
             cout << "Invalid option!" << endl;
             deBugInfo("ERROR: expected from 0 - 2 got: " << menuChoice);
@@ -57,7 +60,7 @@ void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants
     //Manually enter contestants information
     for (int i = 0; contestantsToAdd > i; i++) {
 
-        int validIndex = findFreeIndex(contestant);
+        int validIndex = getNextFreeSlot(contestant);
         //Update contestant ID and increment one above
         
         if (random){

@@ -26,7 +26,7 @@ struct Contestants {
 
 #define deBugInfo(message) if (DEBUGMODE) { cout << message << endl; } // macro
 
-int searchContestantNumber(Contestants contestant[],const int& searchMode,const double& targetValue,const int& startIdx) {
+int searchContestantNumberPROTOTYPE(Contestants contestant[],const int& searchMode,const double& targetValue,const int& startIdx) {
         //shouldve implemented this
     
     
@@ -59,6 +59,8 @@ int searchContestantNumber(Contestants contestant[],const int& searchMode,const 
     }
     return -1;
 }
+
+
 void printContestant(Contestants contestant[], int index){
 
     deBugInfo("Index: " << index);
