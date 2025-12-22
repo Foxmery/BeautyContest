@@ -11,7 +11,7 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
     clearConsole(CLEARCONSOLE);
     int contestantsToAdd = GetValidContestantCount(leftSpaces);
     if (leftSpaces == 0){
-        
+        //TODO: IDK what here?
     }
 
     leftSpaces -= contestantsToAdd;
