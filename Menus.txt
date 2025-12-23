@@ -1,18 +1,17 @@
-    contestants properties = ID, Name, Age, gender, hip circumference, shoulder circumference, neck circumference, calf circumference
-    Max contestants = 30
-    
-    menus for diffrent edditions
+    menus for different editions
      
     -------------BASE PROGRAM - BEAUTY CONTEST-------------
-    1. Add new contestant
-    2. Show all contestants
-    3. Search and show contestants by
-        3.1 The lowest age
-        3.2 Name
-    4. Sort contestants by oldest to youngest (No output)
-    5. File
-        5.1 Export
-        5.2 Import
+        "1. Add new contestant\n"
+        "2. Show all contestants\n"
+        "3. Search\n"
+        "    3.1 The lowest age\n"
+        "    3.2 Name\n"
+        "4. Sort contestants by youngest to oldest (No output)\n"
+        "5. File\n"
+        "    5.1 Export\n"
+        "    5.2 Import\n"
+        "0. Exit"
+        << endl;
 
 
     -------------ADDON - SEARCH AND BEYOND-------------
@@ -35,23 +34,23 @@
         5.1 Export
         5.2 Import
 
-    -------------ADDON - BUEATY GOLD-------------
+    -------------ADDON - BEAUTY GOLD-------------
     * - additions
 
     1. Add new contestant
     2. Show all contestants
-    3. Search and show contestants
+    3. Search
         3.1 The lowest age
         3.2 Name
         3.3 Age
         3.4 Gender
-    4. Show contestants
+    4. Sort contestants
         4.1 Sorted by Age
         4.2 Sorted by Name
         4.3 Sort contestants by oldest to youngest (No output)
-    5. Split contestants by age in cathegories
-        - Cathegories: I. 14-16  II. 17-19  III. 20-22 IV. 23-25 (in diffrent arrays)
-        - Output all the cathegories (if no contestants output a message for that)
+    5. Split contestants by age in categories
+        - Categories: I. 14-16  II. 17-19  III. 20-22 IV. 23-25 (in diffrent arrays)
+        - Output all the categories (if no contestants output a message for that)
     6. Decide winners 
         (Score all contestants: winner=hips(shoulders*neck*calf)) 
         6.1 Scores between 0.54 ÷ 0.62 

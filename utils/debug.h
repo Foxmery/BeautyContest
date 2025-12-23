@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "config.h"
+
+#include "settings.h"
 
 using namespace std;
 
-#define deBugInfo(message) if (DEBUGMODE) { cout << message << endl; } // macro
+#define deBugInfo(message) if (DEBUGMODE) { cout << message; } // macro
+void deBugStringArray (string s[],int size);
 
 // 
 // void deBugInfo(const sting& message){
