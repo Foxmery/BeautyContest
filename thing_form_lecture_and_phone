@@ -223,3 +223,169 @@ int main(){
     cout << randomInt << endl;
 
 }
+
+//bindary writing
+//RAKITIN
+//int a  = 50;//a -> 0x00000032 -> 00 00 00 32; file ->int 00 00 00 32
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+struct record{
+    char name[100];
+    int num;
+    double amount;
+};
+
+int main(){
+
+    const int max = 100;
+    int count = 0;
+    record r[max];
+    record rin[max];
+    cout << "How many recordsto add: ";
+    cin >> count;
+    for(int i = 0; i < count; i++){
+        cout << "No" << (i+1) << endl;
+        cin >> r[i].name;
+        cin >> r[i].num;
+        cin >> r[i].amount;
+    }
+    cout << "Binary wtiting";
+    ofstream out("db.bin", ios_base::binary);
+    if(out){
+        out.write((char*)&count,sizeof(int)); // sizeof(count);
+        out.flush(); //puts buffer for saving, otherwise the save will be done at .close();
+        for(int i = 0;i < count; i++){
+            out.write((char*)&r[i], sizeof(record));
+            out.flush();
+        }
+        out.close();
+    } else {
+        cout << "!!!Error reading\n";
+        int elems = 0; 
+        ifstream in("db.bin",ios_base::binary);
+        if(in){
+            in.read((char*)&elems,sizeof(int));
+            for(int i = 0;i < elems; i++){
+                record temp;
+                in.read((char*)&temp,sizeof(record));
+                rin[i] = temp;
+            }
+            in.close();
+            
+        } else {
+            cout << "!!!Error reading file\n";
+            in.close();
+        }
+        for(int i = 0; i <elems; i++){
+            cout << "No " << (i + 1) << endl;
+            cout << rin[i].name << " ";
+            cout << rin[i].num << " ";
+            cout << rin[i].amount << endl;
+        }
+    }
+    return 0;    
+}
+
+//WRITE AFTER CHANGE OF VALUE FOR SOMETIHNG IN RECORD
+ (number of elemenets folowing)   
+  |
+  |
+ \ /
+[int][record][record][record] 
+  3 |       |               |
+    0       1
+1. size in bytes
+2. calculating position  
+
+ifstream::postype filesize(const char* fname){
+    unsigned long size = 0;
+    instream in(frame, ios_base::ate| ios_base::binary);
+    size = in.tellg();
+    in.close();
+    return size;
+}
+
+1. one recording  =sizeof(record) =  112;
+2. filesize = 340bytes
+3. int elem = 2
+int pos = (elem - 1) * sizeor(record) +sizeof(int) = 116
+//pos < filesize
+out.seekg(pos);//116
+out.write((char*)&r, sizeof
+
+
+
+
+
+//katrova
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <fstream>
+
+using namescapece std;
+
+const int N = 10;
+fstream fp;
+//allowed to globlay decalre filles
+
+struct Student{
+    char name[10];
+    char from[9];
+    char spec;
+    int oceki[3];
+    double srusp;
+};
+
+
+//prototoypes
+void  create_file(string fname, int &size);
+void create_array(Studnt x[], int size,stirng fname);
+
+void main(){
+    student stud[N];
+    int size;
+    const string FNAME = "Student.dat";
+    create_file(FNAME,size);
+    cretae_array(stud, size, FNAME);
+}
+
+void create_file(string fname, int& size){
+    coud << endl << "Kolko recorda?";
+    do{
+        cin >> size;
+    }while(size > N || size < 0);
+    Student st;
+    fp.opem(ganme,ios::out|ios::binnary);//if text: remoove binnary
+    for(int i = 0 ; i < size; i++){
+        cout << endl << "Enter name: ";
+        cin.getline(st.name, 10);
+        //if text:fp <<st.name;
+        cin.getline(st.fnom, 9);
+        //if text: fp << st.fnom
+        cin.getline(st.spec, 10);
+        for(int j = 0; j < 3;j++)
+            cin >> st.ocenci[j];
+            //if text: fp << st.ocekni[j];
+        fp.wirte((char*)&st, sizeof(student));
+        fp.close();
+    }
+}
+
+void create_array(Studnt x[], int size, stirng fname){
+    fp.open(fname, iox::ate |ios::binary);
+    long k = fp.tellg(); fp.seekg(0L,ios::beg);
+    fp.read((char*)x, k); k = size * sizeof(Strudent);
+    
+    //if test:
+    fp.getline(x[i].name
+    
+    
+}
+
