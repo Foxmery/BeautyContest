@@ -1,9 +1,7 @@
 #pragma once
 
 
-constexpr unsigned int MAXCONTESTANTS = 30;//Maximum number of contestants that can be written
-
-
+constexpr unsigned int MAXCONTESTANTS = 30;
 
 
 //Screen(2d array of chars) dimensions in the terminal
@@ -11,7 +9,7 @@ constexpr unsigned int SCREENWIDTH = 65; //numbers of chars possible can be used
 constexpr unsigned int SCREENHEIGHT = 20; //numbers of chars possible to be used in the Y axis
 
 //Miscellaneous settings
-constexpr bool DEBUGMODE = 0; //Debug prints
-constexpr bool CLEARCONSOLE = 0; //Clear console every so often
-constexpr bool USE_SHORT_NAMES = 0; //Names to be outputed looking shorter 
+constexpr bool DEBUGMODE = 1; 
+constexpr bool CLEARCONSOLE = 0; 
+constexpr bool USE_SHORT_NAMES = 0; 
 //LATER: hipCircumfrance -> HC, shoulderCircumfrance -> SC

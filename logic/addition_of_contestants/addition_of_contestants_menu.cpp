@@ -1,7 +1,7 @@
 #include "addition_of_contestants_menu.h"
 
 int GetValidContestantCount(int& leftSpaces);
-void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants contestant[], bool random);
+void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random);
 void readSingleContestant(Contestants& contestant,const int& IDcounter);
 void printAddedContestants(string savedNames[]);
 
@@ -9,9 +9,10 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
     //TODO: Make submenu to chose 
     //TODO: Way to add as many random contestants as you like
     clearConsole(CLEARCONSOLE);
-    int contestantsToAdd = GetValidContestantCount(leftSpaces);
+    
     if (leftSpaces == 0){
-        //TODO: IDK what here?
+        cout << "No spaces left.\n Remoove contestants to add more!\n";
+        return;
     }
 
     leftSpaces -= contestantsToAdd;
@@ -20,10 +21,10 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
         case 0:
             break;
         case 1:
-            inputContestantData(contestantsToAdd, IDcounter, contestant, false);
+            inputContestantData(leftSpaces, IDcounter, contestant, false);
             break;
         case 2:
-            inputContestantData(contestantsToAdd,IDcounter,contestant, true);
+            inputContestantData(leftSpaces, IDcounter,contestant, true);
             break;
         // case 3:
             //random with duplicating ages and names.
@@ -54,7 +55,9 @@ int GetValidContestantCount(int& leftSpaces){
     } while(true);
 }
 
-void inputContestantData(const int contestantsToAdd, int& IDcounter, Contestants contestant[], bool random){
+void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random){
+    int contestantsToAdd = GetValidContestantCount(leftSpaces);
+
     string savedNames[MAXCONTESTANTS];
     deBugInfo("SYSTEM: size savedNames: " << size(savedNames) << endl);
     //Manually enter contestants information
