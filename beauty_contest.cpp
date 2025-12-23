@@ -158,7 +158,7 @@ int main() {
             {   
                 //LATER: Make submenu to chose 
                 clearConsole(CLEARCONSOLE);
-                cout << "------All contestants------" << endl;//change to test on
+                cout << "------All contestants------" << endl;
                 
                 for(int i = 0; i < MAXCONTESTANTS; i++){
 
