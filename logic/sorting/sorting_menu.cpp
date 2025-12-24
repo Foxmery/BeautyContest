@@ -7,17 +7,16 @@ void swapContestantPlaces(Contestants contestant[], int FIndex, int SIndex);
 
 void sortingMenu (Contestants contestant[], int& menuChoice){
 
-
     switch (menuChoice){
         case 0:
-            //back... somehow
-            break;
+        {
+            return;
+        }
         case 1: // Sort by Age
-            //Maybe useless becouse we already do it in option 3
             //TODO: Replace this with option 3
             break;
         case 2: // Sort by Name
-
+        
             break;
         case 3: // Sort contestants from youngest to oldest
             sortContestantsAgeAscending(contestant);
@@ -33,29 +32,30 @@ void sortingMenu (Contestants contestant[], int& menuChoice){
 }
 
 void sortContestantsAgeAscending(Contestants contestant[]){
-    int lastIndex = 0;
+    //NOW: FINISH THIS LOGIC
     int validIndex = getNextUsedSlot(contestant, 0);
     int nextValidIndex = getNextUsedSlot(contestant, 1);
-    bool slotsNeedProcessing = true;
+
+    bool slotsNeedProcessing = !(validIndex == -1) && !(nextValidIndex == -1);
 
     for(int i = 0; i < MAXCONTESTANTS && slotsNeedProcessing; i++){
-        
-        if (contestant[validIndex].isObjectUsed == 0){
-            continue;
-        }
 
-        if(contestant[i].age > contestant[i+1].age){
-            swapContestantPlaces(contestant, i, i + 1);
-        } else if (i == 0){
-            lastIndex++;
-            i = lastIndex;
+        bool lastIndex = contestant[validIndex].isObjectUsed == 0;
 
-        } else {
-            i = i - 2;
-        }
+        bool nowLargerNext = contestant[validIndex].age > contestant[nextValidIndex].age;
+        if(nowLargerNext){
+            swapContestantPlaces(contestant, validIndex, nextValidIndex);
+            if(lastIndex) {
+                i = nextValidIndex;
+            } else {
+                i = i - 2;
+            }
+        } 
+
         validIndex = getNextUsedSlot(contestant, i);
         nextValidIndex = getNextUsedSlot(contestant, validIndex + 1);
         slotsNeedProcessing = !(validIndex == -1) && !(nextValidIndex == -1);
+
 
         deBugInfo("validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl);
     }

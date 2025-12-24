@@ -4,6 +4,11 @@ int GetValidContestantInputCount(int& leftSpaces);
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random);
 void printNamesOfAddedContestants(string savedNames[]);
 
+/// @brief Manages submenu functions choice by user
+/// @param contestant 
+/// @param leftSpaces 
+/// @param IDcounter 
+/// @param menuChoice 
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
     clearConsole(CLEARCONSOLE);
     
@@ -14,7 +19,9 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
 
     switch (menuChoice){
         case 0:
-            break;
+        {
+            return;
+        }
         case 1:
             inputContestantData(leftSpaces, IDcounter, contestant, false);
             break;
@@ -83,7 +90,7 @@ void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant
         savedNames[i] = contestant[validIndex].name;
 
     }
-    
+
     if(savedNames[0] == ""){
         clearConsole(CLEARCONSOLE);
         cout << "No contestants added." << endl;
@@ -96,7 +103,7 @@ void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant
 /// @brief Output all the saved names to the user
 /// @param savedNames string array of all saved names
 void printNamesOfAddedContestants(string savedNames[]){
-//TODO: WORK WITH CHAR ARRAYS FOR NAMES
+
 
     clearConsole(CLEARCONSOLE);
 

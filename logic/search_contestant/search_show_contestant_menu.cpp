@@ -12,6 +12,10 @@ void unsuccessfulSearch(bool event, string startingMessage, int num);
 
 void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
     switch(menuChoice){
+        case 0:
+        {
+            return;
+        }
         case 1: 
         {
             clearConsole(CLEARCONSOLE);
@@ -211,17 +215,22 @@ void unsuccessfulSearch(bool event, string startingMessage, char s[], string did
     if (event){
         cout << startingMessage << s << " has not been found.\n";
 
-        cout << "Did you mean ";
-        bool nextIsEmpty = false;
-        for(int i = 0; !nextIsEmpty && MAXCONTESTANTS - 1 >= i; i++){
-            string name = didYouMeanNames[i];
-            nextIsEmpty = (name == "");
+        //DID you mean logic
+        bool haveSuggestions = didYouMeanNames[0] != "";
+        if(haveSuggestions){
+            cout << "Did you mean ";
+            bool nextIsEmpty = false;
+            for(int i = 0; !nextIsEmpty && MAXCONTESTANTS - 1 >= i; i++){
+                string name = didYouMeanNames[i];
+                nextIsEmpty = (name == "");
 
-            if(i != 0 && !nextIsEmpty) cout <<"or "; 
-            cout << name;
+                if(i != 0 && !nextIsEmpty) cout <<" or "; 
+                cout << name;
 
+            }
+            cout << ".\n";
         }
-        cout << ".\n";
+        
 
     }
 

@@ -17,7 +17,7 @@ void mainMenuText() {
         "    3.1 The lowest age\n"
         "    3.2 Age\n"
         "    3.3 Name\n"
-        "    3.4 -Gender\n"
+        "    3.4 Gender\n"
         //LATER: 3.5 When winner got decided a option unlocks to show the winners. If not decided yet - notify user. When new contestants are added the option should be locked again.
         "4. Sort (No output)\n"
         "    4.1 -Sort by Age\n"
@@ -46,7 +46,7 @@ void searchMenuText(){
         "    2. Age\n"
         "    3. Name\n"
         "    4. Gender\n"
-        //"    0. Back\n"
+        "    0. Back\n"
         << endl;
 }
 
@@ -61,7 +61,7 @@ void sortMenuText(){
         "    1. Sort by Age\n"
         "    2. Sort by Name\n"
         "    3. Sort contestants from youngest to oldest\n"
-        //"    0. Back\n"
+        "    0. Back\n"
         << endl;
 }
 
@@ -74,7 +74,7 @@ void winnersMenuText(){
         //"\n\n-------------Decide winners-------------\n"
         "    1. Scores between 0.54 - 0.62\n"
         "    2. Output Scores > 0.63 ascending, then < 0.53\n"
-        //"    0. Back\n"
+        "    0. Back\n"
         << endl;
 }
 
@@ -87,7 +87,7 @@ void fileMenuText(){
         //"\n\n-------------FILE-------------\n"
         "    1. Export\n"
         "    2. Import\n"
-        //"    0. Back\n"
+        "    0. Back\n"
         << endl;
 }
 
@@ -100,7 +100,7 @@ void addingContestantsMenuText(){
         //"\n\n-------------Add new contestant-------------\n"
         "    1. Manual adding\n"
         "    2. Random values\n"
-        //"    0. Back\n"
+        "    0. Back\n"
         << endl;
 }
 
