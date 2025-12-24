@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <cstring>
 
 #include "../utils/contestant.h"
 #include "../utils/debug.h"
 #include "../utils/settings.h"
+#include "../utils/cin_validators.h"
+
 
 using namespace std;
 
@@ -17,6 +20,12 @@ using namespace std;
  * @param IDcounter     The ID the contestant should get.
  */
 void randomContestantGenerator (Contestants& contestant, const int& ID);
+
+
+/// @brief Puts infor from user to contestant
+/// @param contestant the contestant that needs manipulation
+/// @param IDcounter the last id ishued
+void readSingleContestant(Contestants& contestant, const int& IDcounter);
 
 
 //SLOT SEARCHING

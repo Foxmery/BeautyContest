@@ -7,11 +7,11 @@
 
 int main() {
     clearConsole(CLEARCONSOLE);
-    srand(time(0)); //"True randomness"
+    srand(time(0)); 
 
     int leftSpaces = MAXCONTESTANTS;
     bool freeSpaces[MAXCONTESTANTS];
-    int IDcounter = 1; //keep track of what is the last id added
+    int IDcounter = 0; 
 
     Contestants contestant[MAXCONTESTANTS];
 
@@ -23,11 +23,12 @@ int main() {
                 
         switch (menuChoice) {
 
-            case 0: //Exit program 
+            case 0:
+            {
                 askUserExit();
                 break;
-
-            case 1: //Adding of contestant 
+            }
+            case 1: 
             {
                 addingContestantsMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
@@ -36,7 +37,7 @@ int main() {
                 break;
             }
                
-            case 2: //Show all contestants
+            case 2:
             {   
                 clearConsole(CLEARCONSOLE);
                 
@@ -46,7 +47,7 @@ int main() {
             }
                
 
-            case 3://Search
+            case 3:
             {   
                 searchMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
@@ -58,7 +59,7 @@ int main() {
             }
             
 
-            case 4: //Sorting
+            case 4: 
             {
                 sortMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
@@ -81,6 +82,23 @@ int main() {
             {
                 //TODO: Make submenu to chose 
 
+                break;
+            }
+            case 7:
+            {
+                //TODO: Make submenu to chose 
+
+                break;
+            }
+
+            case 8:
+            {
+                if(DEBUGMODE){
+                    cout << "DebugMode off!\n";  
+                } else {
+                    cout << "DebugMode on!\n";
+                }
+                DEBUGMODE = !DEBUGMODE;
                 break;
             }
 

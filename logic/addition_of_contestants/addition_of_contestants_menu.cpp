@@ -1,21 +1,16 @@
 #include "addition_of_contestants_menu.h"
 
-int GetValidContestantCount(int& leftSpaces);
+int GetValidContestantInputCount(int& leftSpaces);
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random);
-void readSingleContestant(Contestants& contestant,const int& IDcounter);
-void printAddedContestants(string savedNames[]);
+void printNamesOfAddedContestants(string savedNames[]);
 
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
-    //TODO: Make submenu to chose 
-    //TODO: Way to add as many random contestants as you like
     clearConsole(CLEARCONSOLE);
     
     if (leftSpaces == 0){
         cout << "No spaces left.\n Remoove contestants to add more!\n";
         return;
     }
-
-    leftSpaces -= contestantsToAdd;
 
     switch (menuChoice){
         case 0:
@@ -24,7 +19,7 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
             inputContestantData(leftSpaces, IDcounter, contestant, false);
             break;
         case 2:
-            inputContestantData(leftSpaces, IDcounter,contestant, true);
+            inputContestantData(leftSpaces, IDcounter, contestant, true);
             break;
         // case 3:
             //random with duplicating ages and names.
@@ -37,66 +32,80 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
 }
 
 
+/// @brief Gets user to type a value within the left spaces for contestants
+/// @param leftSpaces left space for use in the Contestants struct
+/// @return a valid number of contestants to add to the struct
+int GetValidContestantInputCount(int& leftSpaces){
 
-int GetValidContestantCount(int& leftSpaces){
+    bool isValid = false;
     do{
         cout << "Spaces left: " << leftSpaces << endl;
 
         int contestantsToAdd = cinCheckInt("How many contestants do you want to add: ");
 
-        //Validate input
-        if (contestantsToAdd > leftSpaces) {
+        isValid = contestantsToAdd > leftSpaces;
+        if (isValid) {
             clearConsole(CLEARCONSOLE);
             cout << "Too many contestants!" << endl << endl;
-            continue;
         } else {
             return contestantsToAdd;
         }
-    } while(true);
+    } while(isValid);
+    return 0;
 }
 
+/// @brief Manager for random and single contestant initialisation
+/// @param leftSpaces Left free spaces in COntestants struct
+/// @param IDcounter The last ishued ID
+/// @param contestant Array of all contestants
+/// @param random If you want manual adition of contestants or random values
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random){
-    int contestantsToAdd = GetValidContestantCount(leftSpaces);
 
+    int contestantsToAdd = GetValidContestantInputCount(leftSpaces);
+    leftSpaces -= contestantsToAdd;
+
+    //TODO: WORK WITH CHAR ARRAYS FOR NAMES
     string savedNames[MAXCONTESTANTS];
+
+    
     deBugInfo("SYSTEM: size savedNames: " << size(savedNames) << endl);
-    //Manually enter contestants information
+
     for (int i = 0; contestantsToAdd > i; i++) {
 
         int validIndex = getNextFreeSlot(contestant);
-        //Update contestant ID and increment one above
         
+        int newID = IDcounter++;
         if (random){
-            randomContestantGenerator(contestant[validIndex], IDcounter++);
+            randomContestantGenerator(contestant[validIndex], newID);
         } else {
-            readSingleContestant(contestant[validIndex], IDcounter++);
+            readSingleContestant(contestant[validIndex], newID);
         }
         savedNames[i] = contestant[validIndex].name;
 
     }
-    // deBugInfo("SYSTEM: exited from adding contestants");
-
+    
     if(savedNames[0] == ""){
         clearConsole(CLEARCONSOLE);
         cout << "No contestants added." << endl;
         deBugInfo("SYSTEM: contestantsToAdd: " << contestantsToAdd);
     } else {
-        printAddedContestants(savedNames);
+        printNamesOfAddedContestants(savedNames);
     }
 }
 
-void printAddedContestants(string savedNames[]){
-    //EXPLANATION: prints out the added contestants names
+/// @brief Output all the saved names to the user
+/// @param savedNames string array of all saved names
+void printNamesOfAddedContestants(string savedNames[]){
+//TODO: WORK WITH CHAR ARRAYS FOR NAMES
 
     clearConsole(CLEARCONSOLE);
+
     deBugStringArray(savedNames, MAXCONTESTANTS);
     cout << "Contestant/s ";
 
-    //Print out the names
     bool foundEmptyIndex = false;
 
     for(int i = 0; !foundEmptyIndex && MAXCONTESTANTS - 1 >= i; i++){
-        // deBugInfo("SYSTEM: index: " << i << endl);
         string name = savedNames[i];
         foundEmptyIndex = (name == "");
 
@@ -105,65 +114,6 @@ void printAddedContestants(string savedNames[]){
 
     }
 
-
     cout << " maybe saved successfully!" << endl;
     
 }
-
-void readSingleContestant(Contestants& contestant,const int& IDcounter){
-    //ID
-    contestant.ID = IDcounter;
-
-    //Name
-    cout << "Enter name: ";
-    getline(cin,contestant.name);
-    cout << endl;
-
-    //Age
-    contestant.age = cinCheckInt("Enter age: ");
-    cout << endl;
-
-    //Gender
-    cout << "Enter gender (M/F): ";
-    string input;
-    do {
-        getline(cin, input);
-
-        // Safety check for empty input
-        if (input.empty()) continue; 
-
-        // Get first character and lowercase it immediately
-        char gender = tolower(input[0]); 
-
-        if (gender == 'm') {
-            contestant.isWoman = false;
-            break;
-        } else if (gender == 'f') {
-            contestant.isWoman = true;
-            break;
-        }
-
-        cout << "Invalid gender. Try again (M/F): ";
-
-    } while (true);
-    cout << endl;
-
-    //Hips
-    contestant.hipCirc = cinCheckDouble("Enter hip circumference (cm): ");
-    cout << endl;
-
-    //Shoulders
-    contestant.shoulderCirc = cinCheckDouble("Enter shoulder circumference (cm): ");
-    cout << endl;
-
-    //Neck
-    contestant.neckCirc = cinCheckDouble("Enter neck circumference (cm): ");
-    cout << endl;
-
-    //Calf
-    contestant.calfCirc = cinCheckDouble("Enter calf circumference (cm): ");
-    cout << endl;
-}
-
-
-    

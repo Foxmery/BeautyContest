@@ -10,3 +10,4 @@ void resetCin();
 bool checkCin();
 int cinCheckInt(const string& message);
 double cinCheckDouble(const string& message);
+bool cinCheckIsWoman(const string& message);
