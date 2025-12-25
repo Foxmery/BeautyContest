@@ -12,4 +12,5 @@ struct Contestants {
     double shoulderCirc = 0.0;
     double calfCirc = 0.0;
     double neckCirc = 0.0;
+    double points = 0.0;
 };

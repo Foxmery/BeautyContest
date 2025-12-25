@@ -3,5 +3,4 @@
 
 using namespace std;
 
-
 void clearConsole(bool CLEARCONSOLE = 0);

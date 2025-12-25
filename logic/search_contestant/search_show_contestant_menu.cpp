@@ -101,98 +101,9 @@ int searchLowestAge (Contestants contestant[]){
     return lowestAge;
 }
 
-/// @brief Prints out contestants with given age and if it found someone
-/// @param contestant array of all contestants
-/// @param age age to search for
-/// @return if it found a match
-bool searchContestantsByAge(Contestants contestant[],const int& age){
 
-    bool foundPerson = false;
-    int validIndex = getNextUsedSlot(contestant);
-    for(int i = 0; i < MAXCONTESTANTS && validIndex != -1; i++){
 
-        deBugInfo("SYSTEM: i =  "<< i << endl);
-        deBugInfo("SYSTEM: age found: " << age << endl);
 
-        validIndex = getNextUsedSlot(contestant, i);
-
-        i = validIndex;
-        if (contestant[validIndex].age == age){
-            printContestant(contestant, validIndex);
-            foundPerson = true;
-        }
-    }
-    return foundPerson;
-}
-
-/// @brief Prints out contestants with given gender
-/// @param contestant array of all contestants
-/// @param isWoman this is the given gender
-/// @return if it found a match
-bool searchContestantsByWoman(Contestants contestant[],const bool& isWoman){
-
-    bool foundPerson = false;
-    int validIndex = getNextUsedSlot(contestant);
-    for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++){
-
-        validIndex = getNextUsedSlot(contestant, i);
-
-        i = validIndex;
-        if (contestant[validIndex].isWoman == isWoman){
-            printContestant(contestant, validIndex);
-            foundPerson = true;
-        }
-    }
-    return foundPerson;
-}
-/// @brief 
-/// @param arr 
-/// @param sizeArr 
-/// @param end 
-/// @return 
-int getRealSizeOfCharArray(char arr[], int sizeArr, char end = '\0'){
-    int realSize = 0;
-    bool endOfArray = 0;
-    for(int i = 0; i < sizeArr - 1 && !endOfArray; i++){
-        realSize++;
-        endOfArray = arr[i + 1] == end;
-        // cout << "Next: " << arr[i + 1] << endl;
-        // cout << "EndOfArr: " << endOfArray << endl;
-    }
-    return realSize; 
-}
-
-bool searchContestantByName(Contestants contestant[], char nameToSearch[], int sizeToSearch, string didYouMeanNames[]){
-    bool foundPerson = false;
-    int validIndex = getNextUsedSlot(contestant);
-    int didYouMean_ValidIndex = 0;
-    for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++ )
-    {
-        
-        
-
-        char contName[MAXNAMECHARS];
-        strcpy(contName, contestant[i].name);
-
-        int sizeFirst = getRealSizeOfCharArray(contName, sizeof(contName) / sizeof(contName[0]));
-        int sizeSecond = getRealSizeOfCharArray(nameToSearch, sizeToSearch / sizeof(nameToSearch[0]));
-        int diffrences = countDifferencesBetweenCharArrays(contName, nameToSearch, sizeFirst, sizeSecond); //!strcmp(contestant[i].name, nameToSearch);
-        
-        
-        if(diffrences == 0){
-            printContestant(contestant, i);
-            foundPerson = true;
-        } else if (diffrences == 1 && !foundPerson){
-            didYouMeanNames[didYouMean_ValidIndex] = contestant[i].name;
-            didYouMean_ValidIndex++;
-        }
-        
-        validIndex = getNextUsedSlot(contestant, i);
-        i = validIndex;
-        deBugInfo("Next validIndex: " << validIndex << endl);
-    }
-    return foundPerson;
-}
 
 int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst, int sizeSecond){
     int lastToCheck = max(sizeFirst, sizeSecond);

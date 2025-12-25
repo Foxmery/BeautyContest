@@ -25,7 +25,7 @@ void mainMenuText() {
         "    4.3 Output sorted without change alphabetically\n"
         "    4.4 Output sorted without change by age\n"
         "    4.5 Sort by ID\n"
-        "5. -Categorize contestants\n"
+        "5. -Categorize contestants in age groups\n"
         "6. -Decide winners\n"
         "    6.1 Scores between 0.54 - 0.62\n"
         "    6.2 Output Scores > 0.63 ascending, then < 0.53\n"

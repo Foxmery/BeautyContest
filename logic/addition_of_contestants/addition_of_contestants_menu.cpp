@@ -88,7 +88,6 @@ void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant
             readSingleContestant(contestant[validIndex], newID);
         }
         savedNames[i] = contestant[validIndex].name;
-
     }
 
     if(savedNames[0] == ""){
@@ -103,7 +102,6 @@ void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant
 /// @brief Output all the saved names to the user
 /// @param savedNames string array of all saved names
 void printNamesOfAddedContestants(string savedNames[]){
-
 
     clearConsole(CLEARCONSOLE);
 
@@ -122,5 +120,4 @@ void printNamesOfAddedContestants(string savedNames[]){
     }
 
     cout << " maybe saved successfully!" << endl;
-    
 }
