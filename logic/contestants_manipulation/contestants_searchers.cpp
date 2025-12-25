@@ -107,22 +107,7 @@ bool searchContestantsByWoman(Contestants contestant[],const bool& isWoman){
     return foundPerson;
 }
 
-/// @brief 
-/// @param arr 
-/// @param sizeArr 
-/// @param end 
-/// @return 
-int getRealSizeOfCharArray(char arr[], int sizeArr, char end = '\0'){
-    int realSize = 0;
-    bool endOfArray = 0;
-    for(int i = 0; i < sizeArr - 1 && !endOfArray; i++){
-        realSize++;
-        endOfArray = arr[i + 1] == end;
-        // cout << "Next: " << arr[i + 1] << endl;
-        // cout << "EndOfArr: " << endOfArray << endl;
-    }
-    return realSize; 
-}
+
 
 bool searchContestantByName(Contestants contestant[], char nameToSearch[], int sizeToSearch, string didYouMeanNames[]){
     bool foundPerson = false;

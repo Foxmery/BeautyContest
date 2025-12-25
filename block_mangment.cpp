@@ -99,7 +99,7 @@ void addingContestantsMenuText(){
     clearConsole(CLEARCONSOLE);
     cout << endl;
 
-    titlePrinter("Add new contestant",SCREENWIDTH, '-');
+    titlePrinter("Add new contestant", SCREENWIDTH, '-');
     cout <<
         //"\n\n-------------Add new contestant-------------\n"
         "    1. Manual adding\n"
@@ -114,10 +114,9 @@ void titlePrinter(string title, int width, char filler){
     int sizeOfMessage = title.size();
     int fillerAroundMessage = (width - sizeOfMessage) / 2;
     
-    bool isTitleEven = sizeOfMessage % 2 == 0;//Check 
-    bool isWidthEven = width % 2 == 0;//Check
+    bool isTitleEven = sizeOfMessage % 2 == 0;
+    bool isWidthEven = width % 2 == 0;
 
-    
     bool extraFillerAtEndNeeded = isTitleEven ^ isWidthEven;
  
     

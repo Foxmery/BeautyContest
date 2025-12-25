@@ -7,11 +7,12 @@ using namespace std;
 
 #include "block_mangment.h"
 
-#include "logic/exit_logic.h"
+#include "logic/exit/exit_logic.h"
 #include "logic/addition_of_contestants/addition_of_contestants_menu.h"
-#include "logic/search_contestant/search_show_contestant_menu.h"
 #include "logic/show_contestants/show_contestants.h"
 #include "logic/sorting/sorting_menu.h"
+#include "logic/search_contestant/search_show_contestant_menu.h"
+#include "logic/contestants_manipulation/contestants_printers.h"
 
 #include "utils/utils.h"
 #include "utils/debug.h"

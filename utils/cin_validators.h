@@ -10,4 +10,8 @@ void resetCin();
 bool checkCin();
 int cinCheckInt(const string& message);
 double cinCheckDouble(const string& message);
+
+/// @brief Checks if you wrote 
+/// @param message 
+/// @return 
 bool cinCheckIsWoman(const string& message);

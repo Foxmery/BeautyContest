@@ -3,13 +3,15 @@
 #include <string>
 
 
-#include "../contestant_manipulation.h"
+#include "../contestants_manipulation/contestants_printers.h"
+#include "../contestants_manipulation/contestants_searchers.h"
+#include "../contestants_manipulation/contestants_manager.h"
+
 
 #include "../../block_mangment.h"
 
 #include "../../utils/settings.h"
 #include "../../utils/contestant.h"
-#include "../show_contestants/show_contestants.h"
 
 using namespace std;
 

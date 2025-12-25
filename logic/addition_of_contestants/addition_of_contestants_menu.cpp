@@ -13,7 +13,7 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
     clearConsole(CLEARCONSOLE);
     
     if (leftSpaces == 0){
-        cout << "No spaces left.\n Remoove contestants to add more!\n";
+        cout << "No spaces left.\n Remove contestants to add more!\n";
         return;
     }
 

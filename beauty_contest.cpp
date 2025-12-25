@@ -41,7 +41,7 @@ int main() {
             {   
                 clearConsole(CLEARCONSOLE);
                 
-                printAllContestants(contestant);
+                showContestants(contestant);
 
                 break;
             }

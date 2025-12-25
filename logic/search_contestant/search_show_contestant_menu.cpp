@@ -105,21 +105,7 @@ int searchLowestAge (Contestants contestant[]){
 
 
 
-int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst, int sizeSecond){
-    int lastToCheck = max(sizeFirst, sizeSecond);
-    deBugInfo("SYSTEM: lastToCheck: " << lastToCheck << endl);
 
-    int diffrences = 0;
-
-    for(int i  = 0; i < lastToCheck ; i++ ){
-        bool diffrent = tolower(first[i]) != tolower(second[i]);
-        if(diffrent) diffrences++;
-        deBugInfo("F: " << first[i] << " S: " << second[i] << " D? " << diffrent << endl);
-        //deBugInfo("SYSTEM: Comparing " << tolower(first[i]) << " and " << tolower(second[i]) << " | " << "nowDiff: " << diffrences);
-    }
-    deBugInfo("Total differences: " << diffrences <<" | Compared: " << first << " and " << second << endl << endl);
-    return diffrences;
-}
 
 
 void unsuccessfulSearch(bool event, string startingMessage, char s[], string didYouMeanNames[]){

@@ -1,6 +1,8 @@
 #pragma once
 
 
+#include "contestants_searchers.h"
+
 #include "../../utils/contestant.h"
 #include "../../utils/debug.h"
 using namespace std;
@@ -10,3 +12,7 @@ using namespace std;
 /// @param contestant   The array of all contestants.
 /// @param index        The index of the contestant.(if deBug == 1 prints out the index too)
 void printContestant(Contestants contestant[], int index);
+
+/// @brief Prints out all contestants with isUsed = 1
+/// @param contestant Array of contestnats
+void printAllContestants(Contestants contestant[]);

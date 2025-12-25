@@ -4,7 +4,8 @@
 
 using namespace std;
 
-#include "../contestant_manipulation.h"
+#include "../contestants_manipulation/contestants_generators.h"
+#include "../contestants_manipulation/contestants_searchers.h"
 
 #include "../../utils/visual_enhancement.h"
 #include "../../utils/settings.h"

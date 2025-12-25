@@ -18,7 +18,8 @@ string toLowerString(string s){
 }
 
 
-int getRealSizeOfCharArray(char arr[], int sizeArr, char end = '\0'){
+
+int getRealSizeOfCharArray(char arr[], int sizeArr, char end){
     int realSize = 0;
     bool endOfArray = 0;
     for(int i = 0; i < sizeArr - 1 && !endOfArray; i++){
@@ -28,4 +29,21 @@ int getRealSizeOfCharArray(char arr[], int sizeArr, char end = '\0'){
         // cout << "EndOfArr: " << endOfArray << endl;
     }
     return realSize; 
+}
+
+
+int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst, int sizeSecond){
+    int lastToCheck = max(sizeFirst, sizeSecond);
+    deBugInfo("SYSTEM: lastToCheck: " << lastToCheck << endl);
+
+    int diffrences = 0;
+
+    for(int i  = 0; i < lastToCheck ; i++ ){
+        bool diffrent = tolower(first[i]) != tolower(second[i]);
+        if(diffrent) diffrences++;
+        deBugInfo("F: " << first[i] << " S: " << second[i] << " D? " << diffrent << endl);
+        //deBugInfo("SYSTEM: Comparing " << tolower(first[i]) << " and " << tolower(second[i]) << " | " << "nowDiff: " << diffrences);
+    }
+    deBugInfo("Total differences: " << diffrences <<" | Compared: " << first << " and " << second << endl << endl);
+    return diffrences;
 }
