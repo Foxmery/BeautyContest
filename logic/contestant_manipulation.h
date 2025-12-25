@@ -50,4 +50,15 @@ int getNextUsedSlot(Contestants contestant[], int startIdx = 0);
 /// @param index        The index of the contestant.(if deBug == 1 prints out the index too)
 void printContestant(Contestants contestant[], int index);
 
+/// @brief Swaps contestant places with given indexes
+/// @param contestant Where you want the swaping to be done
+/// @param Findex First contestant to swap
+/// @param Sindex Second contestant to swap
+void swapContestantPlaces(Contestants contestant[], int FIndex, int SIndex);
+
+/// @brief Duplicates info from one contestants struct to other
+/// @param from where you get info to dupe
+/// @param to location to dupe on
+void dupeContestantInfo (Contestants from[], Contestants to[]);
+
 //LATER: Table(maybe separate function)

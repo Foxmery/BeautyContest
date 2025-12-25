@@ -11,7 +11,7 @@ int main() {
 
     int leftSpaces = MAXCONTESTANTS;
     bool freeSpaces[MAXCONTESTANTS];
-    int IDcounter = 0; 
+    int IDcounter = 1; 
 
     Contestants contestant[MAXCONTESTANTS];
 

@@ -19,10 +19,12 @@ void mainMenuText() {
         "    3.3 Name\n"
         "    3.4 Gender\n"
         //LATER: 3.5 When winner got decided a option unlocks to show the winners. If not decided yet - notify user. When new contestants are added the option should be locked again.
-        "4. Sort (No output)\n"
-        "    4.1 -Sort by Age\n"
-        "    4.2 -Sort by Name\n"
-        "    4.3 Sort contestants from youngest to oldest\n"
+        "4. Sort\n"
+        "    4.1 Sort by Age ascending\n"
+        "    4.2 Sort by Name\n"
+        "    4.3 Output sorted without change alphabetically\n"
+        "    4.4 Output sorted without change by age\n"
+        "    4.5 Sort by ID\n"
         "5. -Categorize contestants\n"
         "6. -Decide winners\n"
         "    6.1 Scores between 0.54 - 0.62\n"
@@ -30,7 +32,7 @@ void mainMenuText() {
         "7. -File\n"
         "    7.1 Export\n"
         "    7.2 Import\n"
-        "8. Debugmode = " << DEBUGMODE << "\n"
+        "8. Debugmode = " << (DEBUGMODE ? "true" : "false") << "\n"
         "0. Exit"
         << endl;
 }
@@ -58,9 +60,11 @@ void sortMenuText(){
     titlePrinter("SORT", SCREENWIDTH, '-');
     cout <<
         //"\n\n-------------SORT-------------\n"
-        "    1. Sort by Age\n"
+        "    1. Sort by Age ascending\n"
         "    2. Sort by Name\n"
-        "    3. Sort contestants from youngest to oldest\n"
+        "    3. Output sorted without change alphabetically\n"
+        "    4. Output sorted without change by age\n"
+        "    5. Sort by ID\n"
         "    0. Back\n"
         << endl;
 }

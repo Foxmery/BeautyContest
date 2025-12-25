@@ -9,6 +9,7 @@
 
 #include "../../utils/settings.h"
 #include "../../utils/contestant.h"
+#include "../show_contestants/show_contestants.h"
 
 using namespace std;
 

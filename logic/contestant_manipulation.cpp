@@ -71,25 +71,18 @@ void readSingleContestant(Contestants& contestant, const int& IDcounter){
 
     cout << "Enter name: ";
     cin >> contestant.name;
-    cout << endl;
 
     contestant.age = cinCheckInt("Enter age: ");
-    cout << endl;
 
     contestant.isWoman = cinCheckIsWoman("Enter gender (m/f): ");
-    cout << endl;
 
     contestant.hipCirc = cinCheckDouble("Enter hip circumference (cm): ");
-    cout << endl;
 
     contestant.shoulderCirc = cinCheckDouble("Enter shoulder circumference (cm): ");
-    cout << endl;
 
     contestant.neckCirc = cinCheckDouble("Enter neck circumference (cm): ");
-    cout << endl;
 
     contestant.calfCirc = cinCheckDouble("Enter calf circumference (cm): ");
-    cout << endl;
 }
 
 
@@ -120,14 +113,15 @@ void printContestant(Contestants contestant[], int index){
  */
 int findNextIndexByStatus(Contestants contestant[], int searchingFor = 0, int afterIndex = 0) {
 
+    deBugInfo("SYSTEM:FNIBS Starting search at index: " << afterIndex << endl);
     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
         if (cont == searchingFor) {
-            deBugInfo("SYSTEM: Found match at index: "<< n << endl);
+            deBugInfo("SYSTEM:FNIBS Found match at index: "<< n << endl);
             return n;
         }
     }
-    //deBugInfo("SYSTEM: No empty spaces"<< endl);
+    deBugInfo("SYSTEM:FNIBS No spaces with " << searchingFor << endl);
     return -1;
 }
 
@@ -192,17 +186,15 @@ int searchContestantName(Contestants contestant[], string targetName, int startI
     return -1;
 }
 
-//TODO: find a way to do this with not sleep deprived brain
-// int findContestantByAge(Contestants contestant[], int searchingFor , int afterIndex){
-//     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
-//         int cont = contestant[n].age;
+void swapContestantPlaces(Contestants contestant[], int FIndex, int SIndex){
+    deBugInfo("SYSTEM: Swaping indexes " << FIndex << " and " << SIndex << endl);
+    Contestants placeHolder = contestant[FIndex];
+    contestant[FIndex] = contestant[SIndex];
+    contestant[SIndex] = placeHolder; 
+}
 
-//         if (cont == searchingFor) {
-//             deBugInfo("SYSTEM: Found age at index: "<< n << endl);
-//             return n;
-//         }
-
-//     }
-//     //deBugInfo("SYSTEM: No empty spaces"<< endl);
-//     return -1;
-// }
+void dupeContestantInfo (Contestants from[], Contestants to[]){
+    for(int i = 0; i < MAXCONTESTANTS; i++){
+        to[i] = from[i];
+    }
+}

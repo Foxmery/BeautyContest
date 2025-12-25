@@ -11,7 +11,7 @@ constexpr unsigned int SCREENWIDTH = 65; //numbers of chars possible can be used
 constexpr unsigned int SCREENHEIGHT = 20; //numbers of chars possible to be used in the Y axis
 
 //Miscellaneous settings
-inline bool DEBUGMODE = true;  //Oh no global variable. i am a bad boy
+inline bool DEBUGMODE = true;  //Oh no global variable. i am a bad guy
 constexpr bool CLEARCONSOLE = 0; 
 constexpr bool USE_SHORT_NAMES = 0; 
 //LATER: hipCircumfrance -> HC, shoulderCircumfrance -> SC
