@@ -35,6 +35,9 @@ void addingContestantsMenuText();
 /// @brief Outputs the winners submenu.
 void winnersMenuText();
 
+/// @brief Outputs the file submenu 
+void fileMenuText();
+
 
 //MENUS HELPER/S
 

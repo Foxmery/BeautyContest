@@ -15,6 +15,7 @@ using namespace std;
 #include "logic/contestants_manipulation/contestants_printers.h"
 #include "logic/categorisation/categorising.h"
 #include "logic/winner_decision/winner_decsision_menu.h"
+#include "logic/file/file_menu.h"
 
 #include "utils/utils.h"
 #include "utils/debug.h"

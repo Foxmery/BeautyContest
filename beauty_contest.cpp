@@ -45,7 +45,7 @@ int main() {
 
             case 0:
             {
-                clearConsole(CLEARCONSOLE);
+                clearConsole();
 
                 //LATER: You have unsaved changes! Do you want to save them? y/n
             
@@ -54,7 +54,7 @@ int main() {
             }
             case 1: 
             {
-                clearConsole(CLEARCONSOLE);
+                clearConsole();
 
                 addingContestantsMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
@@ -75,7 +75,7 @@ int main() {
             case 2:
             {   
                 //LATER: show submenu and text in main menu for categories only if they were made ex: bool madeCategories; false every time new contestant is added, true after initilised command
-                clearConsole(CLEARCONSOLE);
+                clearConsole();
                 
                 showContestants(contestant);
 
@@ -85,7 +85,7 @@ int main() {
 
             case 3:
             {   
-                clearConsole(CLEARCONSOLE);
+                clearConsole();
 
                 searchMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
@@ -99,7 +99,7 @@ int main() {
 
             case 4: 
             {
-                clearConsole(CLEARCONSOLE);
+                clearConsole();
 
                 sortMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
@@ -113,7 +113,7 @@ int main() {
 
             case 5:
             {
-                clearConsole(CLEARCONSOLE);
+                clearConsole();
 
                 categorizeContestantsByAge(contestant, category14_16,  category17_19, category20_22, category23_25);
                 madeCategories = true;
@@ -129,7 +129,16 @@ int main() {
             }
             case 7:
             {
-                //TODO: Make submenu to chose 
+                clearConsole();
+
+                fileMenuText();
+                menuChoice = cinCheckInt("Type a number to chose your action: ");
+
+                fileManagerMenu(contestant,menuChoice);
+
+                bool fileImported = menuChoice == 2;
+                madeCategories = !fileImported ? false : madeCategories;
+                winnersDecided = !fileImported ? false : madeCategories;
 
                 break;
             }

@@ -39,7 +39,7 @@ void mainMenuText(bool winnersDecided, bool madeCategories) {
 }
 
 void addingContestantsMenuText(){        
-    clearConsole(CLEARCONSOLE);
+    clearConsole();
     cout << endl;
 
     titlePrinter("Add new contestant", SCREENWIDTH, '-');
@@ -51,7 +51,7 @@ void addingContestantsMenuText(){
 }
 
 void searchMenuText(){
-    clearConsole(CLEARCONSOLE);
+    clearConsole();
     cout << endl;
 
     titlePrinter("SEARCH", SCREENWIDTH, '-');
@@ -66,7 +66,7 @@ void searchMenuText(){
 
 
 void sortMenuText(){
-    clearConsole(CLEARCONSOLE);
+    clearConsole();
     cout << endl;
 
     titlePrinter("SORT", SCREENWIDTH, '-');
@@ -83,7 +83,7 @@ void sortMenuText(){
 
 
 void fileMenuText(){
-    clearConsole(CLEARCONSOLE);
+    clearConsole();
     cout << endl;
 
     titlePrinter("FILE", SCREENWIDTH, '-');
