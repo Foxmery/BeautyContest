@@ -1,10 +1,7 @@
 #include "show_contestants.h"
 
 void showContestants(Contestants contestant[]){    
-    titlePrinter("All contestants",SCREENWIDTH, '-');
+    //This is gonna grow latter
+    printAllContestantsFormatted(contestant, "ALL CONTESTANTS");
 
-    printAllContestants(contestant);
-    
-    titlePrinter("", SCREENWIDTH, '-');
-    cout << endl;
 }

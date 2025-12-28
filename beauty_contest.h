@@ -13,6 +13,8 @@ using namespace std;
 #include "logic/sorting/sorting_menu.h"
 #include "logic/search_contestant/search_show_contestant_menu.h"
 #include "logic/contestants_manipulation/contestants_printers.h"
+#include "logic/categorisation/categorising.h"
+#include "logic/winner_decision/winner_decsision_menu.h"
 
 #include "utils/utils.h"
 #include "utils/debug.h"

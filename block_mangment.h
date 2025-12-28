@@ -12,8 +12,10 @@ using namespace std;
 
 //MAIN MENU/S
 
-/// @brief Outputs the main menu.
-void mainMenuText();
+/// @brief Outputs Main Menu
+/// @param winnersDecided If winners were decided
+/// @param madeCategories If categories were made
+void mainMenuText(bool winnersDecided = false, bool madeCategories = false);
 
 
 //SUBMENUS

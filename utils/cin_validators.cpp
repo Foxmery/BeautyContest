@@ -66,6 +66,7 @@ bool cinCheckIsWoman(const string& message){
 
         char input = ' ';
         cin >> input;
+        
         deBugInfo("SYSTEM: input: " << input << " | ");
         char gender = tolower(input); 
         deBugInfo("gender: " << gender << endl);

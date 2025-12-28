@@ -115,21 +115,19 @@ bool searchContestantByName(Contestants contestant[], char nameToSearch[], int s
     int didYouMean_ValidIndex = 0;
     for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++ )
     {
-        
-        
 
         char contName[MAXNAMECHARS];
         strcpy(contName, contestant[i].name);
 
-        int sizeFirst = getRealSizeOfCharArray(contName, sizeof(contName) / sizeof(contName[0]));
-        int sizeSecond = getRealSizeOfCharArray(nameToSearch, sizeToSearch / sizeof(nameToSearch[0]));
-        int diffrences = countDifferencesBetweenCharArrays(contName, nameToSearch, sizeFirst, sizeSecond); //!strcmp(contestant[i].name, nameToSearch);
+        int sizeFirst =  sizeof(contName) / sizeof(contName[0]);
+        int sizeSecond = sizeToSearch / sizeof(nameToSearch[0]);
+        int differences = countDifferencesBetweenCharArrays(contName, nameToSearch, sizeFirst, sizeSecond); 
         
         
-        if(diffrences == 0){
+        if(differences == 0){
             printContestant(contestant, i);
             foundPerson = true;
-        } else if (diffrences == 1 && !foundPerson){
+        } else if (differences == 1 && !foundPerson){
             didYouMeanNames[didYouMean_ValidIndex] = contestant[i].name;
             didYouMean_ValidIndex++;
         }

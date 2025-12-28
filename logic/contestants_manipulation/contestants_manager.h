@@ -1,5 +1,6 @@
 #pragma once
 
+#include "contestants_searchers.h"
 
 #include "../../utils/contestant.h"
 #include "../../utils/debug.h"

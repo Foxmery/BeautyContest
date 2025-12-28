@@ -15,3 +15,9 @@ inline bool DEBUGMODE = true;  //Oh no global variable. i am a bad guy
 constexpr bool CLEARCONSOLE = 0; 
 constexpr bool USE_SHORT_NAMES = 0; 
 //LATER: hipCircumfrance -> HC, shoulderCircumfrance -> SC
+
+//LATER: 
+inline int autosaveTimeSeconds = 30; 
+
+//LATER:
+inline bool autoCategorize = false;

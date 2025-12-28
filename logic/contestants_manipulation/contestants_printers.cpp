@@ -11,10 +11,12 @@ void printContestant(Contestants contestant[], int index){
     cout << "ShoulderCirc: " << contestant[index].shoulderCirc << "   ";
     cout << "CalfCirc: " << contestant[index].calfCirc << "   ";
     cout << "NeckCirc: " << contestant[index].neckCirc << "   ";
+    cout << "Points: " << contestant[index].points << "   ";
     cout << endl;
 }
 void printAllContestants(Contestants contestant[]){
     bool hasContestants = false;
+    //LATER: implement  i = getNextUsedSlot(contestant, i + 1) hehehe if it really works
     for(int i = 0; i < MAXCONTESTANTS; i++){
 
         int validIndex = getNextUsedSlot(contestant, i);
@@ -24,11 +26,19 @@ void printAllContestants(Contestants contestant[]){
         if (validIndex == -1) {
             cout << endl;
             
-            if(!hasContestants) cout << "### No contestants ###\n";
+            if(!hasContestants) cout << "### No contestants ###\n\n";
 
             break;
         }
         hasContestants = true;
         printContestant(contestant, validIndex);
     }
+}
+
+void printAllContestantsFormatted(Contestants contestant[], string message){
+    titlePrinter(message, SCREENWIDTH, '-');
+    printAllContestants(contestant);
+    titlePrinter("", SCREENWIDTH, '-');
+    cout << endl;
+    
 }

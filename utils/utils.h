@@ -19,6 +19,5 @@ int getRealSizeOfCharArray(char arr[], int sizeArr, char end = '\0');
 /// @param second 
 /// @param sizeFirst 
 /// @param sizeSecond 
-/// @return 
+/// @return diffrences bewteen two equal size arrays
 int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst, int sizeSecond);
-//TODO:fix this when two arrays of that are with diffrent size we get the largest with the first command max but what if the actualSize of the second is not that large... index out of bound error?

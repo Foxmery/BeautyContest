@@ -1,5 +1,7 @@
 #include "sorting_menu.h"
 
+//LATER: SWITHC TO NEW SORTING FUNCTION sortContestants
+//LATER: put fucnitons into separate file into contestans_manipulation/sorting.cpp
 void sortContestantsID(Contestants contestant[]);
 void sortContestantsName(Contestants contestant[]);
 void sortContestantsAgeAscending(Contestants contestant[]);
@@ -75,21 +77,21 @@ void sortContestantsAgeAscending(Contestants contestant[]){
 }
 
 void outputSortedNoChangeAlphabetically(Contestants contestant[]){
-    Contestants aplhSortedCont[MAXCONTESTANTS];
-    dupeContestantInfo(contestant, aplhSortedCont);
+    Contestants alphSortedCont[MAXCONTESTANTS];
+    dupeContestantInfo(contestant, alphSortedCont);
 
-    sortContestantsName(aplhSortedCont);
+    sortContestantsName(alphSortedCont);
 
-    printAllContestants(aplhSortedCont);
+    printAllContestants(alphSortedCont);
 }
 
 void outputSortedNoChangeAge(Contestants contestant[]){
-    Contestants aplhSortedCont[MAXCONTESTANTS];
-    dupeContestantInfo(contestant, aplhSortedCont);
+    Contestants alphSortedCont[MAXCONTESTANTS];
+    dupeContestantInfo(contestant, alphSortedCont);
 
-    sortContestantsAgeAscending(aplhSortedCont);
+    sortContestantsAgeAscending(alphSortedCont);
 
-    printAllContestants(aplhSortedCont);
+    printAllContestants(alphSortedCont);
 }
 
 void sortContestantsName(Contestants contestant[]){
@@ -137,6 +139,38 @@ void sortContestantsID(Contestants contestant[]){
         bool lastIndex = validIndex == 0;
         //LATER: make this check case insensitive
         bool nowLargerNext = contestant[validIndex].ID > contestant[nextValidIndex].ID;
+        if(nowLargerNext){
+            swapContestantPlaces(contestant, validIndex, nextValidIndex);
+            if(lastIndex) {
+                i = nextValidIndex;
+            } else {
+                i = i - 2;
+            }
+        } 
+        deBugInfo("SYSTEM: lastIndex: " << lastIndex << " | " << "nowLargerNext: " << nowLargerNext << endl);
+
+        validIndex = getNextUsedSlot(contestant, i);
+        nextValidIndex = getNextUsedSlot(contestant, validIndex + 1);
+        slotsNeedProcessing = !(validIndex == -1) && !(nextValidIndex == -1);
+        deBugInfo("SYSTEM: validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl << endl);
+
+
+        deBugInfo("validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl);
+    }
+}
+
+void sortContestantsPoints(Contestants contestant[]){
+    int validIndex = getNextUsedSlot(contestant, 0);
+    int nextValidIndex = getNextUsedSlot(contestant, 1);
+
+    bool slotsNeedProcessing = !(validIndex == -1) && !(nextValidIndex == -1);
+    
+    deBugInfo(endl << "SYSTEM: START validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl);
+    for(int i = 0; i < MAXCONTESTANTS && slotsNeedProcessing; i++){
+
+        bool lastIndex = validIndex == 0;
+        //LATER: make this check case insensitive
+        bool nowLargerNext = contestant[validIndex].points > contestant[nextValidIndex].points;
         if(nowLargerNext){
             swapContestantPlaces(contestant, validIndex, nextValidIndex);
             if(lastIndex) {

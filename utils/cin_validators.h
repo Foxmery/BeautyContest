@@ -6,8 +6,8 @@
 #include "settings.h"
 #include "debug.h"
 
-void resetCin();
 bool checkCin();
+void resetCin();
 int cinCheckInt(const string& message);
 double cinCheckDouble(const string& message);
 

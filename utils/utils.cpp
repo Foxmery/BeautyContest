@@ -18,32 +18,39 @@ string toLowerString(string s){
 }
 
 
-
 int getRealSizeOfCharArray(char arr[], int sizeArr, char end){
     int realSize = 0;
     bool endOfArray = 0;
     for(int i = 0; i < sizeArr - 1 && !endOfArray; i++){
         realSize++;
         endOfArray = arr[i + 1] == end;
-        // cout << "Next: " << arr[i + 1] << endl;
-        // cout << "EndOfArr: " << endOfArray << endl;
     }
     return realSize; 
 }
 
 
 int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst, int sizeSecond){
-    int lastToCheck = max(sizeFirst, sizeSecond);
+
+    int realSizeFirst = getRealSizeOfCharArray(first, sizeFirst);
+    int realSizeSecond = getRealSizeOfCharArray(second, sizeSecond);
+
+    int lastToCheck = max(realSizeFirst, realSizeSecond);
+    int minSize = min(sizeFirst, sizeSecond);
+    if(lastToCheck > minSize){
+        lastToCheck = minSize;
+        deBugInfo("WARNING - countDifferencesBetweenCharArrays: Size of array is too small!" << endl);
+    }
+
     deBugInfo("SYSTEM: lastToCheck: " << lastToCheck << endl);
 
-    int diffrences = 0;
+    int differences = 0;
 
     for(int i  = 0; i < lastToCheck ; i++ ){
-        bool diffrent = tolower(first[i]) != tolower(second[i]);
-        if(diffrent) diffrences++;
-        deBugInfo("F: " << first[i] << " S: " << second[i] << " D? " << diffrent << endl);
-        //deBugInfo("SYSTEM: Comparing " << tolower(first[i]) << " and " << tolower(second[i]) << " | " << "nowDiff: " << diffrences);
+        bool different = tolower(first[i]) != tolower(second[i]);
+        if(different) differences++;
+        deBugInfo("F: " << first[i] << " S: " << second[i] << " D? " << different << endl);
+        //deBugInfo("SYSTEM: Comparing " << tolower(first[i]) << " and " << tolower(second[i]) << " | " << "nowDiff: " << differences);
     }
-    deBugInfo("Total differences: " << diffrences <<" | Compared: " << first << " and " << second << endl << endl);
-    return diffrences;
+    deBugInfo("Total differences: " << differences <<" | Compared: " << first << " and " << second << endl << endl);
+    return differences;
 }

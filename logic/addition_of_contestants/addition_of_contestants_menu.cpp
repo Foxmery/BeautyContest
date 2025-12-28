@@ -87,6 +87,7 @@ void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant
         } else {
             readSingleContestant(contestant[validIndex], newID);
         }
+        
         savedNames[i] = contestant[validIndex].name;
     }
 
