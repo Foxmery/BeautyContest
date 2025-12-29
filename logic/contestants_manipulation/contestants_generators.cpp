@@ -2,7 +2,7 @@
 
  void randomContestantGenerator (Contestants& contestant, const int& IDcounter) 
 {   
-    //LATER: remove all magic numbers
+    
 
     int ageVariation = 11;
     int ageOffSet = 15;

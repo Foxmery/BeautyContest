@@ -27,7 +27,7 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
 
                 IDcounter = biggestContestantID(contestant) + 1;
 
-                leftSpaces = MAXCONTESTANTS;
+                leftSpaces = countOfContestants(contestant);
                 madeCategories = false;
                 winnersDecided = false;
                 savedChanages = true;
@@ -61,6 +61,7 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
             resetContestants(contestant);
             cout << "Deleted all contestants!" << endl;
 
+            leftSpaces = MAXCONTESTANTS;
             madeCategories = false;
             winnersDecided = false;
             savedChanages = false;
@@ -80,7 +81,7 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
             resetContestants(contestant);
             cout << "Deleted all contestants!" << endl;
 
-
+            leftSpaces = MAXCONTESTANTS;
             madeCategories = false;
             winnersDecided = false;
             savedChanages = false;

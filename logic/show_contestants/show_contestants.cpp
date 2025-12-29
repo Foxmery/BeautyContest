@@ -31,7 +31,8 @@ void showContestantsMenu(Contestants contestant[], Contestants winners[], Contes
             if (!winnersDecided){
                 cout << "Categories have not been made yet!\n";
                 break;
-            }  
+            }
+            
             printAllContestantsFormatted(category14_16, "Category 14/16 years");
 
             printAllContestantsFormatted(category17_19, "Category 17/19 years");

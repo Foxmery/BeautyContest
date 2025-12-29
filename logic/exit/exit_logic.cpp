@@ -4,7 +4,7 @@
 char cinCheckYN(string message);
 
 
-void askUserExit(Contestants contestant[], bool savedChanages){
+bool askUserExit(Contestants contestant[], bool savedChanages){
 
     bool exiting = false;
     if (savedChanages){
@@ -36,11 +36,8 @@ void askUserExit(Contestants contestant[], bool savedChanages){
     if (exiting){
         
         cout << "Goodbye!" << endl;
-        exit(0);
-
-    } else {
-        return;
     }
+    return exiting;
 }
 
 

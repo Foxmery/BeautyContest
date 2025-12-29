@@ -13,5 +13,11 @@ using namespace std;
 #include "../../utils/cin_validators.h"
 #include "../../utils/utils.h"
 
+
+/// @brief Logic for contestnat menu
+/// @param contestant Contestants struct you want ot change
+/// @param leftSpaces Spaces left with tag isObjectUsed = false;
+/// @param IDcounter From what id to start
+/// @param menuChoice What to do
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice);
 

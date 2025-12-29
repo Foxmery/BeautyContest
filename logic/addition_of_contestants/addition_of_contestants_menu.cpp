@@ -39,7 +39,8 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
             do{
                 idToRemove = cinCheckInt("Enter ID of contestants to remove or 0 to cancel: ");
                 deleteContestantsByID(contestant, idToRemove);
-
+                leftSpaces--;
+                
             } while(idToRemove != 0);
             break;
         }
@@ -47,7 +48,7 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
         {
             clearConsole();
             cout << "Invalid option!" << endl;
-            deBugInfo("ERROR: expected from 0 - 4 got: " << menuChoice);
+            deBugInfo("ERROR: expected from 0 - 3 got: " << menuChoice);
             break;
         }
             

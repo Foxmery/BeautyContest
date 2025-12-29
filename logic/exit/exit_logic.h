@@ -10,5 +10,8 @@
 
 using namespace std;
 
-/// @brief 
-void askUserExit(Contestants contestant[], bool savedChanages);
+/// @brief Logic for exit menu
+/// @param contestant From where you wa
+/// @param savedChanages  
+/// @return 
+bool askUserExit(Contestants contestant[], bool savedChanages);

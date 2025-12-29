@@ -2,8 +2,8 @@
 
 //TODO: Make settings in a struct
 
-//LATER: asscii pciture of beauty contest before entering main menu
-//LATER: Settings preferences as files
+
+
 
 
 int main() {
@@ -32,10 +32,10 @@ int main() {
 
     Contestants winners[MAXCONTESTANTS];
 
-
-
     int menuChoice;
 
+    
+    bool running = true;
     do {
 
         if(AUTOSAVE && !savedChanages){
@@ -53,7 +53,9 @@ int main() {
                 clearConsole(CLEARCONSOLE);
             
 
-                askUserExit(contestant, savedChanages);
+                if (askUserExit(contestant, savedChanages)){
+                    running = false;
+                }
 
 
                 break;
@@ -206,10 +208,8 @@ int main() {
                 break;
             }
         }
-    } while (true);
-
-
-
+    } while (running);
+return 0;
 }
 
 

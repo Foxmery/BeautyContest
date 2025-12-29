@@ -122,6 +122,15 @@ int biggestContestantID (Contestants contestant[]){
     return biggestID;
 }
 
+int countOfContestants(Contestants contestant[]){
+    int contestantCount = 0;
+
+    for(int i = 0; i < MAXCONTESTANTS; i++)
+        contestantCount += contestant[i].isObjectUsed;
+
+    return contestantCount;
+}
+
 bool deleteContestantsByID(Contestants contestant[],const int& ID){
 
     bool foundPerson = false;
@@ -139,7 +148,6 @@ bool deleteContestantsByID(Contestants contestant[],const int& ID){
     }
     return foundPerson;
 }
-
 
 
 bool searchContestantByName(Contestants contestant[], char nameToSearch[], int sizeToSearch, string didYouMeanNames[]){

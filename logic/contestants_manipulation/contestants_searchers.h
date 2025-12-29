@@ -33,6 +33,11 @@ bool deleteContestantsByID(Contestants contestant[],const int& ID);
 /// @return biggestID
 int biggestContestantID (Contestants contestant[]);
 
+/// @brief Gives how many contestants are with isObjectUsed = true
+/// @param contestant Where you want to search
+/// @return Count of active contestants
+int countOfContestants(Contestants contestant[]);
+
 /// @brief Prints out contestants with given age and if it found someone
 /// @param contestant The array of all contestants.
 /// @param age age to search for
