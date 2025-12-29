@@ -106,6 +106,39 @@ bool searchContestantsByWoman(Contestants contestant[],const bool& isWoman){
     }
     return foundPerson;
 }
+int biggestContestantID (Contestants contestant[]){
+
+    int biggestID = 0;
+    int validIndex = getNextUsedSlot(contestant);
+    for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++){
+
+        validIndex = getNextUsedSlot(contestant, i);
+
+        i = validIndex;
+        if (contestant[validIndex].ID > biggestID){
+            biggestID = contestant[validIndex].ID ;
+        }
+    }
+    return biggestID;
+}
+
+bool deleteContestantsByID(Contestants contestant[],const int& ID){
+
+    bool foundPerson = false;
+    int validIndex = getNextUsedSlot(contestant);
+    for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++){
+
+        validIndex = getNextUsedSlot(contestant, i);
+
+        i = validIndex;
+        if (contestant[validIndex].ID == ID){
+            cout << "Contestant " << contestant[validIndex].name << " successfully delted!" << endl;
+            contestant[validIndex].isObjectUsed = false;
+            foundPerson = true;
+        }
+    }
+    return foundPerson;
+}
 
 
 

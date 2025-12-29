@@ -25,7 +25,7 @@
         "Tyler", "Aaron", "Jose", "Adam", "Henry", "Nathan", "Douglas", "Zachary", "Peter", "Kyle"
     };
 
-    bool isObjectUsed = true;
+    bool isObjectUsed = rand() % 2;
     char name[MAXNAMECHARS];
     int age = rand() % ageVariation + ageOffSet;
     bool isWoman = rand() % 2;

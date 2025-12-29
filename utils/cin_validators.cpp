@@ -1,24 +1,23 @@
 #include "cin_validators.h"
 
+void resetCin (){
+    cin.clear(); // fix the stream
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
+}
+
 bool checkCin(){
     if(cin) 
     {
-        cin.clear(); 
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+        resetCin();
         deBugInfo("SYSTEM: cin restarted" << endl);
         return true;
     } else {
-        cin.clear(); 
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+        resetCin();
         deBugInfo("ERROR: cin broke. Restarted" << endl);
         return false;
     }
 }
 
-void resetCin (){
-    cin.clear(); // fix the stream
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
-}
 
 int cinCheckInt(const string& message) {
     int value;
@@ -61,7 +60,7 @@ bool cinCheckIsWoman(const string& message){
         
         deBugInfo("SYSTEM: input: " << input << " | ");
         char gender = tolower(input); 
-        deBugInfo("gender: " << gender << endl);
+        deBugInfo("Gender: " << gender << endl);
 
 
         if (gender == 'm') {
@@ -71,10 +70,9 @@ bool cinCheckIsWoman(const string& message){
             resetCin();
             return true;
         } else {
-            cout << "Invalid gender. Try again (m/f): ";
+            cout << "Invalid gender. Try again!" << endl;
             resetCin();
             deBugInfo("ERROR: cin broke. Restarted" << endl);
-            cin >> input;
         }
     }
 }

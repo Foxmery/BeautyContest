@@ -17,3 +17,7 @@ void swapContestantPlaces(Contestants contestant[], int FIndex, int SIndex);
 /// @param from where you get info to dupe
 /// @param to location to dupe on
 void dupeContestantInfo (Contestants from[], Contestants to[]);
+
+/// @brief Resets everything in contestants struct
+/// @param contestant the struct you want to reset
+void resetContestants (Contestants contestant[]);

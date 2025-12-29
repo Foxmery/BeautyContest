@@ -22,7 +22,7 @@ void sortingMenu (Contestants contestant[], int& menuChoice){
         case 1:
         {
             sortContestantsAgeAscending(contestant);
-            cout << "Contestants sorted successefully!\n";
+            cout << "Contestants sorted successfully!\n";
             break;
         }
         case 2:
@@ -32,7 +32,7 @@ void sortingMenu (Contestants contestant[], int& menuChoice){
         }
         case 3:
         {
-            outputSortedNoChangeAlphabetically(contestant);
+            sortContestantsID(contestant);
             break;
         }
         case 4:
@@ -42,8 +42,7 @@ void sortingMenu (Contestants contestant[], int& menuChoice){
         }
         case 5: 
         {
-            //LATER: put it on top of list
-            sortContestantsID(contestant);
+            outputSortedNoChangeAlphabetically(contestant);
             break;
         }
         default:

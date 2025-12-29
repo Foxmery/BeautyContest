@@ -8,20 +8,11 @@ void settingsMenu (int menuChoice){
             case 0:
             {
                 clearConsole();
+                
                 return;
                 break;
             }
             case 1:
-            {
-                clearConsole();   
-                break;
-            }
-            case 2:
-            {
-                clearConsole();
-                break;
-            }
-            case 3:
             {
                 clearConsole();
                 DEBUGMODE = !DEBUGMODE;
@@ -34,7 +25,7 @@ void settingsMenu (int menuChoice){
 
                 break;
             }
-            case 4:
+            case 2:
             {
                 clearConsole();
                 CLEARCONSOLE = !CLEARCONSOLE;   
@@ -47,16 +38,21 @@ void settingsMenu (int menuChoice){
 
                 break;
             }
-            case 5:
+            case 3:
             {
                 clearConsole();
-                AUTOSAVESECONDS = cinCheckInt("Auto save on how may seconds (type 0 to turn off): ");
+                AUTOSAVE = !AUTOSAVE;   
 
-                clearConsole();
-                cout << "Auto save set on every " << AUTOSAVESECONDS << "s" << endl;
+                if(CLEARCONSOLE){
+                    cout << "Auto save on!\n";
+                } else {
+                    cout << "Auto save off!\n";  
+                }
+
                 break;
+                clearConsole();
             }
-            case 6:
+            case 4:
             {
                 clearConsole();
                 AUTOCATEGORIZE = !AUTOCATEGORIZE;  

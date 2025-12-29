@@ -13,6 +13,7 @@ void mainMenuText(bool winnersDecided, bool madeCategories) {
         "1. Contestant\n"
         "    1.1 Manual adding\n"
         "    1.2 Random values\n"
+        "    1.3 Remove contestant\n"
         << (winnersDecided || madeCategories ? "2. Show\n"                 : "2. Show all contestants\n")
         << (winnersDecided || madeCategories ? "    2.1 All contestants\n" : "")
         << (winnersDecided                   ? "    2.2 Winners\n"         : "")
@@ -25,14 +26,15 @@ void mainMenuText(bool winnersDecided, bool madeCategories) {
         "4. Sort\n"
         "    4.1 Sort by Age ascending\n"
         "    4.2 Sort by Name\n"
-        "    4.3 Output sorted without change alphabetically\n"
+        "    4.3 Sort by ID\n"
         "    4.4 Output sorted without change by age\n"
-        "    4.5 Sort by ID\n"
+        "    4.5 Output sorted without change alphabetically\n"
         "5. Categorize contestants in age groups\n"
         "6. Decide winners\n"
         "7. File\n"
         "    7.1 Export\n"
         "    7.2 Import\n"
+        "    7.3 Reset..\n"
         "8. Settings...\n"
         "0. Exit"
         << endl;
@@ -46,6 +48,7 @@ void addingContestantsMenuText(){
     cout <<
         "    1. Manual adding\n"
         "    2. Random values\n"
+        "    3. Remove contestant\n"
         "    0. Back\n"
         << endl;
 }
@@ -54,10 +57,10 @@ void showContestantMenuText(bool winnersDecided, bool madeCategories){
     bool large = winnersDecided || madeCategories;
     if (large) titlePrinter("SHOW", SCREENWIDTH, '-');
     cout <<
-           (large          ? "  1. All contestants\n" : "")
-        << (winnersDecided ? "  2. Winners\n"         : "")
-        << (madeCategories ? "  3. Categories\n"      : "")
-        << (large          ? "  0. Back" : "")
+           (large          ? "    1. All contestants\n" : "")
+        << (winnersDecided ? "    2. Winners\n"         : "")
+        << (madeCategories ? "    3. Categories\n"      : "")
+        << (large          ? "    0. Back"              : "")
         << endl;
 }
 
@@ -84,9 +87,9 @@ void sortMenuText(){
     cout <<
         "    1. Sort by Age ascending\n"
         "    2. Sort by Name\n"
-        "    3. Output sorted without change alphabetically\n"
+        "    3. Sort by ID\n"
         "    4. Output sorted without change by age\n"
-        "    5. Sort by ID\n"
+        "    5. Output sorted without change alphabetically\n"
         "    0. Back\n"
         << endl;
 }
@@ -101,6 +104,10 @@ void fileMenuText(){
     cout <<
         "    1. Export\n"
         "    2. Import\n"
+        "    3. Reset auto_save.dat\n"
+        "    4. Reset contestants.dat\n"
+        "    5. Reset contestants\n"
+        "    6. Reset EVERYTHING\n"
         "    0. Back\n"
         << endl;
 }
@@ -109,12 +116,10 @@ void settingsMenuText(){
 
     titlePrinter("SETTINGS", SCREENWIDTH, '-');
     cout << 
-        "   1. Import settings txt\n"
-        "   2. Export settings txt\n"
-        "   3. Debugmode = " << (DEBUGMODE ? "true" : "false") << "\n"
-        "   4. Clear console = " << (CLEARCONSOLE ? "true" : "false") << "\n"
-        "   5. Auto save = " << AUTOSAVESECONDS << "s\n"
-        "   6. Auto categorize = " << (AUTOCATEGORIZE ? "true" : "false") << "\n"
+        "   1. Debugmode = " << (DEBUGMODE ? "true" : "false") << "\n"
+        "   2. Clear console = " << (CLEARCONSOLE ? "true" : "false") << "\n"
+        "   3. Auto save = " << (AUTOSAVE ? "true" : "false") << "\n"
+        "   4. Auto categorize = " << (AUTOCATEGORIZE ? "true" : "false") << "\n"
         "   0. Back\n"
         << endl;
 }

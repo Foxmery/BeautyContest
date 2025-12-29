@@ -5,7 +5,10 @@
 #include "../../utils/visual_enhancement.h" 
 #include "../../utils/debug.h"
 #include "../../utils/settings.h"
+#include "../../utils/contestant.h"
+#include "../../utils/file_manager/file_manager.h"
 
 using namespace std;
 
-void askUserExit();
+/// @brief 
+void askUserExit(Contestants contestant[], bool savedChanages);

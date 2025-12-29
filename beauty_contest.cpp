@@ -1,12 +1,8 @@
 #include "beauty_contest.h"
 
+//TODO: Make settings in a struct
+
 //LATER: asscii pciture of beauty contest before entering main menu
-//LATER: possible to enter 3.1 to enter straight into a menu(maybe learn regex again)
-//LATER: add way to add ascic pictures for contestants
-//LATER: Remove feature that moves and packs all of the contestants to the start of the array, removing non existant contestant outputs error
-//LATER: Ability to move around the menu with arrows
-//LATER: Message for autosave every 30 seconds 
-//LATER: Settings menu
 //LATER: Settings preferences as files
 
 
@@ -20,10 +16,14 @@ int main() {
 
     bool winnersDecided = false;
     bool madeCategories = false;
-
-
+    bool savedChanages = true;
 
     Contestants contestant[MAXCONTESTANTS];
+    if(loadFromFile(contestant, "zfiles/auto_save.dat")){
+        cout << "Successfully loaded form auto_save.dat!" << endl;
+    }
+    IDcounter = biggestContestantID(contestant) + 1;
+    
 
     Contestants category14_16[MAXCONTESTANTS];
     Contestants category17_19[MAXCONTESTANTS];
@@ -32,9 +32,17 @@ int main() {
 
     Contestants winners[MAXCONTESTANTS];
 
+
+
     int menuChoice;
 
     do {
+
+        if(AUTOSAVE && !savedChanages){
+            if (saveToFile(contestant, "zfiles/auto_save.dat"))
+                cout << "Changes were auto saved!" << endl;
+        }
+
         mainMenuText(winnersDecided,  madeCategories);
         menuChoice = cinCheckInt("Type a number to chose your action: ");
                 
@@ -42,42 +50,60 @@ int main() {
 
             case 0:
             {
-                clearConsole();
-
-                //LATER: You have unsaved changes! Do you want to save them? y/n
+                clearConsole(CLEARCONSOLE);
             
-                askUserExit();
+
+                askUserExit(contestant, savedChanages);
+
+
                 break;
             }
             case 1: 
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
 
+
+
+                int leftSpacesBefore = leftSpaces;
+                int leftSpacesAfter;
+                
                 addingContestantsMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
+                cout << endl;
+
 
                 additionOfContestantsMenu(contestant, leftSpaces, IDcounter, menuChoice);
 
-                if(AUTOCATEGORIZE){
-                    categorizeContestantsByAge(contestant, category14_16,  category17_19, category20_22, category23_25);
-                    madeCategories = true;
-                } else {
-                    madeCategories = false;
+
+                leftSpacesAfter = leftSpaces;
+                bool contestantsWereChanged = leftSpacesBefore != leftSpacesAfter;
+                if (contestantsWereChanged){
+
+                    if(AUTOCATEGORIZE){
+                        categorizeContestantsByAge(contestant, category14_16,  category17_19, category20_22, category23_25);
+                        madeCategories = true;
+                    } else {
+                        madeCategories = false;
+                    }
+                    savedChanages = false;
+                    winnersDecided = false;
+
                 }
-                
-                winnersDecided = false;
                 break;
             }
                
             case 2:
             {   
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
 
-                if (madeCategories || winnersDecided){
-                    showContestantMenuText(winnersDecided, madeCategories );
+                bool showMore = madeCategories || winnersDecided;
+                if (showMore){
+                    showContestantMenuText(winnersDecided, madeCategories);
                     menuChoice = cinCheckInt("Type a number to chose your action: ");
+                    cout << endl;
                 }
-                if (!(madeCategories || winnersDecided)) menuChoice = 1;
+                
+                if (!showMore) menuChoice = 1;
                 showContestantsMenu(contestant, winners, category14_16, category17_19, category20_22, category23_25, menuChoice, madeCategories, winnersDecided);
 
                 break;
@@ -85,35 +111,47 @@ int main() {
 
             case 3:
             {   
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
 
                 searchMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
                 cout << endl;
 
+
                 searchShowContestantsMenu(contestant, menuChoice);
                 
+
                 break;
             }
 
             case 4: 
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
 
                 sortMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
                 cout << endl;
 
+
                 sortingMenu(contestant, menuChoice);
+
+
+                bool changesWereMade = menuChoice == 1 || menuChoice == 2 || menuChoice == 3; 
+                if(changesWereMade){
+                    savedChanages = false;
+                }
 
                 break;
             }
 
             case 5:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
+
 
                 categorizeContestantsByAge(contestant, category14_16,  category17_19, category20_22, category23_25);
+
+
                 madeCategories = true;
 
                 break;
@@ -121,37 +159,42 @@ int main() {
 
             case 6:
             {
+                clearConsole(CLEARCONSOLE);
+
+
                 winnerDecider(contestant, winners);
+
+
                 winnersDecided = true;
                 break;
             }
 
             case 7:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
 
                 fileMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
+                cout << endl;
 
-                fileManagerMenu(contestant,menuChoice);
 
-                bool fileImported = menuChoice == 2;
-                if (fileImported){
-                    madeCategories = false;
-                    winnersDecided = false;
-                }
+                fileManagerMenu(contestant, menuChoice, savedChanages, madeCategories, winnersDecided, IDcounter, leftSpaces);
+                
 
                 break;
             }
 
             case 8: 
             {   
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
 
                 settingsMenuText();
                 menuChoice = cinCheckInt("Type a number to chose your action: ");
+                cout << endl;
+
 
                 settingsMenu(menuChoice);
+
 
                 break;
             }
@@ -162,7 +205,6 @@ int main() {
                 cout<< "Please enter a valid option!";
                 break;
             }
-                
         }
     } while (true);
 

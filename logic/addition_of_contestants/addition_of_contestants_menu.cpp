@@ -12,10 +12,6 @@ void printNamesOfAddedContestants(string savedNames[]);
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
     clearConsole(CLEARCONSOLE);
     
-    if (leftSpaces == 0){
-        cout << "No spaces left.\n Remove contestants to add more!\n";
-        return;
-    }
 
     switch (menuChoice){
         case 0:
@@ -29,7 +25,6 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
             inputContestantData(leftSpaces, IDcounter, contestant, false);
             break;
         }
-
         case 2:
         {
             inputContestantData(leftSpaces, IDcounter, contestant, true);
@@ -37,12 +32,15 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
         }
         case 3:
         {
-            // random with duplicating ages and names.
-            break;
-        }
-        case 4:
-        {
-            //remove randoms
+            printAllContestantsFormatted(contestant, "ALL CONTESTANTS");
+            cout << endl;
+            
+            int idToRemove;
+            do{
+                idToRemove = cinCheckInt("Enter ID of contestants to remove or 0 to cancel: ");
+                deleteContestantsByID(contestant, idToRemove);
+
+            } while(idToRemove != 0);
             break;
         }
         default:
@@ -83,13 +81,17 @@ int GetValidContestantInputCount(int& leftSpaces){
 /// @param leftSpaces Left free spaces in COntestants struct
 /// @param IDcounter The last ishued ID
 /// @param contestant Array of all contestants
-/// @param random If you want manual adition of contestants or random values
+/// @param random If you want manual addition of contestants or random values
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random){
+
+    if (leftSpaces == 0){
+        cout << "No spaces left.\n Remove contestants to add more!\n";
+        return;
+    }
 
     int contestantsToAdd = GetValidContestantInputCount(leftSpaces);
     leftSpaces -= contestantsToAdd;
 
-    //TODO: WORK WITH CHAR ARRAYS FOR NAMES
     string savedNames[MAXCONTESTANTS];
 
     
@@ -138,5 +140,5 @@ void printNamesOfAddedContestants(string savedNames[]){
 
     }
 
-    cout << " maybe saved successfully!" << endl;
+    cout << " maybe added successfully!" << endl;
 }
