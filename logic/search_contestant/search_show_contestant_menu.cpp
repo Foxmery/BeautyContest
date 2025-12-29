@@ -14,7 +14,9 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
     switch(menuChoice){
         case 0:
         {
+            clearConsole();
             return;
+            break;
         }
         case 1: 
         {
@@ -25,8 +27,6 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
             int lowestAge = searchLowestAge(contestant);
             bool foundPerson = searchContestantsByAge(contestant, lowestAge);
             
-
-
             break;
         }
         case 2:
@@ -67,6 +67,13 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
             bool foundPerson = searchContestantsByWoman(contestant, gender);
 
             unsuccessfulSearch(!foundPerson, "Person with gender ", gender ? 'f' : 'm');
+            break;
+        }
+        default:
+        {
+            clearConsole();
+            cout << "Invalid option!" << endl;
+            deBugInfo("ERROR: expected from 0 - 4 got: " << menuChoice);
             break;
         }
     }

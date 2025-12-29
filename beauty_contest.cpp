@@ -18,10 +18,7 @@ int main() {
     bool freeSpaces[MAXCONTESTANTS];
     int IDcounter = 1; 
 
-    //LATER: for showContestants
     bool winnersDecided = false;
-
-    //LATER: for showContestants
     bool madeCategories = false;
 
 
@@ -61,7 +58,7 @@ int main() {
 
                 additionOfContestantsMenu(contestant, leftSpaces, IDcounter, menuChoice);
 
-                if(autoCategorize){
+                if(AUTOCATEGORIZE){
                     categorizeContestantsByAge(contestant, category14_16,  category17_19, category20_22, category23_25);
                     madeCategories = true;
                 } else {
@@ -74,14 +71,17 @@ int main() {
                
             case 2:
             {   
-                //LATER: show submenu and text in main menu for categories only if they were made ex: bool madeCategories; false every time new contestant is added, true after initilised command
                 clearConsole();
-                
-                showContestants(contestant);
+
+                if (madeCategories || winnersDecided){
+                    showContestantMenuText(winnersDecided, madeCategories );
+                    menuChoice = cinCheckInt("Type a number to chose your action: ");
+                }
+                if (!(madeCategories || winnersDecided)) menuChoice = 1;
+                showContestantsMenu(contestant, winners, category14_16, category17_19, category20_22, category23_25, menuChoice, madeCategories, winnersDecided);
 
                 break;
             }
-               
 
             case 3:
             {   
@@ -95,7 +95,6 @@ int main() {
                 
                 break;
             }
-            
 
             case 4: 
             {
@@ -109,7 +108,6 @@ int main() {
 
                 break;
             }
-                
 
             case 5:
             {
@@ -127,6 +125,7 @@ int main() {
                 winnersDecided = true;
                 break;
             }
+
             case 7:
             {
                 clearConsole();
@@ -137,20 +136,23 @@ int main() {
                 fileManagerMenu(contestant,menuChoice);
 
                 bool fileImported = menuChoice == 2;
-                madeCategories = !fileImported ? false : madeCategories;
-                winnersDecided = !fileImported ? false : madeCategories;
+                if (fileImported){
+                    madeCategories = false;
+                    winnersDecided = false;
+                }
 
                 break;
             }
 
-            case 8: //SETTINGS
-            {
-                if(DEBUGMODE){
-                    cout << "DebugMode off!\n";  
-                } else {
-                    cout << "DebugMode on!\n";
-                }
-                DEBUGMODE = !DEBUGMODE;
+            case 8: 
+            {   
+                clearConsole();
+
+                settingsMenuText();
+                menuChoice = cinCheckInt("Type a number to chose your action: ");
+
+                settingsMenu(menuChoice);
+
                 break;
             }
 

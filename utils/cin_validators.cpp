@@ -19,14 +19,6 @@ void resetCin (){
     cin.clear(); // fix the stream
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
 }
-void casualCinReset(){
-    resetCin ();
-    deBugInfo("SYSTEM: cin restarted" << endl);
-}
-void neededCinReset(){
-    resetCin ();
-    deBugInfo("ERROR: cin broke. Restarted" << endl);
-}
 
 int cinCheckInt(const string& message) {
     int value;
@@ -34,10 +26,10 @@ int cinCheckInt(const string& message) {
         cout << message;
 
         if (cin >> value) {
-            casualCinReset();
+            resetCin();
             return value;
         } else {
-            neededCinReset();
+            resetCin();
             cout << "Invalid input. Try again." << endl;
         }
     }
@@ -50,10 +42,10 @@ double cinCheckDouble(const string& message) {
         cout << message;//LATER: to be able to put values with , or . and have them intact
 
         if (cin >> value) {
-            casualCinReset();
+            resetCin();
             return value;
         } else {
-            neededCinReset();
+            resetCin();
             cout << "Invalid input. Try again." << endl;
         }
     }
@@ -73,14 +65,14 @@ bool cinCheckIsWoman(const string& message){
 
 
         if (gender == 'm') {
-            casualCinReset();
+            resetCin();
             return false;
         } else if (gender == 'f') {
-            casualCinReset();
+            resetCin();
             return true;
         } else {
             cout << "Invalid gender. Try again (m/f): ";
-            neededCinReset();
+            resetCin();
             deBugInfo("ERROR: cin broke. Restarted" << endl);
             cin >> input;
         }

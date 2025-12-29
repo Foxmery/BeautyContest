@@ -20,21 +20,39 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
     switch (menuChoice){
         case 0:
         {
+            clearConsole();
             return;
+            break;
         }
         case 1:
+        {
             inputContestantData(leftSpaces, IDcounter, contestant, false);
             break;
+        }
+
         case 2:
+        {
             inputContestantData(leftSpaces, IDcounter, contestant, true);
             break;
-        // case 3:
-            //random with duplicating ages and names.
-        //     break;
-        default:
-            cout << "Invalid option!" << endl;
-            deBugInfo("ERROR: expected from 0 - 2 got: " << menuChoice);
+        }
+        case 3:
+        {
+            // random with duplicating ages and names.
             break;
+        }
+        case 4:
+        {
+            //remove randoms
+            break;
+        }
+        default:
+        {
+            clearConsole();
+            cout << "Invalid option!" << endl;
+            deBugInfo("ERROR: expected from 0 - 4 got: " << menuChoice);
+            break;
+        }
+            
     }
 }
 

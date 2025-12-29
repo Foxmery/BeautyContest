@@ -15,32 +15,44 @@ void sortingMenu (Contestants contestant[], int& menuChoice){
     switch (menuChoice){
         case 0:
         {
+            clearConsole();
             return;
+            break;
         }
         case 1:
+        {
             sortContestantsAgeAscending(contestant);
             cout << "Contestants sorted successefully!\n";
             break;
-
+        }
         case 2:
+        {
             sortContestantsName(contestant);
             break;
-
+        }
         case 3:
+        {
             outputSortedNoChangeAlphabetically(contestant);
             break;
-
+        }
         case 4:
+        {
             outputSortedNoChangeAge(contestant);
             break;
+        }
         case 5: 
+        {
             //LATER: put it on top of list
             sortContestantsID(contestant);
             break;
-;        default:
+        }
+        default:
+        {
+            clearConsole();
             cout << "Invalid option!" << endl;
-            deBugInfo("ERROR: expected from 0 - 5 got: " << menuChoice << endl);
+            deBugInfo("ERROR: expected from 0 - 5 got: " << menuChoice);
             break;
+        }
     }
 }
 

@@ -9,4 +9,12 @@
 #include "../../utils/settings.h"
 #include "../../utils/contestant.h"
 
-void showContestants(Contestants contestant[]);
+/// @brief Prints all contestants according to user
+/// @param contestant 
+/// @param winners 
+/// @param category14_16 
+/// @param category17_19 
+/// @param category20_22 
+/// @param category23_25 
+/// @param menuChoice 
+void showContestantsMenu(Contestants contestant[], Contestants winners[], Contestants category14_16[], Contestants category17_19[], Contestants category20_22[], Contestants category23_25[], int menuChoice, bool winnersDecided, bool madeCategories); 

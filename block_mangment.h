@@ -20,6 +20,11 @@ void mainMenuText(bool winnersDecided = false, bool madeCategories = false);
 
 //SUBMENUS
 
+/// @brief Outputs the show submenu.
+/// @param winnersDecided If winners were decided
+/// @param madeCategories If categories were made
+void showContestantMenuText(bool winnersDecided = true, bool madeCategories = true);
+
 /// @brief Outputs the search submenu.
 void searchMenuText();
 
@@ -37,6 +42,9 @@ void winnersMenuText();
 
 /// @brief Outputs the file submenu 
 void fileMenuText();
+
+/// @brief Outputs the file submenu
+void settingsMenuText();
 
 
 //MENUS HELPER/S

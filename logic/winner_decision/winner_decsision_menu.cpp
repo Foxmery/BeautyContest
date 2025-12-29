@@ -33,6 +33,8 @@ void winnerDecider (Contestants contestant[], Contestants winners[]){
 
     }
 
+    clearConsole();
+    
     sortContestants(winners, SORT_BY_POINTS_DESC);
     sortContestants(tooBadContestants, SORT_BY_POINTS_ASC);
     sortContestants(tooGoodContestants, SORT_BY_POINTS_ASC);

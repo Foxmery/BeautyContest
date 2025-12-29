@@ -37,7 +37,8 @@ void categorizeContestantsByAge(Contestants contestant[], Contestants category14
             deBugInfo("WARNING - categorizeContestantsByAge: Contestant is too old. Skipping. Age: " << contAge << endl);
         }        
     }
-
+    
+    clearConsole();
     printAllContestantsFormatted(category14_16, "Category 14/16 years");
     
     printAllContestantsFormatted(category17_19, "Category 17/19 years");
