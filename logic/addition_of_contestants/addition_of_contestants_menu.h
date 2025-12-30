@@ -14,10 +14,10 @@ using namespace std;
 #include "../../utils/utils.h"
 
 
-/// @brief Logic for contestnat menu
-/// @param contestant Contestants struct you want ot change
+/// @brief Manges logic for contestnat menu, adding manually, randomly and removing
+/// @param contestnt Contestants struct you want ot change
 /// @param leftSpaces Spaces left with tag isObjectUsed = false;
-/// @param IDcounter From what id to start
-/// @param menuChoice What to do
+/// @param IDcounter From what id to start adding
+/// @param menuChoice What the user choose to do 
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice);
 

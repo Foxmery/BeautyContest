@@ -12,11 +12,17 @@ int main() {
     bool madeCategories = false;
     bool savedChanages = true;
 
+
     Contestants contestant[MAXCONTESTANTS];
     if(loadFromFile(contestant, "zfiles/auto_save.dat")){
         cout << "Successfully loaded form auto_save.dat!" << endl;
+
+        IDcounter = biggestContestantID(contestant) + 1;
+        deBugInfo("SYSTEM: IDcounter: " << IDcounter << endl);
+
+        leftSpaces = countOfContestants(contestant);
+        deBugInfo("SYSTEM: leftSpaces: " << leftSpaces << endl);
     }
-    IDcounter = biggestContestantID(contestant) + 1;
     
 
     Contestants category14_16[MAXCONTESTANTS];
@@ -32,9 +38,11 @@ int main() {
     bool running = true;
     do {
 
-        if(AUTOSAVE && !savedChanages){
-            if (saveToFile(contestant, "zfiles/auto_save.dat"))
+        if(AUTOSAVE){
+            if (saveToFile(contestant, "zfiles/auto_save.dat")){
                 cout << "Changes were auto saved!" << endl;
+                savedChanages = true;
+            }
         }
 
         mainMenuText(winnersDecided,  madeCategories);

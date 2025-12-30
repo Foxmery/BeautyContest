@@ -15,7 +15,7 @@ void printContestant(Contestants contestant[], int index){
     cout << endl;
 }
 
-void printAllContestants(Contestants contestant[], string message){
+void printAllContestants(Contestants contestant[]){
     bool hasContestants = false;
 
     for(int i = 0; i < MAXCONTESTANTS; i++){

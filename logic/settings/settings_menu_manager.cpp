@@ -43,7 +43,7 @@ void settingsMenu (int menuChoice){
                 clearConsole();
                 AUTOSAVE = !AUTOSAVE;   
 
-                if(CLEARCONSOLE){
+                if(AUTOSAVE){
                     cout << "Auto save on!\n";
                 } else {
                     cout << "Auto save off!\n";  

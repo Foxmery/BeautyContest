@@ -17,7 +17,7 @@ inline bool DEBUGMODE = false;
 inline bool CLEARCONSOLE = true;
 
 /// @brief Switch for autosave feature
-inline bool AUTOSAVE = false;
+inline bool AUTOSAVE = true;
 
 /// @brief Switch for auto categorisation after adding new contestant
 inline bool AUTOCATEGORIZE = false;

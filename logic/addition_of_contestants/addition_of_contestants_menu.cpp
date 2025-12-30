@@ -1,14 +1,23 @@
 #include "addition_of_contestants_menu.h"
 
+
+/// @brief Gets user to type a value within the left spaces for contestants
+/// @param leftSpaces left space for use in the Contestants struct
+/// @return a valid number of contestants to add to the struct
 int GetValidContestantInputCount(int& leftSpaces);
+
+/// @brief Manager for random and single contestant initialisation
+/// @param leftSpaces Left free spaces in COntestants struct
+/// @param IDcounter The last ishued ID
+/// @param contestant Array of all contestants
+/// @param random If you want manual addition of contestants or random values
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random);
+
+/// @brief Output all the saved names to the user
+/// @param savedNames string array of all saved names
 void printNamesOfAddedContestants(string savedNames[]);
 
-/// @brief Manages submenu for contestant addition and removal
-/// @param contestant Contestants you want to change
-/// @param leftSpaces How many space are left in the contestant struct
-/// @param IDcounter From what id to start adding 
-/// @param menuChoice What the user choose to do 
+
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
     clearConsole(CLEARCONSOLE);
     
@@ -59,9 +68,6 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
 }
 
 
-/// @brief Gets user to type a value within the left spaces for contestants
-/// @param leftSpaces left space for use in the Contestants struct
-/// @return a valid number of contestants to add to the struct
 int GetValidContestantInputCount(int& leftSpaces){
 
     bool isValid = false;
@@ -81,11 +87,6 @@ int GetValidContestantInputCount(int& leftSpaces){
     return 0;
 }
 
-/// @brief Manager for random and single contestant initialisation
-/// @param leftSpaces Left free spaces in COntestants struct
-/// @param IDcounter The last ishued ID
-/// @param contestant Array of all contestants
-/// @param random If you want manual addition of contestants or random values
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random){
 
     if (leftSpaces <= 0){
@@ -124,8 +125,7 @@ void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant
     }
 }
 
-/// @brief Output all the saved names to the user
-/// @param savedNames string array of all saved names
+
 void printNamesOfAddedContestants(string savedNames[]){
 
     clearConsole(CLEARCONSOLE);

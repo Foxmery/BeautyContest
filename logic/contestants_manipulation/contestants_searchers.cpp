@@ -36,40 +36,6 @@ int getNextUsedSlot(Contestants contestant[], int startIdx) {
 }
 
 
-//Holly grail of search in contestant function but maybe will be split to smaller functions
-int searchContestantNumberPROTOTYPE(Contestants contestant[], const int& searchMode, const double& targetValue, const int& startIdx) {
-        //should implemented this
-
-    for (int i = startIdx; i < MAXCONTESTANTS; i++) {
-        
-        // Skip empty slots unless you are specifically looking for 'isObjectUsed' (case 1)
-        if (searchMode != 1 && !contestant[i].isObjectUsed) continue;
-
-        double currentVal = 0;
-        bool validMode = true;
-
-        switch (searchMode) {
-            case 0: currentVal = contestant[i].ID; break;
-            case 1: currentVal = contestant[i].isObjectUsed; break;
-            // Case 2 (Name) is removed -> Strings cannot be doubles!
-            case 3: currentVal = contestant[i].age; break;
-            case 4: currentVal = contestant[i].isWoman; break;
-            case 5: currentVal = contestant[i].hipCirc; break;
-            case 6: currentVal = contestant[i].shoulderCirc; break;
-            case 7: currentVal = contestant[i].calfCirc; break;
-            case 8: currentVal = contestant[i].neckCirc; break;
-            default: validMode = false; break;
-        }
-
-        if (validMode && currentVal == targetValue) {
-            deBugInfo("SYSTEM: Found match at index: " << i);
-            return i;
-        }
-    }
-    return -1;
-}
-
-
 bool searchContestantsByAge(Contestants contestant[],const int& age){
 
     bool foundPerson = false;

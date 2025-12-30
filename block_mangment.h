@@ -20,12 +20,12 @@ void mainMenuText(bool winnersDecided = false, bool madeCategories = false);
 
 //SUBMENUS
 
-/// @brief Outputs the show submenu.
+/// @brief Outputs the show submenu. Shows if different patterns depending on winners and categories
 /// @param winnersDecided If winners were decided
 /// @param madeCategories If categories were made
 void showContestantMenuText(bool winnersDecided = true, bool madeCategories = true);
 
-/// @brief Outputs the search submenu.
+/// @brief Outputs the search submenu. 
 void searchMenuText();
 
 /// @brief Outputs the sort submenu.
@@ -43,7 +43,7 @@ void winnersMenuText();
 /// @brief Outputs the file submenu 
 void fileMenuText();
 
-/// @brief Outputs the file submenu
+/// @brief Outputs the file submenu. Shows the settings toggle state
 void settingsMenuText();
 
 

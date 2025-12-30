@@ -17,7 +17,10 @@
 
 using namespace std;
 
-
-void sortingMenu (Contestants contestant[], int& menuChoice, bool& savedChanages);
+/// @brief Manages the logic for the sorting menu
+/// @param contestant Contestants to sort
+/// @param menuChoice what user wants to sort
+/// @param madeChanges If user made any change to the inputed contestants
+void sortingMenu (Contestants contestant[], int& menuChoice, bool& madeChanges);
 
 

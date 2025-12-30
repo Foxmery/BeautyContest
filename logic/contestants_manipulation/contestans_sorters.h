@@ -19,7 +19,7 @@ enum SortMode {
     SORT_BY_POINTS_DESC = 3
 };
 
-/// @brief Sort contestands by whatever you want
+/// @brief Manages the logic for the sorting menu
 /// @param contestant The contestants to sort
 /// @param mode       SORT_BY_ID, SORT_BY_NAME, SORT_BY_AGE_ASC, SORT_BY_POINTS_ASC, SORT_BY_POINTS_DESC
 void sortContestants(Contestants contestant[], SortMode mode);

@@ -5,19 +5,6 @@ void resetCin (){
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // yeet the garbage
 }
 
-bool checkCin(){
-    if(cin) 
-    {
-        resetCin();
-        deBugInfo("SYSTEM: cin restarted" << endl);
-        return true;
-    } else {
-        resetCin();
-        deBugInfo("ERROR: cin broke. Restarted" << endl);
-        return false;
-    }
-}
-
 
 int cinCheckInt(const string& message) {
     int value;
@@ -38,7 +25,7 @@ int cinCheckInt(const string& message) {
 double cinCheckDouble(const string& message) {
     double value;
     while (true) {
-        cout << message;//LATER: to be able to put values with , or . and have them intact
+        cout << message;
 
         if (cin >> value) {
             resetCin();

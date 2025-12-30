@@ -1,55 +1,49 @@
 #include "contestans_sorters.h"
 
-void sortContestants(Contestants contestant[], SortMode mode){
+void sortContestants(Contestants contestant[], SortMode mode) {
+    bool swapped = true;
 
-    int validIndex = getNextUsedSlot(contestant, 0);
-    int nextValidIndex = getNextUsedSlot(contestant, 1);
+    while (swapped) {
+        swapped = false;
+        
+        int validIndex = getNextUsedSlot(contestant);
 
+        while (validIndex != -1) {
+            
+            int nextValidIndex = getNextUsedSlot(contestant, validIndex + 1);
 
-
-    bool slotsNeedProcessing = !(validIndex == -1) && !(nextValidIndex == -1);
-    
-    
-    deBugInfo(endl << "SYSTEM: START validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl);
-    for(int i = 0; i < MAXCONTESTANTS && slotsNeedProcessing; i++){
-
-        bool shouldSwap = false;
-        switch (mode) {
-            case SORT_BY_ID:
-                shouldSwap = contestant[validIndex].ID > contestant[nextValidIndex].ID;
+            if (nextValidIndex == -1) {
                 break;
-            case SORT_BY_NAME:
-                shouldSwap = strcmp(contestant[validIndex].name, contestant[nextValidIndex].name) > 0;
-                break;
-            case SORT_BY_AGE_ASC:
-                shouldSwap = contestant[validIndex].age > contestant[nextValidIndex].age;
-                break;
-            case SORT_BY_POINTS_DESC:
-                shouldSwap = contestant[validIndex].points < contestant[nextValidIndex].points; 
-                break;
-            case SORT_BY_POINTS_ASC:
-                shouldSwap = contestant[validIndex].points > contestant[nextValidIndex].points;
-                break;
-        }
-
-        bool lastIndex = validIndex == 0;
-        if(shouldSwap){
-            swapContestantPlaces(contestant, validIndex, nextValidIndex);
-            if(lastIndex) {
-                i = nextValidIndex;
-            } else {
-                i = i - 2;
             }
-        } 
-        deBugInfo("SYSTEM: lastIndex: " << lastIndex << " | " << "shouldSwap: " << shouldSwap << endl);
 
-        validIndex = getNextUsedSlot(contestant, i);
-        nextValidIndex = getNextUsedSlot(contestant, validIndex + 1);
-        slotsNeedProcessing = !(validIndex == -1) && !(nextValidIndex == -1);
-        deBugInfo("SYSTEM: validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl << endl);
+            bool shouldSwap = false;
 
+            switch (mode) {
+                case SORT_BY_ID:
+                    shouldSwap = contestant[validIndex].ID > contestant[nextValidIndex].ID;
+                    break;
+                case SORT_BY_NAME:
+                    shouldSwap = strcmp(contestant[validIndex].name, contestant[nextValidIndex].name) > 0;
+                    break;
+                case SORT_BY_AGE_ASC:
+                    shouldSwap = contestant[validIndex].age > contestant[nextValidIndex].age;
+                    break;
+                case SORT_BY_POINTS_DESC:
+                    shouldSwap = contestant[validIndex].points < contestant[nextValidIndex].points;
+                    break;
+                case SORT_BY_POINTS_ASC:
+                    shouldSwap = contestant[validIndex].points > contestant[nextValidIndex].points;
+                    break;
+            }
 
-        deBugInfo("validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl);
+            if (shouldSwap) {
+                swapContestantPlaces(contestant, validIndex, nextValidIndex);
+                swapped = true;
+            }
+
+            validIndex = nextValidIndex;
+        }
     }
+    
+    deBugInfo("SYSTEM: Sorting complete." << endl);
 }
-
