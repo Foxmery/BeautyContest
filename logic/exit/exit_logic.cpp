@@ -16,11 +16,11 @@ bool askUserExit(Contestants contestant[], bool savedChanages){
     } else {
         
         cout << "You have unsaved changes!" << endl;
-        char answer = cinCheckYN("Do you want to save them? yes / no / Cancel");
+        char answer = cinCheckYN("Do you want to save them in files/auto_save.dat? yes / no / Cancel");
 
         if (answer == 'y'){
             clearConsole(CLEARCONSOLE);
-            if (saveToFile(contestant, "contestants.dat")){
+            if (saveToFile(contestant, "zfiles/auto_save.dat")){
                 cout << "Data saved successfully!" << endl;
                 exiting = true;
             } else {

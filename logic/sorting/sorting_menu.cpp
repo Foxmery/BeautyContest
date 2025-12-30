@@ -11,29 +11,30 @@ void outputSortedNoChangeAge(Contestants contestant[]);
 
 void sortingMenu (Contestants contestant[], int& menuChoice, bool& savedChanages){
 
+    clearConsole(CLEARCONSOLE);
+
     switch (menuChoice){
         case 0:
         {
-            clearConsole();
             return;
             break;
         }
         case 1:
         {
-            sortContestantsAgeAscending(contestant);
+            sortContestants(contestant,SORT_BY_AGE_ASC);
             cout << "Contestants sorted successfully!\n";
             savedChanages = false;
             break;
         }
         case 2:
         {
-            sortContestantsName(contestant);
+            sortContestants(contestant, SORT_BY_NAME);
             savedChanages = false;
             break;
         }
         case 3:
         {
-            sortContestantsID(contestant);
+            sortContestants(contestant, SORT_BY_ID);
             savedChanages = false;
             break;
         }
@@ -49,7 +50,7 @@ void sortingMenu (Contestants contestant[], int& menuChoice, bool& savedChanages
         }
         default:
         {
-            clearConsole();
+            
             cout << "Invalid option!" << endl;
             deBugInfo("ERROR: expected from 0 - 5 got: " << menuChoice);
             break;
@@ -93,22 +94,21 @@ void outputSortedNoChangeAlphabetically(Contestants contestant[]){
     Contestants alphSortedCont[MAXCONTESTANTS];
     dupeContestantInfo(contestant, alphSortedCont);
 
-    sortContestantsName(alphSortedCont);
+    sortContestants(alphSortedCont, SORT_BY_NAME);
 
-    printAllContestants(alphSortedCont);
+    printAllContestantsFormatted(alphSortedCont, "CONTESTANTS SORTED BY NAME");
 }
 
 void outputSortedNoChangeAge(Contestants contestant[]){
     Contestants alphSortedCont[MAXCONTESTANTS];
     dupeContestantInfo(contestant, alphSortedCont);
 
-    sortContestantsAgeAscending(alphSortedCont);
+    sortContestants(alphSortedCont, SORT_BY_AGE_ASC);
 
-    printAllContestants(alphSortedCont);
+    printAllContestantsFormatted(alphSortedCont,"CONTESTANTS SORTED BY AGE");
 }
 
 void sortContestantsName(Contestants contestant[]){
-    //LATER: if names are equal compare ages
     int validIndex = getNextUsedSlot(contestant, 0);
     int nextValidIndex = getNextUsedSlot(contestant, 1);
 
@@ -118,7 +118,6 @@ void sortContestantsName(Contestants contestant[]){
     for(int i = 0; i < MAXCONTESTANTS && slotsNeedProcessing; i++){
 
         bool lastIndex = validIndex == 0;
-        //LATER: make this check case insensitive
         bool nowLargerNext = strcmp(contestant[validIndex].name, contestant[nextValidIndex].name) > 0;
         if(nowLargerNext){
             swapContestantPlaces(contestant, validIndex, nextValidIndex);
@@ -150,7 +149,6 @@ void sortContestantsID(Contestants contestant[]){
     for(int i = 0; i < MAXCONTESTANTS && slotsNeedProcessing; i++){
 
         bool lastIndex = validIndex == 0;
-        //LATER: make this check case insensitive
         bool nowLargerNext = contestant[validIndex].ID > contestant[nextValidIndex].ID;
         if(nowLargerNext){
             swapContestantPlaces(contestant, validIndex, nextValidIndex);
@@ -182,7 +180,6 @@ void sortContestantsPoints(Contestants contestant[]){
     for(int i = 0; i < MAXCONTESTANTS && slotsNeedProcessing; i++){
 
         bool lastIndex = validIndex == 0;
-        //LATER: make this check case insensitive
         bool nowLargerNext = contestant[validIndex].points > contestant[nextValidIndex].points;
         if(nowLargerNext){
             swapContestantPlaces(contestant, validIndex, nextValidIndex);
@@ -203,6 +200,51 @@ void sortContestantsPoints(Contestants contestant[]){
         deBugInfo("validIndex: " << validIndex << " | " << "nextValidIndex: " << nextValidIndex << " | " << "slotsNeedProcessing: " << slotsNeedProcessing << endl);
     }
 }
+
+// switch (menuChoice){
+//         case 0:
+//         {
+//             clearConsole();
+//             return;
+//             break;
+//         }
+//         case 1:
+//         {
+//             sortContestants(contestant);
+//             cout << "Contestants sorted successfully!\n";
+//             savedChanages = false;
+//             break;
+//         }
+//         case 2:
+//         {
+//             sortContestantsName(contestant);
+//             savedChanages = false;
+//             break;
+//         }
+//         case 3:
+//         {
+//             sortContestantsID(contestant);
+//             savedChanages = false;
+//             break;
+//         }
+//         case 4:
+//         {
+//             outputSortedNoChangeAge(contestant);
+//             break;
+//         }
+//         case 5: 
+//         {
+//             outputSortedNoChangeAlphabetically(contestant);
+//             break;
+//         }
+//         default:
+//         {
+//             clearConsole();
+//             cout << "Invalid option!" << endl;
+//             deBugInfo("ERROR: expected from 0 - 5 got: " << menuChoice);
+//             break;
+//         }
+//     }
 
 
 

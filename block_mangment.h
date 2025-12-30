@@ -10,7 +10,7 @@
 using namespace std;
 
 
-//MAIN MENU/S
+//MAIN MENU
 
 /// @brief Outputs Main Menu
 /// @param winnersDecided If winners were decided

@@ -6,6 +6,8 @@
 #include "../contestants_manipulation/contestants_printers.h"
 #include "../contestants_manipulation/contestants_searchers.h"
 #include "../contestants_manipulation/contestants_manager.h"
+#include "../contestants_manipulation/contestans_sorters.h"
+
 
 
 #include "../../block_mangment.h"

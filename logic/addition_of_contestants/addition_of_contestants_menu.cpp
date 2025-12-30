@@ -4,11 +4,11 @@ int GetValidContestantInputCount(int& leftSpaces);
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random);
 void printNamesOfAddedContestants(string savedNames[]);
 
-/// @brief Manages submenu functions choice by user
-/// @param contestant 
-/// @param leftSpaces 
-/// @param IDcounter 
-/// @param menuChoice 
+/// @brief Manages submenu for contestant addition and removal
+/// @param contestant Contestants you want to change
+/// @param leftSpaces How many space are left in the contestant struct
+/// @param IDcounter From what id to start adding 
+/// @param menuChoice What the user choose to do 
 void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& IDcounter, int& menuChoice){
     clearConsole(CLEARCONSOLE);
     

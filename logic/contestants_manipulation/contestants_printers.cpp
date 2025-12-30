@@ -14,15 +14,16 @@ void printContestant(Contestants contestant[], int index){
     cout << "Points: " << contestant[index].points << "   ";
     cout << endl;
 }
-void printAllContestants(Contestants contestant[]){
+
+void printAllContestants(Contestants contestant[], string message){
     bool hasContestants = false;
-    //LATER: implement  i = getNextUsedSlot(contestant, i + 1) hehehe if it really works
+
     for(int i = 0; i < MAXCONTESTANTS; i++){
 
         int validIndex = getNextUsedSlot(contestant, i);
         i = validIndex;
 
-        //When findNextIndexByStatus is done it outputs -1. This "if" breaks when detects -1;
+
         if (validIndex == -1) {
             cout << endl;
             
@@ -36,9 +37,9 @@ void printAllContestants(Contestants contestant[]){
 }
 
 void printAllContestantsFormatted(Contestants contestant[], string message){
-    titlePrinter(message, SCREENWIDTH, '-');
+    titlePrinter(message, TITLEWIDTH, '-');
     printAllContestants(contestant);
-    titlePrinter("", SCREENWIDTH, '-');
+    titlePrinter("", TITLEWIDTH, '-');
     cout << endl;
     
 }

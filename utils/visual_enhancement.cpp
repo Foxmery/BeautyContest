@@ -1,6 +1,3 @@
 #include "visual_enhancement.h"
 
-void clearConsole(bool clear) {
-    if (clear) system("cls");
-    
-}
+void clearConsole(bool clear) { if (clear) system("cls"); }

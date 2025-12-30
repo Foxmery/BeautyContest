@@ -6,8 +6,6 @@
 
 using namespace std;
 
-
-// #include "../contestants_manipulation/contestants_manager.h"
 #include "../contestants_manipulation/contestants_searchers.h"
 
 #include "../../utils/visual_enhancement.h"
@@ -16,7 +14,7 @@ using namespace std;
 #include "../../utils/cin_validators.h"
 #include "../../utils/utils.h"
 
-/// @brief 
-/// @param contestant 
-/// @param menuChoice 
+/// @brief Logic for contestants menu
+/// @param contestant Where you want to search
+/// @param menuChoice What user wants to search
 void searchShowContestantsMenu(Contestants contestant[], int& menuChoice);

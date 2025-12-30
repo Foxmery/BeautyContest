@@ -6,10 +6,10 @@
 
 using namespace std;
 
-#define deBugInfo(message) if (DEBUGMODE) { cout << message; } // macro
-void deBugStringArray (string s[],int size);
+/// @brief macro i used to debug my code easily
+#define deBugInfo(message) if (DEBUGMODE) { cout << message; } 
 
-// 
-// void deBugInfo(const sting& message){
-//     if (DEBUGMODE) cout << message << endl;
-// } // does not work
+/// @brief Debugger that prints full array of strings
+/// @param s What assay you want to print
+/// @param size The number of string in the array
+void deBugStringArray (string s[], int size);

@@ -1,9 +1,5 @@
 #include "categorising.h"
 
-
-
-// - Categories: I. 14-16  II. 17-19  III. 20-22 IV. 23-25 (in different arrays)
-// - Output all the categories (if no contestants output a message for that)
 void categorizeContestantsByAge(Contestants contestant[], Contestants category14_16[], Contestants category17_19[], Contestants category20_22[], Contestants category23_25[]){
     for(int i = getNextUsedSlot(contestant, 0); i != -1; i = getNextUsedSlot(contestant, i + 1)){
         deBugInfo("SYSTEM: i: " << i << endl);

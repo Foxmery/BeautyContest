@@ -2,13 +2,11 @@
 
 void titlePrinter(string title, int width, char filler = ' ');
 
-//LATER: make exit go to the most right of the screen according to the width
-//LATER: Multiple languages... not easy i know... but do it with txt file too
 
 void mainMenuText(bool winnersDecided, bool madeCategories) {
     cout << endl;
     
-    titlePrinter("BEAUTY CONTEST", SCREENWIDTH, '-');
+    titlePrinter("BEAUTY CONTEST", TITLEWIDTH, '-');
     cout <<
         "1. Contestant\n"
         "    1.1 Manual adding\n"
@@ -34,7 +32,7 @@ void mainMenuText(bool winnersDecided, bool madeCategories) {
         "7. File\n"
         "    7.1 Export\n"
         "    7.2 Import\n"
-        "    7.3 Reset..\n"
+        "    7.3 Reset...\n"
         "8. Settings...\n"
         "0. Exit"
         << endl;
@@ -44,7 +42,7 @@ void addingContestantsMenuText(){
     clearConsole();
     cout << endl;
 
-    titlePrinter("CONTESTANT", SCREENWIDTH, '-');
+    titlePrinter("CONTESTANT", TITLEWIDTH, '-');
     cout <<
         "    1. Manual adding\n"
         "    2. Random values\n"
@@ -55,7 +53,7 @@ void addingContestantsMenuText(){
 
 void showContestantMenuText(bool winnersDecided, bool madeCategories){
     bool large = winnersDecided || madeCategories;
-    if (large) titlePrinter("SHOW", SCREENWIDTH, '-');
+    if (large) titlePrinter("SHOW", TITLEWIDTH, '-');
     cout <<
            (large          ? "    1. All contestants\n" : "")
         << (winnersDecided ? "    2. Winners\n"         : "")
@@ -68,7 +66,7 @@ void searchMenuText(){
     clearConsole();
     cout << endl;
 
-    titlePrinter("SEARCH", SCREENWIDTH, '-');
+    titlePrinter("SEARCH", TITLEWIDTH, '-');
     cout <<
         "    1. The lowest age\n"
         "    2. Age\n"
@@ -83,7 +81,7 @@ void sortMenuText(){
     clearConsole();
     cout << endl;
 
-    titlePrinter("SORT", SCREENWIDTH, '-');
+    titlePrinter("SORT", TITLEWIDTH, '-');
     cout <<
         "    1. Sort by Age ascending\n"
         "    2. Sort by Name\n"
@@ -100,13 +98,13 @@ void fileMenuText(){
     clearConsole();
     cout << endl;
 
-    titlePrinter("FILE", SCREENWIDTH, '-');
+    titlePrinter("FILE", TITLEWIDTH, '-');
     cout <<
         "    1. Export\n"
         "    2. Import\n"
         "    3. Reset auto_save.dat\n"
         "    4. Reset contestants.dat\n"
-        "    5. Reset contestants\n"
+        "    5. Reset Contestants struct\n"
         "    6. Reset EVERYTHING\n"
         "    0. Back\n"
         << endl;
@@ -114,7 +112,7 @@ void fileMenuText(){
 
 void settingsMenuText(){
 
-    titlePrinter("SETTINGS", SCREENWIDTH, '-');
+    titlePrinter("SETTINGS", TITLEWIDTH, '-');
     cout << 
         "   1. Debugmode = " << (DEBUGMODE ? "true" : "false") << "\n"
         "   2. Clear console = " << (CLEARCONSOLE ? "true" : "false") << "\n"
@@ -165,7 +163,7 @@ void titlePrinter(string title, int width, char filler){
 void mainMenuTextBASEEDITION() {
     cout << endl;
     
-    titlePrinter("BEAUTY CONTEST", SCREENWIDTH, '-');
+    titlePrinter("BEAUTY CONTEST", TITLEWIDTH, '-');
     cout <<
         "1. Add new contestant\n"
         "    1.1 Manual adding\n"
@@ -186,7 +184,7 @@ void searchMenuTextBASEEDITION(){
     clearConsole(CLEARCONSOLE);
     cout << endl;
 
-    titlePrinter("SEARCH", SCREENWIDTH, '-');
+    titlePrinter("SEARCH", TITLEWIDTH, '-');
     cout <<
         "    1. Lowest age \n"
         "    2. Name\n"
@@ -198,7 +196,7 @@ void winnersMenuText(){
     clearConsole(CLEARCONSOLE);
     cout << endl;
 
-    titlePrinter("Decide winners", SCREENWIDTH, '-');
+    titlePrinter("Decide winners", TITLEWIDTH, '-');
     cout <<
         "    1. Scores between 0.54 - 0.62\n"
         "    2. Output Scores > 0.63 ascending, then < 0.53\n"
