@@ -22,5 +22,5 @@ void randomContestantGenerator (Contestants& contestant, const int& ID);
 
 /// @brief Puts infor from user to contestant
 /// @param contestant the contestant that needs manipulation
-/// @param IDcounter the last id ishued
+/// @param IDcounter the last id issued
 void readSingleContestant(Contestants& contestant, const int& IDcounter);

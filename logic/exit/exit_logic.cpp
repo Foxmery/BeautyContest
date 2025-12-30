@@ -1,6 +1,8 @@
 #include "exit_logic.h"
 
-
+/// @brief Checks if user typed yes , no or cancel gets the first char to validate and is case insensitive
+/// @param message What message you want to output 
+/// @return what is the persons answer
 char cinCheckYN(string message);
 
 

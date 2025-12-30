@@ -1,11 +1,5 @@
 #include "beauty_contest.h"
 
-//TODO: Make settings in a struct
-
-
-
-
-
 int main() {
     clearConsole(CLEARCONSOLE);
     srand(time(0)); 
@@ -135,7 +129,7 @@ int main() {
                 cout << endl;
 
 
-                sortingMenu(contestant, menuChoice);
+                sortingMenu(contestant, menuChoice, savedChanages);
 
 
                 bool changesWereMade = menuChoice == 1 || menuChoice == 2 || menuChoice == 3; 

@@ -16,4 +16,7 @@ using namespace std;
 #include "../../utils/cin_validators.h"
 #include "../../utils/utils.h"
 
+/// @brief 
+/// @param contestant 
+/// @param menuChoice 
 void searchShowContestantsMenu(Contestants contestant[], int& menuChoice);

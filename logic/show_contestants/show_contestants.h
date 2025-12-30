@@ -11,7 +11,7 @@
 
 /// @brief Prints all contestants according to user
 /// @param contestant 
-/// @param winners 
+/// @param winners If 
 /// @param category14_16 
 /// @param category17_19 
 /// @param category20_22 

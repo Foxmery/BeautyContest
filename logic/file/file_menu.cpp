@@ -26,8 +26,11 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
                 cout << "Data loaded successfully!" << endl;
 
                 IDcounter = biggestContestantID(contestant) + 1;
+                deBugInfo("SYSTEM: IDcounter: " << IDcounter << endl);
 
                 leftSpaces = countOfContestants(contestant);
+                deBugInfo("SYSTEM: leftSpaces: " << leftSpaces << endl);
+
                 madeCategories = false;
                 winnersDecided = false;
                 savedChanages = true;
@@ -37,7 +40,6 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
         }
         case 3:
         {
-            
             if (removeFileData("zfiles/auto_save.dat")){
                 cout << "Scraped auto_save.dat successfully!" << endl;
 
@@ -59,7 +61,7 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
         case 5:
         {
             resetContestants(contestant);
-            cout << "Deleted all contestants!" << endl;
+            cout << "Scraped all contestants!" << endl;
 
             leftSpaces = MAXCONTESTANTS;
             madeCategories = false;
@@ -79,7 +81,7 @@ void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChana
             }
 
             resetContestants(contestant);
-            cout << "Deleted all contestants!" << endl;
+            cout << "Scraped all contestants!" << endl;
 
             leftSpaces = MAXCONTESTANTS;
             madeCategories = false;

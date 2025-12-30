@@ -58,3 +58,9 @@ bool searchContestantsByWoman(Contestants contestant[],const bool& isWoman);
 /// @return if person was found
 bool searchContestantByName(Contestants contestant[], char nameToSearch[], int sizeToSearch, string didYouMeanNames[]);
 
+/// @brief Finds lowest age in Contestants struct
+/// @param contestant Array of all contestants
+/// @return If it found a match
+int searchLowestAge (Contestants contestant[]);
+
+

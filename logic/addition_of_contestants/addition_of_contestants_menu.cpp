@@ -35,13 +35,16 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
             printAllContestantsFormatted(contestant, "ALL CONTESTANTS");
             cout << endl;
             
-            int idToRemove;
+            int idToRemove = 0;
             do{
+                if (idToRemove != 0) {
+                    deleteContestantsByID(contestant, idToRemove);
+                    leftSpaces++;
+                }
                 idToRemove = cinCheckInt("Enter ID of contestants to remove or 0 to cancel: ");
-                deleteContestantsByID(contestant, idToRemove);
-                leftSpaces--;
-                
             } while(idToRemove != 0);
+
+            clearConsole(CLEARCONSOLE);
             break;
         }
         default:
@@ -85,7 +88,7 @@ int GetValidContestantInputCount(int& leftSpaces){
 /// @param random If you want manual addition of contestants or random values
 void inputContestantData(int& leftSpaces, int& IDcounter, Contestants contestant[], bool random){
 
-    if (leftSpaces == 0){
+    if (leftSpaces <= 0){
         cout << "No spaces left.\n Remove contestants to add more!\n";
         return;
     }

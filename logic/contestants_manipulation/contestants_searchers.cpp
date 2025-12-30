@@ -11,15 +11,16 @@
  */
 int findNextIndexByStatus(Contestants contestant[], int searchingFor = 0, int afterIndex = 0) {
 
-    deBugInfo("SYSTEM:FNIBS Starting search at index: " << afterIndex << endl);
+    deBugInfo("SYSTEM - FNIBS:  was lunched!"  << endl);
+    // deBugInfo("SYSTEM:FNIBS Starting search at index: " << afterIndex << endl);
     for (int n = afterIndex; n < MAXCONTESTANTS; n++) {
         int cont = contestant[n].isObjectUsed;
         if (cont == searchingFor) {
-            deBugInfo("SYSTEM:FNIBS Found match at index: "<< n << endl);
+            // deBugInfo("SYSTEM:FNIBS Found match at index: "<< n << endl);
             return n;
         }
     }
-    deBugInfo("SYSTEM:FNIBS No spaces with " << searchingFor << endl);
+    // deBugInfo("SYSTEM:FNIBS No spaces with " << searchingFor << endl);
     return -1;
 }
 
@@ -93,14 +94,10 @@ bool searchContestantsByAge(Contestants contestant[],const int& age){
 bool searchContestantsByWoman(Contestants contestant[],const bool& isWoman){
 
     bool foundPerson = false;
-    int validIndex = getNextUsedSlot(contestant);
-    for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++){
+    for(int i = getNextUsedSlot(contestant); i < MAXCONTESTANTS && i != -1; i = getNextUsedSlot(contestant, i + 1)){
 
-        validIndex = getNextUsedSlot(contestant, i);
-
-        i = validIndex;
-        if (contestant[validIndex].isWoman == isWoman){
-            printContestant(contestant, validIndex);
+        if (contestant[i].isWoman == isWoman){
+            printContestant(contestant, i);
             foundPerson = true;
         }
     }
@@ -109,14 +106,13 @@ bool searchContestantsByWoman(Contestants contestant[],const bool& isWoman){
 int biggestContestantID (Contestants contestant[]){
 
     int biggestID = 0;
-    int validIndex = getNextUsedSlot(contestant);
-    for(int i = validIndex; i < MAXCONTESTANTS && validIndex != -1; i++){
+    
+    for(int i = getNextUsedSlot(contestant); i < MAXCONTESTANTS && i != -1; i = getNextUsedSlot(contestant, i + 1)){
+        deBugInfo("SYSTEM - biggestContestantID: I: " << i << endl);
+        if (contestant[i].ID > biggestID){
+            biggestID = contestant[i].ID;
+            deBugInfo("SYSTEM: biggestID: " << biggestID << " | I: " << i << endl);
 
-        validIndex = getNextUsedSlot(contestant, i);
-
-        i = validIndex;
-        if (contestant[validIndex].ID > biggestID){
-            biggestID = contestant[validIndex].ID ;
         }
     }
     return biggestID;
@@ -125,9 +121,15 @@ int biggestContestantID (Contestants contestant[]){
 int countOfContestants(Contestants contestant[]){
     int contestantCount = 0;
 
-    for(int i = 0; i < MAXCONTESTANTS; i++)
-        contestantCount += contestant[i].isObjectUsed;
+    for(int i = 0; i < MAXCONTESTANTS; i++){
 
+        if (!contestant[i].isObjectUsed){
+            contestantCount = contestantCount + 1;
+            deBugInfo("SYSTEM:  contestantCount got incremented!" << endl);
+
+        }
+        deBugInfo("SYSTEM: contestantCount: " << contestantCount << endl;)
+    }
     return contestantCount;
 }
 
@@ -178,4 +180,29 @@ bool searchContestantByName(Contestants contestant[], char nameToSearch[], int s
         deBugInfo("Next validIndex: " << validIndex << endl);
     }
     return foundPerson;
+}
+
+int searchLowestAge (Contestants contestant[]){
+
+    int validIndex = getNextUsedSlot(contestant);
+    int lowestAge = contestant[validIndex].age;
+    for(int i = 1; i < MAXCONTESTANTS; i++){
+
+        validIndex = getNextUsedSlot(contestant, i);
+        i = validIndex;
+
+
+        if (validIndex == -1) {
+            cout << endl;
+            break;
+        }
+
+
+        int contestantAge = contestant[validIndex].age;
+        if(contestantAge <= lowestAge){
+            lowestAge = contestantAge;
+        }
+
+    }
+    return lowestAge;
 }

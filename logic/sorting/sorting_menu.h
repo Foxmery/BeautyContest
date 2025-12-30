@@ -16,6 +16,6 @@
 using namespace std;
 
 
-void sortingMenu (Contestants contestant[], int& menuChoice);
+void sortingMenu (Contestants contestant[], int& menuChoice, bool& savedChanages);
 
 

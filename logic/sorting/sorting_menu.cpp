@@ -1,7 +1,6 @@
 #include "sorting_menu.h"
 
-//LATER: SWITHC TO NEW SORTING FUNCTION sortContestants
-//LATER: put fucnitons into separate file into contestans_manipulation/sorting.cpp
+
 void sortContestantsID(Contestants contestant[]);
 void sortContestantsName(Contestants contestant[]);
 void sortContestantsAgeAscending(Contestants contestant[]);
@@ -10,7 +9,7 @@ void outputSortedNoChangeAge(Contestants contestant[]);
 
 
 
-void sortingMenu (Contestants contestant[], int& menuChoice){
+void sortingMenu (Contestants contestant[], int& menuChoice, bool& savedChanages){
 
     switch (menuChoice){
         case 0:
@@ -23,16 +22,19 @@ void sortingMenu (Contestants contestant[], int& menuChoice){
         {
             sortContestantsAgeAscending(contestant);
             cout << "Contestants sorted successfully!\n";
+            savedChanages = false;
             break;
         }
         case 2:
         {
             sortContestantsName(contestant);
+            savedChanages = false;
             break;
         }
         case 3:
         {
             sortContestantsID(contestant);
+            savedChanages = false;
             break;
         }
         case 4:
