@@ -1,8 +1,11 @@
+/// @file contestants_searchers.cpp
+/// @brief Implementation of searching algorithms (by ID, Name, Age, etc.).
+
 #include "contestants_searchers.h"
 
 /**
  * @brief Outputs the first contestant it sees depending on if you want the contestant spot to be free or used.
- * * It searches after a certain index so after putting it in a cycle it doesn`t output the same contestant
+ * * It searches after a certain index so after putting it in a cycle it doesnt output the same contestant
  * when no match found after the index outputs -1 which has to be detected with if statement.
  * * @param contestant  The array of all contestants.
  * @param searchingFor The value you want isObjectUsed to match.

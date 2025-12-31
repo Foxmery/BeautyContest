@@ -1,3 +1,6 @@
+/// @file settings_menu_manager.cpp
+/// @brief Handles user interactions for changing program settings (Debug, AutoSave, etc.).
+
 #include "settings_menu_manager.h"
 
 void settingsMenu (int menuChoice){
@@ -7,14 +10,14 @@ void settingsMenu (int menuChoice){
         switch (menuChoice){
             case 0:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
                 
                 return;
                 break;
             }
             case 1:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
                 DEBUGMODE = !DEBUGMODE;
 
                 if(DEBUGMODE){
@@ -27,7 +30,7 @@ void settingsMenu (int menuChoice){
             }
             case 2:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
                 CLEARCONSOLE = !CLEARCONSOLE;   
 
                 if(CLEARCONSOLE){
@@ -40,7 +43,7 @@ void settingsMenu (int menuChoice){
             }
             case 3:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
                 AUTOSAVE = !AUTOSAVE;   
 
                 if(AUTOSAVE){
@@ -50,11 +53,11 @@ void settingsMenu (int menuChoice){
                 }
 
                 break;
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
             }
             case 4:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
                 AUTOCATEGORIZE = !AUTOCATEGORIZE;  
 
                 if(AUTOCATEGORIZE){
@@ -67,7 +70,7 @@ void settingsMenu (int menuChoice){
             } 
             default:
             {
-                clearConsole();
+                clearConsole(CLEARCONSOLE);
                 cout << "Invalid option!" << endl;
                 deBugInfo("ERROR: expected from 0 - 6 got: " << menuChoice);
                 break;

@@ -1,5 +1,10 @@
+/// @file beauty_contest.cpp
+/// @brief Main entry point for the Beauty Contest application.
+/// @details This file contains the main loop, menu navigation, and program initialization.
+
 #include "beauty_contest.h"
 
+/// @brief The main entry point of the application.
 int main() {
     clearConsole(CLEARCONSOLE);
     srand(time(0)); 

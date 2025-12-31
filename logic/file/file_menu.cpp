@@ -1,3 +1,6 @@
+/// @file file_menu.cpp
+/// @brief Implementation of the File Manager menu interactions.
+
 #include "file_menu.h"
 
 void fileManagerMenu(Contestants contestant[], int& menuChoice, bool& savedChanages, bool& madeCategories, bool& winnersDecided, int& IDcounter, int& leftSpaces){

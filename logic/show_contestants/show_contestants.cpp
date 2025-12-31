@@ -1,3 +1,6 @@
+/// @file show_contestants.cpp
+/// @brief Logic for displaying various lists of contestants (All, Winners, Categories).
+
 #include "show_contestants.h"
 
 void showContestantsMenu(Contestants contestant[], Contestants winners[], Contestants category14_16[], Contestants category17_19[], Contestants category20_22[], Contestants category23_25[], int menuChoice, bool winnersDecided, bool madeCategories){    
@@ -5,19 +8,19 @@ void showContestantsMenu(Contestants contestant[], Contestants winners[], Contes
     switch(menuChoice){
         case 0:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             return;
             break;
         }
         case 1:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             printAllContestantsFormatted(contestant, "ALL CONTESTANTS");
             break;
         }
         case 2:
         {   
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             if (!madeCategories){
                 cout << "Winners have not been decided yet!\n";
                 break;
@@ -27,7 +30,7 @@ void showContestantsMenu(Contestants contestant[], Contestants winners[], Contes
         }
         case 3:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             if (!winnersDecided){
                 cout << "Categories have not been made yet!\n";
                 break;
@@ -45,7 +48,7 @@ void showContestantsMenu(Contestants contestant[], Contestants winners[], Contes
         }        
         default:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             cout << "Invalid option!" << endl;
             deBugInfo("ERROR: expected from 0 - 3 got: " << menuChoice);
             break;

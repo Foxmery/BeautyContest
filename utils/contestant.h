@@ -1,8 +1,13 @@
+/// @file contestant.h
+/// @brief Defines the Contestants structure and related data fields.
+
 #pragma once
 #include <string>
 #include "settings.h"
 
+/// @brief A structure to hold all details for a single beauty contestant.
 struct Contestants {
+
     /// @brief Unique identifier
     int ID;          
 

@@ -1,3 +1,6 @@
+/// @file winner_decsision_menu.cpp
+/// @brief Logic for calculating and displaying the winners.
+
 #include "winner_decsision_menu.h"
 
 void winnerDecider (Contestants contestant[], Contestants winners[]){
@@ -33,7 +36,7 @@ void winnerDecider (Contestants contestant[], Contestants winners[]){
 
     }
 
-    clearConsole();
+    clearConsole(CLEARCONSOLE);
     
     sortContestants(winners, SORT_BY_POINTS_DESC);
     sortContestants(tooBadContestants, SORT_BY_POINTS_ASC);

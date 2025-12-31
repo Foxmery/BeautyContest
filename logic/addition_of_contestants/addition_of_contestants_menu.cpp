@@ -1,3 +1,6 @@
+/// @file addition_of_contestants_menu.cpp
+/// @brief Logic for adding new contestants (manual and random).
+
 #include "addition_of_contestants_menu.h"
 
 
@@ -25,7 +28,7 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
     switch (menuChoice){
         case 0:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             return;
             break;
         }
@@ -58,7 +61,7 @@ void additionOfContestantsMenu(Contestants contestant[], int& leftSpaces, int& I
         }
         default:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             cout << "Invalid option!" << endl;
             deBugInfo("ERROR: expected from 0 - 3 got: " << menuChoice);
             break;

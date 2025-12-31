@@ -1,3 +1,6 @@
+/// @file debug.cpp
+/// @brief Debugging utilities for printing array values and status messages.
+
 #include "debug.h"
 
 

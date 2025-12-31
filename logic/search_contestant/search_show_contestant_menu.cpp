@@ -1,3 +1,6 @@
+/// @file search_show_contestant_menu.cpp
+/// @brief Logic for the Search menu and displaying search results.
+
 #include "search_show_contestant_menu.h"
 
 
@@ -18,7 +21,7 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
     switch(menuChoice){
         case 0:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             return;
             break;
         }
@@ -75,7 +78,7 @@ void searchShowContestantsMenu(Contestants contestant[], int& menuChoice){
         }
         default:
         {
-            clearConsole();
+            clearConsole(CLEARCONSOLE);
             cout << "Invalid option!" << endl;
             deBugInfo("ERROR: expected from 0 - 4 got: " << menuChoice);
             break;

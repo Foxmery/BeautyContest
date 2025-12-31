@@ -14,7 +14,7 @@ using namespace std;
 #include "../../utils/cin_validators.h"
 #include "../../utils/utils.h"
 
-/// @brief Logic for contestants menu
+/// @brief Logic for contestants menu. Has a did you mean feature when searching for names
 /// @param contestant Where you want to search
 /// @param menuChoice What user wants to search
 void searchShowContestantsMenu(Contestants contestant[], int& menuChoice);

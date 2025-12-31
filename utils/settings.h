@@ -1,3 +1,6 @@
+/// @file settings.h
+/// @brief Global configuration constants and settings flags for the application.
+
 #pragma once
 
 /// @brief The max contestants user can manipulate

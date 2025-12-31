@@ -1,3 +1,6 @@
+/// @file categorising.cpp
+/// @brief Implementation of age-based categorization logic.
+
 #include "categorising.h"
 
 void categorizeContestantsByAge(Contestants contestant[], Contestants category14_16[], Contestants category17_19[], Contestants category20_22[], Contestants category23_25[]){
@@ -34,7 +37,7 @@ void categorizeContestantsByAge(Contestants contestant[], Contestants category14
         }        
     }
     
-    clearConsole();
+    clearConsole(CLEARCONSOLE);
     printAllContestantsFormatted(category14_16, "Category 14/16 years");
     
     printAllContestantsFormatted(category17_19, "Category 17/19 years");

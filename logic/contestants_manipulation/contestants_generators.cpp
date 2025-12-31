@@ -1,3 +1,6 @@
+/// @file contestants_generators.cpp
+/// @brief Functions for generating random contestants and reading manual input.
+
 #include"contestants_generators.h"
 
  void randomContestantGenerator (Contestants& contestant, const int& IDcounter) 

@@ -1,3 +1,6 @@
+/// @file contestans_sorters.cpp
+/// @brief Implementation of sorting algorithms (Bubble Sort) for contestants.
+
 #include "contestans_sorters.h"
 
 void sortContestants(Contestants contestant[], SortMode mode) {

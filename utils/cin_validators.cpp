@@ -1,3 +1,6 @@
+/// @file cin_validators.cpp
+/// @brief Helper functions to validate user input from the console.
+
 #include "cin_validators.h"
 
 void resetCin (){

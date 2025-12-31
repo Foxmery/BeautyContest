@@ -1,3 +1,6 @@
+/// @file sorting_menu.cpp
+/// @brief Implementation of the Sorting menu logic.
+
 #include "sorting_menu.h"
 
 /// @brief Sorts contestants by name descending without changing the original

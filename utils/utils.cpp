@@ -1,3 +1,6 @@
+/// @file utils.cpp
+/// @brief General utility functions for string manipulation and array comparison.
+
 #include "utils.h"
 
 
@@ -24,7 +27,7 @@ int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst
         deBugInfo("WARNING - countDifferencesBetweenCharArrays: Size of array is too small!" << endl);
     }
 
-    deBugInfo("SYSTEM: lastToCheck: " << lastToCheck << endl);
+    deBugInfo("SYSTEM: lastToCheck (char): " << lastToCheck << endl);
 
     int differences = 0;
 
@@ -32,7 +35,6 @@ int countDifferencesBetweenCharArrays(char first[], char second[], int sizeFirst
         bool different = tolower(first[i]) != tolower(second[i]);
         if(different) differences++;
         deBugInfo("F: " << first[i] << " S: " << second[i] << " D? " << different << endl);
-        //deBugInfo("SYSTEM: Comparing " << tolower(first[i]) << " and " << tolower(second[i]) << " | " << "nowDiff: " << differences);
     }
     deBugInfo("Total differences: " << differences <<" | Compared: " << first << " and " << second << endl << endl);
     return differences;

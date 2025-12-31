@@ -1,3 +1,6 @@
+/// @file exit_logic.cpp
+/// @brief Handles the exit sequence and prompts to save unsaved changes.
+
 #pragma once
 #include <iostream>
 #include <string>

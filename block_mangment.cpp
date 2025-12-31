@@ -1,3 +1,6 @@
+/// @file block_mangment.cpp
+/// @brief Implementation of text-based menu displays and title formatting.
+
 #include "block_mangment.h"
 
 void titlePrinter(string title, int width, char filler = ' ');
@@ -39,7 +42,7 @@ void mainMenuText(bool winnersDecided, bool madeCategories) {
 }
 
 void addingContestantsMenuText(){        
-    clearConsole();
+    clearConsole(CLEARCONSOLE);
     cout << endl;
 
     titlePrinter("CONTESTANT", TITLEWIDTH, '-');
@@ -63,7 +66,7 @@ void showContestantMenuText(bool winnersDecided, bool madeCategories){
 }
 
 void searchMenuText(){
-    clearConsole();
+    clearConsole(CLEARCONSOLE);
     cout << endl;
 
     titlePrinter("SEARCH", TITLEWIDTH, '-');
@@ -78,7 +81,7 @@ void searchMenuText(){
 
 
 void sortMenuText(){
-    clearConsole();
+    clearConsole(CLEARCONSOLE);
     cout << endl;
 
     titlePrinter("SORT", TITLEWIDTH, '-');
@@ -95,7 +98,7 @@ void sortMenuText(){
 
 
 void fileMenuText(){
-    clearConsole();
+    clearConsole(CLEARCONSOLE);
     cout << endl;
 
     titlePrinter("FILE", TITLEWIDTH, '-');

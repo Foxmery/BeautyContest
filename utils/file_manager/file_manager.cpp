@@ -1,6 +1,7 @@
+/// @file file_manager.cpp
+/// @brief Low-level file I/O operations (saving and loading binary data).
+
 #include "file_manager.h"
-
-
 
 
 bool saveToFile(Contestants contestant[], string filePath) {

@@ -1,3 +1,6 @@
+/// @file contestants_manager.cpp
+/// @brief Helper functions for swapping, duplicating, and resetting contestant data.
+
 #include "contestants_manager.h"
 
 

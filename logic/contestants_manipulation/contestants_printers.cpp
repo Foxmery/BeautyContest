@@ -1,3 +1,6 @@
+/// @file contestants_printers.cpp
+/// @brief Functions responsible for printing contestant details to the console.
+
 #include "contestants_printers.h"
 
 void printContestant(Contestants contestant[], int index){
